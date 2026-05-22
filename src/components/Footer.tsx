@@ -14,6 +14,7 @@ const Footer = () => {
             <Link to="/about" className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors">About</Link>
             <Link to="/privacy-policy" className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors">Privacy</Link>
             <Link to="/terms" className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors">Terms</Link>
+            <Link to="/blog" className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors">Blog</Link>
             <Link to="/delete" className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors">Delete Account</Link>
           </div>
         </div>
