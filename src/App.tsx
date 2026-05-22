@@ -6,7 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import About from "./pages/About.tsx";
 import Privacy from "./pages/Privacy.tsx";
-import Terms from "./pages/Terms.tsx";
+import Blog from "./pages/Blog.tsx";
 import DeleteAccount from "./pages/DeleteAccount.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
