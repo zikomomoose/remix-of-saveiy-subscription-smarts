@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/saveiy-logo.png";
 
-const navItems = ["How It Works", "Features", "Alternatives"];
+const navItems = ["Features", "Saveiy Edge", "Trust"];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
