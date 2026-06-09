@@ -1,9 +1,9 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ProblemSection from "@/components/ProblemSection";
-import HowItWorks from "@/components/HowItWorks";
-import FeaturesSection from "@/components/FeaturesSection";
-import AlternativesSection from "@/components/AlternativesSection";
+import CoreSections from "@/components/CoreSections";
+import SaveiyEdge from "@/components/SaveiyEdge";
+import Positioning from "@/components/Positioning";
+import TrustSection from "@/components/TrustSection";
 import ProductPreview from "@/components/ProductPreview";
 import SocialProof from "@/components/SocialProof";
 import EarlyAccess from "@/components/EarlyAccess";
@@ -13,14 +13,16 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <HeroSection />
-      <ProblemSection />
-      <HowItWorks />
-      <FeaturesSection />
-      <AlternativesSection />
-      <ProductPreview />
-      <SocialProof />
-      <EarlyAccess />
+      <main>
+        <HeroSection />
+        <CoreSections />
+        <SaveiyEdge />
+        <ProductPreview />
+        <Positioning />
+        <TrustSection />
+        <SocialProof />
+        <EarlyAccess />
+      </main>
       <Footer />
     </div>
   );
