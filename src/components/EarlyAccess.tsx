@@ -2,28 +2,58 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
+import { WAITLIST_SUCCESS_MESSAGE } from "@/lib/waitlist";
+import { z } from "zod";
+
+const waitlistSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(2, { message: "Please enter your name (min 2 chars)." })
+    .max(100, { message: "Name must be under 100 characters." })
+    .regex(/^[\p{L}\p{M}'\-.\s]+$/u, { message: "Name contains invalid characters." }),
+  email: z
+    .string()
+    .trim()
+    .email({ message: "Please enter a valid email address." })
+    .max(255, { message: "Email must be under 255 characters." }),
+});
 
 const EarlyAccess = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !name) return;
+
+    const parsed = waitlistSchema.safeParse({ name, email });
+    if (!parsed.success) {
+      const fieldErrors: { name?: string; email?: string } = {};
+      parsed.error.issues.forEach((issue) => {
+        const key = issue.path[0] as "name" | "email";
+        if (key && !fieldErrors[key]) fieldErrors[key] = issue.message;
+      });
+      setErrors(fieldErrors);
+      toast.error(parsed.error.issues[0].message);
+      return;
+    }
+
+    setErrors({});
     setLoading(true);
 
     try {
       const res = await fetch("https://formspree.io/f/xzddzddb", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ name: name.trim(), email: email.trim() }),
+        body: JSON.stringify(parsed.data),
       });
 
       if (res.ok) {
         setSubmitted(true);
-        toast.success("You're on the list! We'll let you know when Saveiy launches.");
+        toast.success(WAITLIST_SUCCESS_MESSAGE);
         setName("");
         setEmail("");
       } else {
@@ -72,25 +102,42 @@ const EarlyAccess = () => {
               </p>
             </motion.div>
           ) : (
-            <form onSubmit={handleSubmit} className="mt-10 space-y-3 max-w-md mx-auto">
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="Your name"
-                required
-                maxLength={100}
-                className="w-full px-5 py-4 bg-background border border-border text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/10 transition-all rounded-xl"
-              />
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email"
-                required
-                maxLength={255}
-                className="w-full px-5 py-4 bg-background border border-border text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/10 transition-all rounded-xl"
-              />
+            <form onSubmit={handleSubmit} noValidate className="mt-10 space-y-3 max-w-md mx-auto">
+              <div className="text-left">
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Your name"
+                  required
+                  minLength={2}
+                  maxLength={100}
+                  autoComplete="name"
+                  aria-invalid={!!errors.name}
+                  aria-describedby={errors.name ? "name-error" : undefined}
+                  className="w-full px-5 py-4 bg-background border border-border text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/10 transition-all rounded-xl"
+                />
+                {errors.name && (
+                  <p id="name-error" className="mt-1.5 text-xs text-destructive px-1">{errors.name}</p>
+                )}
+              </div>
+              <div className="text-left">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email"
+                  required
+                  maxLength={255}
+                  autoComplete="email"
+                  aria-invalid={!!errors.email}
+                  aria-describedby={errors.email ? "email-error" : undefined}
+                  className="w-full px-5 py-4 bg-background border border-border text-sm placeholder:text-muted-foreground/60 focus:outline-none focus:border-primary/40 focus:ring-2 focus:ring-primary/10 transition-all rounded-xl"
+                />
+                {errors.email && (
+                  <p id="email-error" className="mt-1.5 text-xs text-destructive px-1">{errors.email}</p>
+                )}
+              </div>
               <button
                 type="submit"
                 disabled={loading}
