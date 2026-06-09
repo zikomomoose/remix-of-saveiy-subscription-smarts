@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,43 +7,43 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 18%;
+    --foreground: 0 0% 6%;
 
-    --card: 160 20% 97%;
-    --card-foreground: 0 0% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 6%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 18%;
+    --popover-foreground: 0 0% 6%;
 
-    --primary: 164 52% 49%;
+    --primary: 164 52% 46%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 24%;
+    --secondary-foreground: 0 0% 12%;
 
-    --muted: 160 10% 95%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 40%;
 
-    --accent: 164 52% 49%;
+    --accent: 164 52% 46%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 164 52% 49%;
+    --border: 0 0% 94%;
+    --input: 0 0% 92%;
+    --ring: 0 0% 6%;
 
-    --radius: 0.625rem;
+    --radius: 0px;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 24%;
-    --sidebar-primary: 164 52% 49%;
+    --sidebar-primary: 164 52% 46%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 160 10% 95%;
+    --sidebar-accent: 0 0% 96%;
     --sidebar-accent-foreground: 0 0% 24%;
-    --sidebar-border: 0 0% 90%;
-    --sidebar-ring: 164 52% 49%;
+    --sidebar-border: 0 0% 94%;
+    --sidebar-ring: 164 52% 46%;
   }
 }
 
@@ -53,9 +53,13 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+  }
+  ::selection {
+    @apply bg-primary text-primary-foreground;
   }
 }
+
 
 @layer utilities {
   .font-display {
