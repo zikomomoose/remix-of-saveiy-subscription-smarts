@@ -10,7 +10,7 @@ const items = [
 
 const TrustSection = () => {
   return (
-    <section className="py-20 md:py-28">
+    <section id="trust" className="py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-6 md:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
