@@ -8,20 +8,21 @@ const CoreSections = () => {
         {/* My Spends */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
+            className="text-center"
           >
             <p className="text-xs uppercase tracking-[0.25em] text-primary font-medium mb-4">My Spends</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.05]">
               Understand where your money <span className="text-gradient">actually goes.</span>
             </h2>
-            <p className="mt-5 text-base text-muted-foreground leading-relaxed max-w-md">
+            <p className="mt-5 text-base text-muted-foreground leading-relaxed max-w-md mx-auto">
               Automatic spending intelligence and transaction categorization give you a
               clear, honest view of your financial life — without spreadsheets.
             </p>
-            <ul className="mt-7 space-y-3 text-sm">
+            <ul className="mt-7 space-y-3 text-sm inline-block text-left">
               {["Auto-categorized transactions", "Monthly spend breakdowns", "Trend insights across categories"].map((t) => (
                 <li key={t} className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -126,21 +127,21 @@ const CoreSections = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
-            className="lg:order-2 order-1"
+            className="lg:order-2 order-1 text-center"
           >
             <p className="text-xs uppercase tracking-[0.25em] text-primary font-medium mb-4">Save More</p>
             <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.05]">
               Find the leaks. <span className="text-gradient">Plug them quietly.</span>
             </h2>
-            <p className="mt-5 text-base text-muted-foreground leading-relaxed max-w-md">
+            <p className="mt-5 text-base text-muted-foreground leading-relaxed max-w-md mx-auto">
               Identify subscriptions, recurring payments, duplicate services, and
               opportunities to reduce monthly expenses — all in one place.
             </p>
-            <ul className="mt-7 space-y-3 text-sm">
+            <ul className="mt-7 space-y-3 text-sm inline-block text-left">
               {["Recurring payment detection", "Duplicate service alerts", "Smart cancellation guidance"].map((t) => (
                 <li key={t} className="flex items-center gap-2.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />

@@ -37,9 +37,9 @@ const TrustSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
-              className="p-6 bg-background border border-border rounded-2xl hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+              className="p-6 bg-background border border-border rounded-2xl hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 text-center"
             >
-              <div className="w-11 h-11 rounded-2xl bg-primary/10 flex items-center justify-center mb-5">
+              <div className="w-11 h-11 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 mx-auto">
                 <it.icon size={18} className="text-primary" strokeWidth={1.75} />
               </div>
               <h3 className="font-display text-lg font-bold">{it.title}</h3>

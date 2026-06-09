@@ -23,7 +23,7 @@ const EarlyAccess = () => {
 
       if (res.ok) {
         setSubmitted(true);
-        toast.success("You're on the waitlist!");
+        toast.success("You're on the list! We'll let you know when Saveiy launches.");
         setName("");
         setEmail("");
       } else {
