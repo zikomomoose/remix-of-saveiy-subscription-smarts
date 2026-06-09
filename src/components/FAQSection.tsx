@@ -34,25 +34,27 @@ const FAQSection = () => {
       acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   };
+
   return (
-    <section id="faq" className="py-20 md:py-28 bg-secondary/30">
+    <section id="faq" className="py-28 md:py-32 border-y border-border">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="max-w-3xl mx-auto px-6 md:px-8 text-center">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 grid md:grid-cols-[1fr_1.5fr] gap-12 md:gap-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-xs uppercase tracking-[0.25em] text-primary font-medium mb-4">FAQ</p>
-          <h2 className="font-display text-3xl md:text-5xl font-bold leading-[1.05]">
-            Questions, <span className="text-gradient">answered openly.</span>
+          <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mb-6">
+            03 / FAQ
+          </p>
+          <h2 className="font-display text-4xl md:text-6xl font-bold tracking-tighter leading-[0.95]">
+            Questions, <span className="text-primary">answered openly.</span>
           </h2>
-          <p className="mt-5 text-base text-muted-foreground leading-relaxed">
+          <p className="mt-6 text-sm text-muted-foreground max-w-xs">
             Everything you need to know about how Saveiy works, what we store, and how we protect your privacy.
           </p>
         </motion.div>
@@ -62,19 +64,18 @@ const FAQSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="bg-background border border-border rounded-2xl p-2 md:p-4 text-left shadow-sm"
         >
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((f, i) => (
               <AccordionItem
                 key={f.q}
                 value={`item-${i}`}
-                className="border-b border-border last:border-0 px-4"
+                className="border-b border-border first:border-t"
               >
-                <AccordionTrigger className="text-left text-sm md:text-base font-semibold hover:no-underline py-5">
+                <AccordionTrigger className="text-left text-base md:text-lg font-bold tracking-tight hover:no-underline py-6">
                   {f.q}
                 </AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-5">
+                <AccordionContent className="text-sm text-muted-foreground leading-relaxed pb-6">
                   {f.a}
                 </AccordionContent>
               </AccordionItem>
