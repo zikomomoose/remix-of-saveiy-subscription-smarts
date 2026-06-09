@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, TrendingDown, Bell, Sparkles, Wallet } from "lucide-react";
 import CountUp from "./CountUp";
@@ -32,15 +32,17 @@ const FloatingCard = ({
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const p1 = useTransform(scrollYProgress, [0, 1], [0, -60]);
-  const p2 = useTransform(scrollYProgress, [0, 1], [0, -90]);
-  const p3 = useTransform(scrollYProgress, [0, 1], [0, -40]);
-  const p4 = useTransform(scrollYProgress, [0, 1], [0, -75]);
-  const phoneParallax = useTransform(scrollYProgress, [0, 1], [0, -30]);
+  const range = prefersReducedMotion ? [0, 0] : undefined;
+  const p1 = useTransform(scrollYProgress, [0, 1], range ?? [0, -60]);
+  const p2 = useTransform(scrollYProgress, [0, 1], range ?? [0, -90]);
+  const p3 = useTransform(scrollYProgress, [0, 1], range ?? [0, -40]);
+  const p4 = useTransform(scrollYProgress, [0, 1], range ?? [0, -75]);
+  const phoneParallax = useTransform(scrollYProgress, [0, 1], range ?? [0, -30]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -56,15 +58,12 @@ const HeroSection = () => {
         <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 lg:gap-16 items-center">
           {/* Copy */}
           <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-[10px] uppercase tracking-[0.2em] text-primary font-medium mb-6"
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="font-display text-4xl md:text-5xl lg:text-[3.75rem] font-bold leading-[1.02] tracking-tight"
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Pre-launch · Join the waitlist
-            </motion.div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
