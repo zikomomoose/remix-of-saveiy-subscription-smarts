@@ -1,6 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import logo from "@/assets/saveiy-logo.png";
 
 const Footer = () => {
   const location = useLocation();
@@ -13,32 +11,37 @@ const Footer = () => {
   };
 
   return (
-    <footer className="py-10 border-t border-border">
-      <div className="max-w-6xl mx-auto px-6 md:px-8">
-        <div className="flex flex-col items-center gap-6 text-center">
-          <div className="flex flex-col items-center gap-2">
-            <img src={logo} alt="Saveiy" className="h-7" />
-            <span className="text-[10px] uppercase tracking-[0.12em] text-muted-foreground/60">Know what is renewing</span>
+    <footer className="border-t border-border py-16 bg-secondary/40">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
+          <div>
+            <div className="text-xl font-bold tracking-tighter uppercase">Saveiy</div>
+            <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-muted-foreground/60">
+              Know what is renewing
+            </p>
           </div>
 
           <Link
             to="/#early-access"
             onClick={handleWaitlist}
-            className="group px-6 py-3 bg-primary text-primary-foreground font-medium text-[11px] uppercase tracking-[0.14em] hover:bg-primary/90 transition-all duration-300 inline-flex items-center gap-2 rounded-xl shadow-md shadow-primary/20"
+            className="bg-foreground text-background px-7 py-3.5 text-[11px] uppercase tracking-widest font-bold hover:bg-primary transition-all"
           >
             Join Waitlist
-            <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
           </Link>
 
-          <div className="flex flex-wrap items-center justify-center gap-6">
-            <Link to="/about" className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors">About</Link>
-            <Link to="/privacy-policy" className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors">Privacy</Link>
-            <Link to="/terms" className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors">Terms</Link>
-            <Link to="/blog" className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors">Blog</Link>
-            <Link to="/delete" className="text-[10px] uppercase tracking-[0.1em] text-muted-foreground hover:text-primary transition-colors">Delete Account</Link>
+          <div className="flex flex-wrap gap-6 md:gap-8 text-[10px] uppercase tracking-widest font-bold text-muted-foreground">
+            <Link to="/about" className="hover:text-foreground transition-colors">About</Link>
+            <Link to="/privacy-policy" className="hover:text-foreground transition-colors">Privacy</Link>
+            <Link to="/terms" className="hover:text-foreground transition-colors">Terms</Link>
+            <Link to="/blog" className="hover:text-foreground transition-colors">Blog</Link>
+            <Link to="/delete" className="hover:text-foreground transition-colors">Delete Account</Link>
           </div>
         </div>
-        <p className="mt-6 text-center text-[10px] text-muted-foreground/40">© 2026 Corewave Innovations Pvt. Ltd.</p>
+
+        <div className="mt-12 pt-6 border-t border-border flex flex-col md:flex-row justify-between gap-3 text-[10px] uppercase tracking-widest font-mono text-muted-foreground/60">
+          <span>© 2026 Corewave Innovations Pvt. Ltd.</span>
+          <span>Made in India</span>
+        </div>
       </div>
     </footer>
   );
