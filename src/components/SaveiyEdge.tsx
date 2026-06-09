@@ -34,7 +34,7 @@ const SaveiyEdge = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="max-w-2xl mb-14"
+          className="max-w-2xl mx-auto mb-14 text-center"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/15 border border-primary/25 mb-5">
             <Sparkles size={12} className="text-primary" />
@@ -57,9 +57,9 @@ const SaveiyEdge = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="group p-7 rounded-3xl bg-background/5 backdrop-blur border border-background/10 hover:border-primary/40 hover:bg-background/[0.07] transition-all duration-500 hover:-translate-y-1"
+              className="group p-7 rounded-3xl bg-background/5 backdrop-blur border border-background/10 hover:border-primary/40 hover:bg-background/[0.07] transition-all duration-500 hover:-translate-y-1 text-center"
             >
-              <div className="flex items-center justify-between mb-6">
+              <div className="flex flex-col items-center gap-3 mb-6">
                 <div className="w-11 h-11 rounded-2xl bg-primary/15 flex items-center justify-center group-hover:bg-primary/25 transition-colors">
                   <c.icon size={18} className="text-primary" strokeWidth={1.75} />
                 </div>
