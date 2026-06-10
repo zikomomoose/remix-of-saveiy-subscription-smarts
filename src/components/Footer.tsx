@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import logo from "@/assets/saveiy-logo.png";
 
 const Footer = () => {
   const location = useLocation();
