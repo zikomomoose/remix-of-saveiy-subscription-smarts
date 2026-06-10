@@ -1,4 +1,4 @@
-import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, useSpring } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import CountUp from "./CountUp";
@@ -13,6 +13,26 @@ const HeroSection = () => {
   const range = prefersReducedMotion ? [0, 0] : undefined;
   const p1 = useTransform(scrollYProgress, [0, 1], range ?? [0, -50]);
   const p2 = useTransform(scrollYProgress, [0, 1], range ?? [0, -80]);
+  const p3 = useTransform(scrollYProgress, [0, 1], range ?? [0, -120]);
+
+  // 3D tilt on phone
+  const rx = useMotionValue(0);
+  const ry = useMotionValue(0);
+  const rotateX = useSpring(rx, { stiffness: 120, damping: 14 });
+  const rotateY = useSpring(ry, { stiffness: 120, damping: 14 });
+
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (prefersReducedMotion) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    ry.set(x * 16);
+    rx.set(-y * 14);
+  };
+  const handleLeave = () => {
+    rx.set(0);
+    ry.set(0);
+  };
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
@@ -24,6 +44,22 @@ const HeroSection = () => {
       className="relative min-h-screen flex items-center pt-28 pb-20 md:pt-32 md:pb-24 overflow-hidden"
       id="top"
     >
+      {/* Ambient 3D background blobs */}
+      <motion.div
+        aria-hidden
+        animate={prefersReducedMotion ? {} : { rotate: 360 }}
+        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+        className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full opacity-30 blur-3xl"
+        style={{ background: "radial-gradient(circle, hsl(164 60% 60%) 0%, transparent 70%)" }}
+      />
+      <motion.div
+        aria-hidden
+        animate={prefersReducedMotion ? {} : { rotate: -360 }}
+        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+        className="absolute -bottom-40 -right-32 w-[520px] h-[520px] rounded-full opacity-20 blur-3xl"
+        style={{ background: "radial-gradient(circle, hsl(180 60% 50%) 0%, transparent 70%)" }}
+      />
+
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
         {/* Copy */}
         <div>
@@ -31,16 +67,16 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-block px-3 py-1 bg-secondary text-[10px] font-bold uppercase tracking-[0.2em]"
+            className="block text-[11px] font-bold uppercase tracking-[0.32em] text-primary"
           >
-            India's first smart tracker
+            Know what's renewing
           </motion.span>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display mt-8 text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter"
+            className="font-display mt-6 text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter"
           >
             Control Every <span className="text-primary">Rupee.</span>
             <br />
@@ -92,12 +128,58 @@ const HeroSection = () => {
           </motion.div>
         </div>
 
-        {/* Phone mockup */}
-        <div className="relative">
+        {/* Phone mockup w/ 3D tilt */}
+        <div
+          className="relative"
+          style={{ perspective: 1400 }}
+          onMouseMove={handleMove}
+          onMouseLeave={handleLeave}
+        >
+          {/* Floating 3D coin */}
+          <motion.div
+            aria-hidden
+            style={{ y: p3, transformStyle: "preserve-3d" }}
+            animate={prefersReducedMotion ? {} : { rotateY: [0, 360] }}
+            transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-6 right-4 lg:right-0 w-20 h-20 rounded-full shadow-2xl hidden md:block"
+          >
+            <div
+              className="w-full h-full rounded-full flex items-center justify-center font-display text-2xl font-bold text-primary-foreground"
+              style={{
+                background: "linear-gradient(135deg, hsl(164 60% 55%), hsl(180 55% 40%))",
+                boxShadow: "inset 0 -6px 14px rgba(0,0,0,0.25), inset 0 6px 14px rgba(255,255,255,0.25)",
+              }}
+            >
+              ₹
+            </div>
+          </motion.div>
+
+          {/* Floating 3D cube */}
+          <motion.div
+            aria-hidden
+            style={{ y: p2 }}
+            animate={prefersReducedMotion ? {} : { rotateX: [0, 360], rotateY: [0, 360] }}
+            transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-8 -left-2 lg:-left-6 w-14 h-14 hidden md:block"
+          >
+            <div
+              className="w-full h-full"
+              style={{
+                background: "linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 22%))",
+                boxShadow: "0 20px 40px -10px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.08)",
+              }}
+            />
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
+            style={{
+              rotateX,
+              rotateY,
+              transformStyle: "preserve-3d",
+            }}
             className="relative mx-auto w-full max-w-[320px] aspect-[9/19] bg-foreground rounded-[3rem] p-3 shadow-2xl border-[8px] border-foreground overflow-hidden"
           >
             <div className="bg-background w-full h-full rounded-[2.2rem] flex flex-col p-6">
@@ -132,7 +214,7 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Floating cards */}
+          {/* Floating insight cards (parallax) */}
           <motion.div
             style={{ y: p1 }}
             initial={{ opacity: 0, x: -20 }}
