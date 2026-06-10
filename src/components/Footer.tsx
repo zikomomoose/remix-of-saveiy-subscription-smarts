@@ -16,7 +16,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
           <div className="flex items-center gap-3">
-            <img src="/src/assets/saveiy-logo.png" alt="Saveiy" className="h-8 w-auto" />
+            <img src={logo} alt="Saveiy" className="h-8 w-auto" />
             <div>
               <div className="text-xl font-bold tracking-tighter uppercase leading-none">Saveiy</div>
               <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-muted-foreground/60">
