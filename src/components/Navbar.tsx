@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/saveiy-logo.png";
 
 const navItems = [
   { label: "Features", id: "features" },
@@ -19,8 +20,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/85 backdrop-blur-xl border-b border-border">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
-        <button onClick={() => scrollTo("top")} className="text-xl font-bold tracking-tighter uppercase">
-          Saveiy
+        <button onClick={() => scrollTo("top")} className="flex items-center gap-2" aria-label="Saveiy home">
+          <img src={logo} alt="Saveiy" className="h-7 w-auto" />
         </button>
 
         <div className="hidden md:flex items-center gap-12">

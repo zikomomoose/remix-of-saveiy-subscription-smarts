@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import logo from "@/assets/saveiy-logo.png";
 
 const Footer = () => {
   const location = useLocation();
@@ -14,11 +15,14 @@ const Footer = () => {
     <footer className="border-t border-border py-16 bg-secondary/40">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
-          <div>
-            <div className="text-xl font-bold tracking-tighter uppercase">Saveiy</div>
-            <p className="mt-2 text-[10px] uppercase tracking-[0.18em] text-muted-foreground/60">
-              Know what is renewing
-            </p>
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="Saveiy" className="h-8 w-auto" />
+            <div>
+              <div className="text-xl font-bold tracking-tighter uppercase leading-none">Saveiy</div>
+              <p className="mt-1 text-[10px] uppercase tracking-[0.18em] text-muted-foreground/60">
+                Know what's renewing
+              </p>
+            </div>
           </div>
 
           <Link
