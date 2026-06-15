@@ -27,6 +27,21 @@ const About = () => (
             We're currently in early access — join our waitlist to be among the first to experience smarter subscription management.
           </p>
         </div>
+
+        <div className="mt-10 grid sm:grid-cols-2 gap-3">
+          <div className="border border-border bg-secondary/40 px-5 py-4">
+            <p className="text-[10px] font-mono uppercase tracking-widest text-primary mb-1">Incubation</p>
+            <p className="text-xs font-bold uppercase tracking-widest leading-snug">
+              Incubated at Symbiosis Centre for Innovation &amp; Entrepreneurship (SCIE)
+            </p>
+          </div>
+          <div className="border border-border bg-secondary/40 px-5 py-4">
+            <p className="text-[10px] font-mono uppercase tracking-widest text-primary mb-1">Recognition</p>
+            <p className="text-xs font-bold uppercase tracking-widest leading-snug">
+              Approved under iStart Rajasthan
+            </p>
+          </div>
+        </div>
       </motion.div>
     </div>
     <Footer />

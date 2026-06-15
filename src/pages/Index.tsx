@@ -14,12 +14,12 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
-        <SectionDivider number="01" label="Core Features" />
         <CoreSections />
         <SaveiyEdge />
         <MidCTA />
-        <FAQSection />
         <EarlyAccess />
+        <SectionDivider number="04" label="FAQ" />
+        <FAQSection />
       </main>
       <Footer />
     </div>

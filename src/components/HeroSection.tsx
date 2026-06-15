@@ -1,248 +1,273 @@
-import { motion, useScroll, useTransform, useReducedMotion, useMotionValue, useSpring } from "framer-motion";
-import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
-import CountUp from "./CountUp";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
+import { useRef, useState } from "react";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { toast } from "sonner";
+import { z } from "zod";
+import { WAITLIST_SUCCESS_MESSAGE } from "@/lib/waitlist";
+
+const waitlistSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(2, { message: "Please enter your name (min 2 chars)." })
+    .max(100, { message: "Name must be under 100 characters." })
+    .regex(/^[\p{L}\p{M}'\-.\s]+$/u, { message: "Name contains invalid characters." }),
+  email: z
+    .string()
+    .trim()
+    .email({ message: "Please enter a valid email address." })
+    .max(255, { message: "Email must be under 255 characters." }),
+});
+
+const tickerItems = [
+  "MARKET SIGNALS",
+  "AUTO-RENEWALS",
+  "HIDDEN LEAKS",
+  "SMART ALTERNATIVES",
+  "BILL TRACKING",
+  "UPI INSIGHTS",
+];
+
+const cards = [
+  {
+    n: "01",
+    t: "AI Detects Hidden Subscriptions",
+    d: "Saveiy analyses your UPI, cards & bank statements to flag every recurring charge — even the ones you forgot.",
+  },
+  {
+    n: "02",
+    t: "Predict What's Renewing Next",
+    d: "Get alerts days before auto-renewal. Pause, cancel, or downgrade before the money leaves your account.",
+  },
+  {
+    n: "03",
+    t: "Switch To Smarter Alternatives",
+    d: "We surface cheaper Indian alternatives for your most-used apps so you keep the value, lose the cost.",
+  },
+];
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const prefersReducedMotion = useReducedMotion();
+  const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const range = prefersReducedMotion ? [0, 0] : undefined;
-  const p1 = useTransform(scrollYProgress, [0, 1], range ?? [0, -50]);
-  const p2 = useTransform(scrollYProgress, [0, 1], range ?? [0, -80]);
-  const p3 = useTransform(scrollYProgress, [0, 1], range ?? [0, -120]);
+  const phoneY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -60]);
+  const bgY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, 40]);
 
-  // 3D tilt on phone
-  const rx = useMotionValue(0);
-  const ry = useMotionValue(0);
-  const rotateX = useSpring(rx, { stiffness: 120, damping: 14 });
-  const rotateY = useSpring(ry, { stiffness: 120, damping: 14 });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
 
-  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (prefersReducedMotion) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    ry.set(x * 16);
-    rx.set(-y * 14);
-  };
-  const handleLeave = () => {
-    rx.set(0);
-    ry.set(0);
-  };
-
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const parsed = waitlistSchema.safeParse({ name, email });
+    if (!parsed.success) {
+      const fe: { name?: string; email?: string } = {};
+      parsed.error.issues.forEach((i) => {
+        const k = i.path[0] as "name" | "email";
+        if (k && !fe[k]) fe[k] = i.message;
+      });
+      setErrors(fe);
+      toast.error(parsed.error.issues[0].message);
+      return;
+    }
+    setErrors({});
+    setLoading(true);
+    try {
+      const res = await fetch("https://formspree.io/f/xzddzddb", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(parsed.data),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+        toast.success(WAITLIST_SUCCESS_MESSAGE);
+        setName("");
+        setEmail("");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch {
+      toast.error("Network error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center pt-28 pb-20 md:pt-32 md:pb-24 overflow-hidden"
       id="top"
+      className="relative pt-28 md:pt-32 pb-20 overflow-hidden bg-background"
     >
-      {/* Ambient 3D background blobs */}
-      <motion.div
-        aria-hidden
-        animate={prefersReducedMotion ? {} : { rotate: 360 }}
-        transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-        className="absolute -top-32 -left-32 w-[480px] h-[480px] rounded-full opacity-30 blur-3xl"
-        style={{ background: "radial-gradient(circle, hsl(164 60% 60%) 0%, transparent 70%)" }}
-      />
-      <motion.div
-        aria-hidden
-        animate={prefersReducedMotion ? {} : { rotate: -360 }}
-        transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-        className="absolute -bottom-40 -right-32 w-[520px] h-[520px] rounded-full opacity-20 blur-3xl"
-        style={{ background: "radial-gradient(circle, hsl(180 60% 50%) 0%, transparent 70%)" }}
-      />
-
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
-        {/* Copy */}
-        <div>
-          <motion.span
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="block text-[11px] font-bold uppercase tracking-[0.32em] text-primary"
-          >
-            Know what's renewing
-          </motion.span>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="font-display mt-6 text-5xl md:text-7xl lg:text-8xl font-bold leading-[0.9] tracking-tighter"
-          >
-            Control Every <span className="text-primary">Rupee.</span>
-            <br />
-            Track Every <span className="text-primary">Subscription.</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.25 }}
-            className="mt-8 max-w-md text-base md:text-lg text-muted-foreground font-light leading-relaxed"
-          >
-            Saveiy automatically identifies recurring payments, uncovers hidden leaks,
-            and helps you reclaim your financial freedom.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="mt-10 flex flex-wrap gap-4"
-          >
-            <button
-              onClick={() => scrollTo("early-access")}
-              className="group bg-primary text-primary-foreground px-8 md:px-10 py-5 font-bold uppercase tracking-widest text-xs hover:bg-foreground transition-all shadow-xl inline-flex items-center gap-3"
-            >
-              Join the waitlist
-              <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-            </button>
-            <button
-              onClick={() => scrollTo("features")}
-              className="border border-border px-8 md:px-10 py-5 font-bold uppercase tracking-widest text-xs hover:bg-secondary transition-all"
-            >
-              Learn More
-            </button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-12 flex flex-wrap gap-6 items-center text-[10px] text-muted-foreground/70 uppercase tracking-widest"
-          >
-            <span>Privacy First</span>
-            <span className="w-1 h-1 bg-border rounded-full" />
-            <span>Consent Driven</span>
-            <span className="w-1 h-1 bg-border rounded-full" />
-            <span>Made in India</span>
-          </motion.div>
-        </div>
-
-        {/* Phone mockup w/ 3D tilt */}
-        <div
-          className="relative"
-          style={{ perspective: 1400 }}
-          onMouseMove={handleMove}
-          onMouseLeave={handleLeave}
+      {/* Massive background headline (H1 for SEO, visually huge) */}
+      <div className="relative max-w-[1400px] mx-auto px-4 md:px-8">
+        <motion.h1
+          style={{ y: bgY }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="font-display text-center font-bold tracking-tighter leading-[0.85] text-foreground select-none
+                     text-[16vw] md:text-[12vw] lg:text-[10.5vw]"
         >
-          {/* Floating 3D coin */}
-          <motion.div
-            aria-hidden
-            style={{ y: p3, transformStyle: "preserve-3d" }}
-            animate={prefersReducedMotion ? {} : { rotateY: [0, 360] }}
-            transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-6 right-4 lg:right-0 w-20 h-20 rounded-full shadow-2xl hidden md:block"
+          <span className="block">Smart Subscription</span>
+          <span className="block">Manager &amp; Bill</span>
+          <span className="block">
+            Tracker for <span className="text-primary">India</span>
+          </span>
+        </motion.h1>
+
+        {/* Phone — overlaps the headline */}
+        <motion.div
+          style={{ y: phoneY }}
+          initial={{ opacity: 0, scale: 0.9, y: 40 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-[18%] md:top-[15%]
+                     w-[55vw] max-w-[260px] md:max-w-[300px] aspect-[9/19]
+                     rounded-[2.4rem] border-[8px] border-foreground bg-foreground shadow-2xl z-10"
+        >
+          <div
+            className="w-full h-full rounded-[1.7rem] overflow-hidden flex flex-col items-center justify-between p-4 md:p-5"
+            style={{ background: "hsl(var(--primary))" }}
           >
-            <div
-              className="w-full h-full rounded-full flex items-center justify-center font-display text-2xl font-bold text-primary-foreground"
-              style={{
-                background: "linear-gradient(135deg, hsl(164 60% 55%), hsl(180 55% 40%))",
-                boxShadow: "inset 0 -6px 14px rgba(0,0,0,0.25), inset 0 6px 14px rgba(255,255,255,0.25)",
-              }}
-            >
-              ₹
+            <div className="w-full flex justify-between text-[8px] font-mono uppercase tracking-widest text-primary-foreground/80">
+              <span>9:41</span>
+              <span>SAVEIY</span>
             </div>
-          </motion.div>
-
-          {/* Floating 3D cube */}
-          <motion.div
-            aria-hidden
-            style={{ y: p2 }}
-            animate={prefersReducedMotion ? {} : { rotateX: [0, 360], rotateY: [0, 360] }}
-            transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-8 -left-2 lg:-left-6 w-14 h-14 hidden md:block"
-          >
-            <div
-              className="w-full h-full"
-              style={{
-                background: "linear-gradient(135deg, hsl(0 0% 8%), hsl(0 0% 22%))",
-                boxShadow: "0 20px 40px -10px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.08)",
-              }}
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            style={{
-              rotateX,
-              rotateY,
-              transformStyle: "preserve-3d",
-            }}
-            className="relative mx-auto w-full max-w-[320px] aspect-[9/19] bg-foreground rounded-[3rem] p-3 shadow-2xl border-[8px] border-foreground overflow-hidden"
-          >
-            <div className="bg-background w-full h-full rounded-[2.2rem] flex flex-col p-6">
-              <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">
-                Total This Month
+            <div className="text-center">
+              <div className="font-display font-bold leading-[0.85] tracking-tighter text-primary-foreground text-[14vw] md:text-[5.5rem]">
+                ₹1,990
               </div>
-              <div className="font-display text-4xl font-bold mb-8 tracking-tighter">
-                <CountUp end={1990} prefix="₹" startOnMount />
-              </div>
-
-              <div className="space-y-4">
-                <div className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest border-b border-border pb-2">
-                  Upcoming
-                </div>
-                {[
-                  { n: "Netflix", d: "In 4 days", a: "₹649", c: "bg-red-50" },
-                  { n: "Spotify", d: "In 9 days", a: "₹119", c: "bg-green-50" },
-                  { n: "Canva Pro", d: "In 14 days", a: "₹499", c: "bg-blue-50" },
-                ].map((s) => (
-                  <div key={s.n} className="flex justify-between items-center">
-                    <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 ${s.c} rounded-lg`} />
-                      <div>
-                        <div className="text-sm font-bold">{s.n}</div>
-                        <div className="text-[10px] text-muted-foreground">{s.d}</div>
-                      </div>
-                    </div>
-                    <div className="font-bold">{s.a}</div>
-                  </div>
-                ))}
+              <div className="mt-2 text-[9px] md:text-[10px] font-mono uppercase tracking-widest text-primary-foreground/80">
+                Renewing this month
               </div>
             </div>
-          </motion.div>
+            <button className="w-full bg-foreground text-background py-3 text-[10px] font-bold uppercase tracking-widest rounded-sm pointer-events-auto">
+              Get Started
+            </button>
+          </div>
+        </motion.div>
+      </div>
 
-          {/* Floating insight cards (parallax) */}
+      {/* Marquee ticker */}
+      <div className="relative mt-10 md:mt-14 border-y border-border bg-secondary/40 overflow-hidden">
+        <motion.div
+          aria-hidden
+          animate={reduce ? {} : { x: ["0%", "-50%"] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="flex whitespace-nowrap py-3 font-mono text-[10px] md:text-xs uppercase tracking-[0.25em] text-muted-foreground"
+        >
+          {[...tickerItems, ...tickerItems, ...tickerItems, ...tickerItems].map((t, i) => (
+            <span key={i} className="px-6 flex items-center gap-6">
+              <span className="text-primary">+</span> ( {t} )
+            </span>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Subheadline + Waitlist input */}
+      <div className="relative max-w-3xl mx-auto px-6 md:px-12 mt-16 md:mt-20 text-center">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-base md:text-xl text-muted-foreground leading-relaxed"
+        >
+          Stop losing money to forgotten auto-renewals. Saveiy tracks your digital
+          subscriptions, uncovers hidden spending leakage, and suggests smarter alternatives.
+        </motion.p>
+
+        {submitted ? (
           <motion.div
-            style={{ y: p1 }}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="absolute -left-4 lg:-left-12 top-1/4 bg-background p-4 shadow-2xl border border-border max-w-[180px] hidden md:block"
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="mt-10 p-8 bg-secondary border border-border flex flex-col items-center gap-3"
           >
-            <div className="text-[9px] uppercase tracking-widest font-bold text-primary mb-1">New Insight</div>
-            <p className="text-[11px] leading-tight font-medium">
-              You could save <span className="font-bold">₹1,150/mo</span> by cancelling unused apps.
+            <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
+              <CheckCircle2 size={24} className="text-primary" />
+            </div>
+            <p className="font-display text-xl font-bold tracking-tight">You're on the list.</p>
+            <p className="text-sm text-muted-foreground">
+              We'll let you know when Saveiy launches.
             </p>
           </motion.div>
-
-          <motion.div
-            style={{ y: p2 }}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.75 }}
-            className="absolute -right-4 lg:-right-8 bottom-1/4 bg-foreground text-background p-4 shadow-2xl max-w-[170px] hidden md:block"
+        ) : (
+          <motion.form
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            onSubmit={submit}
+            noValidate
+            className="mt-10 max-w-xl mx-auto"
           >
-            <div className="text-[9px] uppercase tracking-widest font-bold text-muted-foreground mb-1">
-              Safe to spend
+            <div className="flex flex-col sm:flex-row gap-2 p-2 border-2 border-foreground bg-background">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Your name"
+                required
+                minLength={2}
+                maxLength={100}
+                autoComplete="name"
+                aria-invalid={!!errors.name}
+                className="flex-1 px-3 py-3 bg-transparent outline-none text-sm font-medium placeholder:text-muted-foreground/70"
+              />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email address"
+                required
+                maxLength={255}
+                autoComplete="email"
+                aria-invalid={!!errors.email}
+                className="flex-1 px-3 py-3 bg-transparent outline-none text-sm font-medium placeholder:text-muted-foreground/70 border-t sm:border-t-0 sm:border-l border-border"
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                className="inline-flex items-center justify-center gap-2 bg-foreground text-background px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-primary transition-colors disabled:opacity-60"
+              >
+                {loading ? "Joining..." : "Join Waitlist"}
+                <ArrowRight size={14} />
+              </button>
             </div>
-            <p className="font-display text-xl font-bold tracking-tighter">
-              <CountUp end={24500} prefix="₹" startOnMount />
+            {(errors.name || errors.email) && (
+              <p className="mt-3 text-[11px] uppercase tracking-widest text-destructive">
+                {errors.name || errors.email}
+              </p>
+            )}
+            <p className="mt-4 text-[10px] uppercase tracking-widest text-muted-foreground/70">
+              Privacy first · Consent driven · Made in India
             </p>
+          </motion.form>
+        )}
+      </div>
+
+      {/* 01 / 02 / 03 cards */}
+      <div className="relative max-w-7xl mx-auto px-6 md:px-12 mt-24 md:mt-32 grid md:grid-cols-3 gap-px bg-border">
+        {cards.map((c, i) => (
+          <motion.div
+            key={c.n}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.6, delay: i * 0.1 }}
+            className="bg-background p-8 md:p-10"
+          >
+            <div className="font-display text-5xl md:text-6xl font-bold tracking-tighter">{c.n}</div>
+            <h3 className="mt-8 text-lg md:text-xl font-bold tracking-tight">{c.t}</h3>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{c.d}</p>
           </motion.div>
-        </div>
+        ))}
       </div>
     </section>
   );
