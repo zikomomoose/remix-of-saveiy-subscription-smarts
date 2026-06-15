@@ -1,12 +1,21 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Terms = () => (
   <div className="min-h-screen bg-background">
+    <Helmet>
+      <title>Terms of Service | Saveiy</title>
+      <meta name="description" content="The terms governing your use of Saveiy's subscription intelligence platform." />
+      <link rel="canonical" href="https://saveiy.com/terms" />
+      <meta property="og:title" content="Terms of Service | Saveiy" />
+      <meta property="og:url" content="https://saveiy.com/terms" />
+    </Helmet>
     <Navbar />
+
     <div className="max-w-3xl mx-auto px-6 pt-24 pb-16">
       <Link to="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.1em] text-primary hover:text-primary/80 mb-8 transition-colors">
         <ArrowLeft size={14} /> Back

@@ -1,12 +1,21 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Privacy = () => (
   <div className="min-h-screen bg-background">
+    <Helmet>
+      <title>Privacy Policy | Saveiy</title>
+      <meta name="description" content="How Saveiy collects, uses, and protects your data. DPDP Act 2023 compliant. Read-only access. We never sell your data." />
+      <link rel="canonical" href="https://saveiy.com/privacy" />
+      <meta property="og:title" content="Privacy Policy | Saveiy" />
+      <meta property="og:url" content="https://saveiy.com/privacy" />
+    </Helmet>
     <Navbar />
+
     <div className="max-w-3xl mx-auto px-6 pt-24 pb-16">
       <Link to="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.1em] text-primary hover:text-primary/80 mb-8 transition-colors">
         <ArrowLeft size={14} /> Back
