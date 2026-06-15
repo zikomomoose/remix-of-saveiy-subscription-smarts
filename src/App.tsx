@@ -9,6 +9,7 @@ import Privacy from "./pages/Privacy.tsx";
 import Terms from "./pages/Terms.tsx";
 import Blog from "./pages/Blog.tsx";
 import DeleteAccount from "./pages/DeleteAccount.tsx";
+import AlternativesPage from "./pages/AlternativesPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/terms" element={<Terms />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/delete" element={<DeleteAccount />} />
+          <Route path="/alternatives/:slug" element={<AlternativesPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
