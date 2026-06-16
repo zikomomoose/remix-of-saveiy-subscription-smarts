@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-ink">
       <Helmet>
         <title>Saveiy — Smart Subscription Manager &amp; Bill Tracker for India</title>
         <meta name="description" content="Saveiy is India's smart subscription manager and bill tracker. Spot auto-renewals, stop hidden recurring charges on UPI &amp; cards, and switch to cheaper Indian alternatives." />
@@ -36,9 +36,8 @@ const Index = () => {
         <CoreSections />
         <SaveiyEdge />
         <MidCTA />
-        <EarlyAccess />
-        <SectionDivider number="04" label="FAQ" />
         <FAQSection />
+        <EarlyAccess />
       </main>
       <Footer />
     </div>

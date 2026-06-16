@@ -6,17 +6,8 @@ import { WAITLIST_SUCCESS_MESSAGE } from "@/lib/waitlist";
 import { z } from "zod";
 
 const waitlistSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(2, { message: "Please enter your name (min 2 chars)." })
-    .max(100, { message: "Name must be under 100 characters." })
-    .regex(/^[\p{L}\p{M}'\-.\s]+$/u, { message: "Name contains invalid characters." }),
-  email: z
-    .string()
-    .trim()
-    .email({ message: "Please enter a valid email address." })
-    .max(255, { message: "Email must be under 255 characters." }),
+  name: z.string().trim().min(2).max(100).regex(/^[\p{L}\p{M}'\-.\s]+$/u),
+  email: z.string().trim().email().max(255),
 });
 
 const EarlyAccess = () => {
@@ -24,22 +15,14 @@ const EarlyAccess = () => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [errors, setErrors] = useState<{ name?: string; email?: string }>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const parsed = waitlistSchema.safeParse({ name, email });
     if (!parsed.success) {
-      const fe: { name?: string; email?: string } = {};
-      parsed.error.issues.forEach((i) => {
-        const k = i.path[0] as "name" | "email";
-        if (k && !fe[k]) fe[k] = i.message;
-      });
-      setErrors(fe);
       toast.error(parsed.error.issues[0].message);
       return;
     }
-    setErrors({});
     setLoading(true);
     try {
       const res = await fetch("https://formspree.io/f/xzddzddb", {
@@ -63,7 +46,7 @@ const EarlyAccess = () => {
   };
 
   return (
-    <section id="early-access" className="py-28 md:py-32 bg-background border-t border-border">
+    <section id="early-access" className="bg-ink text-white py-28 md:py-32">
       <div className="max-w-3xl mx-auto px-6 md:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -71,14 +54,14 @@ const EarlyAccess = () => {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-6">
-            Get Invited
+          <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/50 mb-6">
+            + get invited
           </p>
-          <h2 className="font-display text-5xl md:text-7xl font-bold tracking-tighter leading-[0.95] mb-8">
-            Ready for the <span className="text-primary">Future?</span>
+          <h2 className="font-serif-display text-5xl md:text-7xl leading-[0.95] mb-8">
+            be first in line.
           </h2>
-          <p className="text-muted-foreground text-base md:text-lg mb-12 max-w-xl mx-auto">
-            Join early adopters securing their spot in the next generation of subscription tracking.
+          <p className="text-white/65 text-base md:text-lg mb-12 max-w-xl mx-auto">
+            Join early adopters securing their spot in India's smartest subscription tracker.
           </p>
         </motion.div>
 
@@ -86,68 +69,45 @@ const EarlyAccess = () => {
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mt-4 p-10 bg-secondary border border-border flex flex-col items-center gap-4"
+            className="p-10 rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center gap-4"
           >
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-              <CheckCircle2 size={26} className="text-primary" strokeWidth={1.75} />
+            <div className="w-12 h-12 rounded-full bg-primary/15 flex items-center justify-center">
+              <CheckCircle2 size={26} className="text-primary" />
             </div>
-            <p className="font-display text-2xl font-bold tracking-tighter">You're on the list.</p>
-            <p className="text-sm text-muted-foreground">
-              We'll let you know when Saveiy launches.
-            </p>
+            <p className="font-serif-display text-3xl">you're on the list.</p>
+            <p className="text-sm text-white/60">We'll let you know when Saveiy launches.</p>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4 max-w-2xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-4 text-left">
-              <div>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="FULL NAME"
-                  required
-                  minLength={2}
-                  maxLength={100}
-                  autoComplete="name"
-                  aria-invalid={!!errors.name}
-                  aria-describedby={errors.name ? "name-error" : undefined}
-                  className="w-full border-b-2 border-border py-5 px-2 bg-transparent focus:border-primary outline-none transition-all uppercase text-xs tracking-widest font-bold placeholder:text-muted-foreground/60"
-                />
-                {errors.name && (
-                  <p id="name-error" className="mt-2 text-[10px] uppercase tracking-widest text-destructive">
-                    {errors.name}
-                  </p>
-                )}
-              </div>
-              <div>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="EMAIL ADDRESS"
-                  required
-                  maxLength={255}
-                  autoComplete="email"
-                  aria-invalid={!!errors.email}
-                  aria-describedby={errors.email ? "email-error" : undefined}
-                  className="w-full border-b-2 border-border py-5 px-2 bg-transparent focus:border-primary outline-none transition-all uppercase text-xs tracking-widest font-bold placeholder:text-muted-foreground/60"
-                />
-                {errors.email && (
-                  <p id="email-error" className="mt-2 text-[10px] uppercase tracking-widest text-destructive">
-                    {errors.email}
-                  </p>
-                )}
-              </div>
+          <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4 max-w-xl mx-auto">
+            <div className="grid sm:grid-cols-2 gap-3">
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="full name"
+                required
+                autoComplete="name"
+                className="w-full rounded-full bg-white/5 border border-white/15 py-4 px-5 outline-none focus:border-primary text-sm placeholder:text-white/40 text-white transition-colors"
+              />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="email address"
+                required
+                autoComplete="email"
+                className="w-full rounded-full bg-white/5 border border-white/15 py-4 px-5 outline-none focus:border-primary text-sm placeholder:text-white/40 text-white transition-colors"
+              />
             </div>
             <button
               type="submit"
               disabled={loading}
-              className="mt-8 bg-foreground text-background py-6 md:py-7 px-12 text-xs md:text-sm font-bold uppercase tracking-[0.3em] hover:bg-primary transition-all disabled:opacity-60"
+              className="rounded-full bg-white text-ink py-4 px-12 text-xs font-bold uppercase tracking-[0.3em] hover:bg-primary hover:text-white transition-colors disabled:opacity-60"
             >
-              {loading ? "Requesting..." : "Request Invitation"}
+              {loading ? "requesting…" : "request invitation"}
             </button>
-            <p className="text-[10px] uppercase tracking-widest text-muted-foreground/60 mt-2">
-              No spam · We respect your privacy
+            <p className="text-[10px] uppercase tracking-widest text-white/40 mt-2">
+              no spam · we respect your privacy
             </p>
           </form>
         )}
