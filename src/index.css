@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -36,6 +36,14 @@
 
     --radius: 0px;
 
+    /* CRED-spine extras */
+    --ink: 0 0% 7%;             /* deep near-black bg */
+    --ink-2: 0 0% 11%;          /* card on ink */
+    --cream: 38 38% 92%;        /* cream block */
+    --cream-ink: 24 18% 14%;    /* text on cream */
+    --teal-deep: 168 60% 22%;   /* deep teal block */
+    --plum: 268 35% 28%;        /* accent block */
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 24%;
     --sidebar-primary: 164 52% 46%;
@@ -60,11 +68,15 @@
   }
 }
 
-
 @layer utilities {
   .font-display {
     font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
     letter-spacing: -0.02em;
+  }
+  .font-serif-display {
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
+    letter-spacing: -0.01em;
+    font-weight: 400;
   }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
@@ -80,5 +92,21 @@
   .text-gradient-teal {
     @apply bg-clip-text text-transparent;
     background-image: linear-gradient(135deg, hsl(164, 55%, 52%), hsl(180, 50%, 38%));
+  }
+  .bg-ink { background-color: hsl(var(--ink)); }
+  .bg-ink-2 { background-color: hsl(var(--ink-2)); }
+  .bg-cream { background-color: hsl(var(--cream)); }
+  .text-cream-ink { color: hsl(var(--cream-ink)); }
+  .bg-teal-deep { background-color: hsl(var(--teal-deep)); }
+  .bg-plum { background-color: hsl(var(--plum)); }
+
+  .noise::before {
+    content: "";
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(hsla(0,0%,100%,0.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+    mix-blend-mode: overlay;
+    opacity: .35;
   }
 }
