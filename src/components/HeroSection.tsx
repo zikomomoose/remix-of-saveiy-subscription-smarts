@@ -10,15 +10,6 @@ const waitlistSchema = z.object({
   email: z.string().trim().email().max(255),
 });
 
-const tickerItems = [
-  "auto-renewals",
-  "hidden leaks",
-  "smart alternatives",
-  "bill tracking",
-  "upi insights",
-  "money saved",
-];
-
 const phoneRows = [
   { name: "Netflix Premium", meta: "Renews Jun 22", amount: "₹649" },
   { name: "Spotify Family", meta: "Renews Jun 25", amount: "₹179" },
@@ -99,18 +90,18 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="font-serif-display text-white tracking-tight leading-[0.95]
+          className="font-display text-white tracking-tight leading-[0.95] font-semibold
                      text-[14vw] sm:text-[11vw] md:text-[8.2vw] lg:text-[7rem]"
         >
           know what's <br className="hidden sm:block" />
-          <em className="italic text-primary">renewing.</em>
+          <span className="text-primary">renewing.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="mt-8 text-base md:text-lg text-white/65 max-w-2xl mx-auto leading-relaxed"
+          className="mt-8 text-base md:text-lg text-white/75 max-w-2xl mx-auto leading-relaxed"
         >
           india's smart subscription manager &amp; bill tracker. stop losing money to forgotten
           auto-renewals — see every charge before it hits your account.
