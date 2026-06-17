@@ -1,41 +1,57 @@
+import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const posts = [
-  { title: "Why You're Overpaying for Subscriptions", date: "Mar 10, 2026", excerpt: "The average person spends ₹15,000+/year on subscriptions they've forgotten about. Here's how to fix it." },
-  { title: "5 Free Alternatives to Expensive SaaS Tools", date: "Mar 5, 2026", excerpt: "From Photopea to Obsidian — discover pocket-friendly tools that do the same job." },
-  { title: "The Subscription Economy in India: 2026 Trends", date: "Feb 28, 2026", excerpt: "India's subscription market is booming. Here's what it means for your wallet." },
-];
+import { posts } from "@/data/posts";
 
 const Blog = () => (
   <div className="min-h-screen bg-background">
+    <Helmet>
+      <title>Blog — Saveiy</title>
+      <meta name="description" content="Practical guides on subscriptions, UPI mandates, Indian SaaS alternatives, and money habits — written by the Saveiy team." />
+      <link rel="canonical" href="https://saveiy.com/blog" />
+      <meta property="og:title" content="Saveiy Blog" />
+      <meta property="og:url" content="https://saveiy.com/blog" />
+    </Helmet>
     <Navbar />
-    <div className="max-w-3xl mx-auto px-6 pt-24 pb-16">
-      <Link to="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.1em] text-primary hover:text-primary/80 mb-8 transition-colors">
-        <ArrowLeft size={14} /> Back
-      </Link>
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <h1 className="font-display text-3xl md:text-4xl font-bold tracking-tight mb-8">Blog</h1>
-        <div className="space-y-4">
-          {posts.map((post, i) => (
-            <motion.article
-              key={post.title}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1, duration: 0.4 }}
-              className="p-5 rounded-xl border border-border bg-card hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 cursor-pointer"
+    <main className="pt-28 md:pt-36">
+      <section className="max-w-6xl mx-auto px-6 md:px-12">
+        <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-primary mb-5">+ field notes</p>
+        <h1 className="font-display text-5xl md:text-7xl tracking-tight leading-[0.95] max-w-3xl">
+          Money, mandates &amp; <span className="text-primary">monthly leaks.</span>
+        </h1>
+      </section>
+
+      <section className="max-w-6xl mx-auto px-6 md:px-12 mt-16 md:mt-24">
+        <div className="grid md:grid-cols-2 gap-3 md:gap-4">
+          {posts.map((p, i) => (
+            <motion.div
+              key={p.slug}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: (i % 4) * 0.05 }}
             >
-              <p className="text-[10px] uppercase tracking-[0.1em] text-primary/60 mb-1">{post.date}</p>
-              <h2 className="text-base font-semibold">{post.title}</h2>
-              <p className="mt-1 text-sm text-muted-foreground">{post.excerpt}</p>
-            </motion.article>
+              <Link to={`/blog/${p.slug}`} className="group block h-full rounded-2xl border border-border bg-card p-7 md:p-9 hover:border-primary/40 hover:shadow-xl transition-all">
+                <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.22em] text-muted-foreground">
+                  <span>{p.date} · {p.readTime}</span>
+                  <ArrowUpRight size={16} className="opacity-40 group-hover:opacity-100 group-hover:text-primary transition" />
+                </div>
+                <h2 className="mt-5 font-display text-2xl md:text-3xl tracking-tight leading-tight group-hover:text-primary transition-colors">{p.title}</h2>
+                <p className="mt-3 text-sm md:text-base text-muted-foreground leading-relaxed">{p.excerpt}</p>
+                <div className="mt-5 flex gap-2 flex-wrap">
+                  {p.tags.map((t) => (
+                    <span key={t} className="text-[10px] uppercase tracking-[0.18em] font-semibold border border-border rounded-full px-2.5 py-1">{t}</span>
+                  ))}
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
-      </motion.div>
-    </div>
+      </section>
+    </main>
     <Footer />
   </div>
 );
