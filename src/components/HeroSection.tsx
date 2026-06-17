@@ -192,22 +192,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      <div className="relative mt-12 md:mt-16 border-y border-white/10 overflow-hidden">
-        <div
-          className={`flex whitespace-nowrap py-4 ${reduce ? "" : "animate-marquee"}`}
-          aria-hidden
-        >
-          {[...tickerItems, ...tickerItems, ...tickerItems].map((t, i) => (
-            <span
-              key={i}
-              className="px-8 font-serif-display italic text-2xl md:text-3xl text-white/60"
-            >
-              <span className="text-primary not-italic font-display mr-3">+</span>
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
     </section>
   );
 };
