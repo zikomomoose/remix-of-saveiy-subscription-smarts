@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "@/assets/saveiy-logo.png";
+import logoDark from "@/assets/saveiy-logo.png";
+import logoLight from "@/assets/saveiy-logo-white.png";
 
 const navItems = [
   { label: "Product", to: "/product" },
