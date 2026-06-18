@@ -48,7 +48,7 @@ const BlogPost = () => {
               ))}
             </div>
             <div className="mt-14 border-t border-border pt-8">
-              <Link to="/waitlist" className="inline-flex items-center gap-2 bg-foreground text-background rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-primary transition-colors">
+              <Link to="/waitlist" className="inline-flex items-center gap-2 bg-primary text-white rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-foreground transition-colors">
                 Join the Saveiy waitlist
               </Link>
             </div>
