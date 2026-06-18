@@ -102,7 +102,7 @@ const EarlyAccess = () => {
             <button
               type="submit"
               disabled={loading}
-              className="rounded-full bg-white text-ink py-4 px-12 text-xs font-bold uppercase tracking-[0.3em] hover:bg-primary hover:text-white transition-colors disabled:opacity-60"
+              className="rounded-full bg-primary text-white py-4 px-12 text-xs font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-ink transition-colors disabled:opacity-60"
             >
               {loading ? "requesting…" : "request invitation"}
             </button>
