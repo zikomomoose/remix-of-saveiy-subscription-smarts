@@ -89,7 +89,7 @@ const Navbar = () => {
           >
             <div className="flex items-center justify-between h-16 md:h-20 px-5 md:px-10 border-b border-white/10">
               <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
-                <img src={logo} alt="Saveiy" className="h-7 w-auto logo-on-dark" />
+                <img src={logoLight} alt="Saveiy" className="h-10 md:h-12 w-auto" />
               </Link>
               <button onClick={() => setOpen(false)} aria-label="Close menu" className="border border-white/20 rounded-md p-2 hover:bg-white/5">
                 <X size={20} />
