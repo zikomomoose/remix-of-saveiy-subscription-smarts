@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Award, Building2, Lock, ShieldCheck } from "lucide-react";
-import logo from "@/assets/saveiy-logo.png";
+import logo from "@/assets/saveiy-logo-white.png";
 
 const Footer = () => {
   return (
