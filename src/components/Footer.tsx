@@ -54,7 +54,7 @@ const Footer = () => {
           <div className="md:text-right">
             <Link
               to="/waitlist"
-              className="inline-block bg-white text-ink rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-primary hover:text-white transition-colors"
+              className="inline-block bg-primary text-white rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-white hover:text-ink transition-colors"
             >
               Join Waitlist
             </Link>
