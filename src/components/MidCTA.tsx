@@ -42,7 +42,7 @@ const MidCTA = () => {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
           onClick={() => scrollTo("early-access")}
-          className="group mt-12 inline-flex items-center gap-3 bg-white text-ink rounded-full px-9 py-4 font-bold uppercase tracking-widest text-xs hover:bg-primary hover:text-white transition-colors"
+          className="group mt-12 inline-flex items-center gap-3 bg-primary text-white rounded-full px-9 py-4 font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-ink transition-colors"
         >
           Secure early access
           <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
