@@ -24,7 +24,7 @@ const Footer = () => {
 
         <div className="grid md:grid-cols-3 gap-10 items-start border-t border-white/10 pt-12">
           <div className="flex items-start gap-3">
-            <img src={logo} alt="Saveiy logo" className="h-9 w-auto logo-on-dark" />
+            <img src={logo} alt="Saveiy logo" className="h-12 md:h-14 w-auto" />
             <div>
               <div className="font-display text-2xl leading-none">Saveiy</div>
               <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/40">
