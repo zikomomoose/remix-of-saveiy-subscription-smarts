@@ -44,8 +44,8 @@ const Navbar = () => {
 
   const fg = dark ? "text-white" : "text-foreground";
   const ctaCls = dark
-    ? "bg-white text-ink hover:bg-primary hover:text-white"
-    : "bg-foreground text-background hover:bg-primary";
+    ? "bg-primary text-white hover:bg-white hover:text-ink"
+    : "bg-primary text-white hover:bg-foreground hover:text-background";
 
   const goWaitlist = () => {
     if (onHome) document.getElementById("early-access")?.scrollIntoView({ behavior: "smooth" });
