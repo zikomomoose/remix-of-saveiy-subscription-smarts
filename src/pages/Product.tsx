@@ -61,7 +61,7 @@ const Product = () => (
       <section className="bg-ink text-white mt-28 py-24 md:py-32">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-display text-4xl md:text-6xl tracking-tight">Ready to stop the leaks?</h2>
-          <Link to="/waitlist" className="mt-10 inline-flex items-center gap-2 bg-white text-ink rounded-full px-8 py-4 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-primary hover:text-white transition-colors">
+          <Link to="/waitlist" className="mt-10 inline-flex items-center gap-2 bg-primary text-white rounded-full px-8 py-4 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-white hover:text-ink transition-colors">
             Join the waitlist <ArrowRight size={14} />
           </Link>
         </div>

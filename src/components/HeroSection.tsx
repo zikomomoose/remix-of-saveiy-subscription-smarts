@@ -147,7 +147,7 @@ const HeroSection = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="inline-flex items-center justify-center gap-2 bg-white text-ink rounded-full px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-primary hover:text-white transition-colors disabled:opacity-60"
+                className="inline-flex items-center justify-center gap-2 bg-primary text-white rounded-full px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-ink transition-colors disabled:opacity-60"
               >
                 {loading ? "joining…" : "join waitlist"}
                 <ArrowRight size={14} />

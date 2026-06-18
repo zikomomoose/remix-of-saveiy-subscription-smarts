@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "@/assets/saveiy-logo.png";
+import logoDark from "@/assets/saveiy-logo.png";
+import logoLight from "@/assets/saveiy-logo-white.png";
 
 const navItems = [
   { label: "Product", to: "/product" },
@@ -43,8 +44,8 @@ const Navbar = () => {
 
   const fg = dark ? "text-white" : "text-foreground";
   const ctaCls = dark
-    ? "bg-white text-ink hover:bg-primary hover:text-white"
-    : "bg-foreground text-background hover:bg-primary";
+    ? "bg-primary text-white hover:bg-white hover:text-ink"
+    : "bg-primary text-white hover:bg-foreground hover:text-background";
 
   const goWaitlist = () => {
     if (onHome) document.getElementById("early-access")?.scrollIntoView({ behavior: "smooth" });
@@ -65,7 +66,7 @@ const Navbar = () => {
           </button>
 
           <Link to="/" className="flex items-center gap-2 absolute left-1/2 -translate-x-1/2" aria-label="Saveiy home">
-            <img src={logo} alt="Saveiy" className={`h-7 w-auto ${dark ? "logo-on-dark" : ""}`} />
+            <img src={dark ? logoLight : logoDark} alt="Saveiy" className="h-9 md:h-11 w-auto" />
           </Link>
 
           <button
@@ -88,7 +89,7 @@ const Navbar = () => {
           >
             <div className="flex items-center justify-between h-16 md:h-20 px-5 md:px-10 border-b border-white/10">
               <Link to="/" onClick={() => setOpen(false)} className="flex items-center gap-2">
-                <img src={logo} alt="Saveiy" className="h-7 w-auto logo-on-dark" />
+                <img src={logoLight} alt="Saveiy" className="h-10 md:h-12 w-auto" />
               </Link>
               <button onClick={() => setOpen(false)} aria-label="Close menu" className="border border-white/20 rounded-md p-2 hover:bg-white/5">
                 <X size={20} />
@@ -124,7 +125,7 @@ const Navbar = () => {
 
                 <button
                   onClick={() => { setOpen(false); goWaitlist(); }}
-                  className="mt-10 inline-flex items-center gap-2 bg-white text-ink rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-primary hover:text-white transition-colors"
+                  className="mt-10 inline-flex items-center gap-2 bg-primary text-white rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-white hover:text-ink transition-colors"
                 >
                   Join the waitlist
                 </button>

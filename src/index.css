@@ -99,6 +99,6 @@
   .bg-teal-deep { background-color: hsl(var(--teal-deep)); }
   .bg-plum { background-color: hsl(var(--plum)); }
 
-  /* Make the dark parts of the logo legible on dark backgrounds */
-  .logo-on-dark { filter: brightness(0) invert(1); }
+  /* Use the dedicated white-variant PNG instead — kept as no-op for back-compat */
+  .logo-on-dark { filter: none; }
 }

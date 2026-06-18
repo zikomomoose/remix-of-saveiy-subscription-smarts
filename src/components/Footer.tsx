@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Award, Building2, Lock, ShieldCheck } from "lucide-react";
-import logo from "@/assets/saveiy-logo.png";
+import logo from "@/assets/saveiy-logo-white.png";
 
 const Footer = () => {
   return (
@@ -24,7 +24,7 @@ const Footer = () => {
 
         <div className="grid md:grid-cols-3 gap-10 items-start border-t border-white/10 pt-12">
           <div className="flex items-start gap-3">
-            <img src={logo} alt="Saveiy logo" className="h-9 w-auto logo-on-dark" />
+            <img src={logo} alt="Saveiy logo" className="h-12 md:h-14 w-auto" />
             <div>
               <div className="font-display text-2xl leading-none">Saveiy</div>
               <p className="mt-1 text-[10px] uppercase tracking-[0.2em] text-white/40">
@@ -54,7 +54,7 @@ const Footer = () => {
           <div className="md:text-right">
             <Link
               to="/waitlist"
-              className="inline-block bg-white text-ink rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-primary hover:text-white transition-colors"
+              className="inline-block bg-primary text-white rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-white hover:text-ink transition-colors"
             >
               Join Waitlist
             </Link>

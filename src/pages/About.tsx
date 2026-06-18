@@ -132,8 +132,8 @@ const About = () => (
 
         <div className="mt-14 pt-8 border-t border-border">
           <Link
-            to="/#early-access"
-            className="inline-flex items-center gap-3 bg-foreground text-background px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-primary transition-colors"
+            to="/waitlist"
+            className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-foreground transition-colors"
           >
             Join the Saveiy Waitlist
           </Link>
