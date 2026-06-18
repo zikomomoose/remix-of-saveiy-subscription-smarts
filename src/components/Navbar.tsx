@@ -125,7 +125,7 @@ const Navbar = () => {
 
                 <button
                   onClick={() => { setOpen(false); goWaitlist(); }}
-                  className="mt-10 inline-flex items-center gap-2 bg-white text-ink rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-primary hover:text-white transition-colors"
+                  className="mt-10 inline-flex items-center gap-2 bg-primary text-white rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-white hover:text-ink transition-colors"
                 >
                   Join the waitlist
                 </button>
