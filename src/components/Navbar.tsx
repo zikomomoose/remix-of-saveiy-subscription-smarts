@@ -66,7 +66,7 @@ const Navbar = () => {
           </button>
 
           <Link to="/" className="flex items-center gap-2 absolute left-1/2 -translate-x-1/2" aria-label="Saveiy home">
-            <img src={logo} alt="Saveiy" className={`h-7 w-auto ${dark ? "logo-on-dark" : ""}`} />
+            <img src={dark ? logoLight : logoDark} alt="Saveiy" className="h-9 md:h-11 w-auto" />
           </Link>
 
           <button
