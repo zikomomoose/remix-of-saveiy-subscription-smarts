@@ -12,24 +12,48 @@ const BlogPost = () => {
   if (!post) return <Navigate to="/blog" replace />;
   const url = `https://saveiy.com/blog/${post.slug}`;
 
+  // Related posts: same tag overlap, exclude current, take up to 3
+  const related = posts
+    .filter((p) => p.slug !== post.slug)
+    .map((p) => ({ p, overlap: p.tags.filter((t) => post.tags.includes(t)).length }))
+    .sort((a, b) => b.overlap - a.overlap)
+    .slice(0, 3)
+    .map((x) => x.p);
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
         <title>{post.title} — Saveiy Blog</title>
         <meta name="description" content={post.excerpt} />
+        <meta name="keywords" content={post.tags.join(", ")} />
         <link rel="canonical" href={url} />
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:url" content={url} />
         <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Article",
           headline: post.title,
+          description: post.excerpt,
           datePublished: post.date,
+          keywords: post.tags.join(", "),
           author: { "@type": "Organization", name: "Saveiy" },
           publisher: { "@type": "Organization", name: "Corewave Innovations Pvt. Ltd." },
-          mainEntityOfPage: url,
+          mainEntityOfPage: { "@type": "WebPage", "@id": url },
+          url,
+        })}</script>
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://saveiy.com/" },
+            { "@type": "ListItem", position: 2, name: "Blog", item: "https://saveiy.com/blog" },
+            { "@type": "ListItem", position: 3, name: post.title, item: url },
+          ],
         })}</script>
       </Helmet>
       <Navbar />
@@ -47,6 +71,35 @@ const BlogPost = () => {
                 <p key={i}>{para}</p>
               ))}
             </div>
+
+            <aside className="mt-12 rounded-2xl border border-border bg-muted/30 p-6 md:p-8">
+              <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-muted-foreground mb-4">+ explore saveiy</p>
+              <div className="flex flex-wrap gap-2">
+                <Link to="/product" className="inline-flex items-center rounded-full border border-border bg-background px-4 py-2 text-xs font-semibold hover:border-primary hover:text-primary transition-colors">The Product</Link>
+                <Link to="/how-it-works" className="inline-flex items-center rounded-full border border-border bg-background px-4 py-2 text-xs font-semibold hover:border-primary hover:text-primary transition-colors">How It Works</Link>
+                <Link to="/waitlist" className="inline-flex items-center rounded-full bg-primary text-white px-4 py-2 text-xs font-semibold hover:bg-foreground transition-colors">Join Waitlist</Link>
+              </div>
+            </aside>
+
+            {related.length > 0 && (
+              <section className="mt-14">
+                <h2 className="font-display text-2xl md:text-3xl tracking-tight mb-6">Related reading</h2>
+                <ul className="grid sm:grid-cols-2 gap-4">
+                  {related.map((r) => (
+                    <li key={r.slug}>
+                      <Link
+                        to={`/blog/${r.slug}`}
+                        className="block h-full rounded-xl border border-border bg-background p-5 hover:border-primary/40 transition-colors"
+                      >
+                        <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground">{r.date} · {r.readTime}</p>
+                        <p className="mt-2 font-display text-lg leading-snug">{r.title}</p>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
             <div className="mt-14 border-t border-border pt-8">
               <Link to="/waitlist" className="inline-flex items-center gap-2 bg-primary text-white rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-foreground transition-colors">
                 Join the Saveiy waitlist
@@ -61,3 +114,4 @@ const BlogPost = () => {
 };
 
 export default BlogPost;
+
