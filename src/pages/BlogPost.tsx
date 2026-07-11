@@ -5,9 +5,12 @@ import { ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { posts } from "@/data/posts";
+import { blogSlugRedirects } from "@/data/blogRedirects";
 
 const BlogPost = () => {
   const { slug } = useParams();
+  const redirectTo = slug ? blogSlugRedirects[slug] : undefined;
+  if (redirectTo) return <Navigate to={`/blog/${redirectTo}`} replace />;
   const post = posts.find((p) => p.slug === slug);
   if (!post) return <Navigate to="/blog" replace />;
   const url = `https://saveiy.com/blog/${post.slug}`;
