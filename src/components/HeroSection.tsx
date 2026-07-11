@@ -50,20 +50,19 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="font-display text-white tracking-tight leading-[1.02] font-semibold
-                     text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl mx-auto"
+                     text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl mx-auto text-center"
         >
-          The Intelligent <span className="text-primary">Subscription Manager</span> &amp; Bill Tracker
+          Know what's <span className="text-primary">renewing.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
-          className="mt-8 text-base md:text-lg text-white/75 max-w-2xl mx-auto leading-relaxed"
+          className="mt-8 text-base md:text-lg text-white/75 max-w-2xl mx-auto leading-relaxed text-center"
         >
-          Saveiy helps you track app subscriptions, manage recurring expenses, and monitor fixed
-          expense targets. Stop subscription creep and cancel unwanted subscriptions before they
-          charge you.
+          The intelligent subscription manager and bill tracker that helps you track app
+          subscriptions, manage recurring expenses, and stop subscription creep before it charges you.
         </motion.p>
 
         <motion.div
