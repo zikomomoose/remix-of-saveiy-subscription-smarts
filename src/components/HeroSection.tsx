@@ -1,14 +1,7 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
-import { useRef, useState } from "react";
-import { ArrowRight, CheckCircle2, Bell, TrendingDown, Sparkles } from "lucide-react";
-import { toast } from "sonner";
-import { z } from "zod";
-import { WAITLIST_SUCCESS_MESSAGE } from "@/lib/waitlist";
-
-const waitlistSchema = z.object({
-  name: z.string().trim().min(2).max(100).regex(/^[\p{L}\p{M}'\-.\s]+$/u),
-  email: z.string().trim().email().max(255),
-});
+import { useRef } from "react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Bell, TrendingDown, Sparkles } from "lucide-react";
 
 const phoneRows = [
   { name: "Netflix Premium", meta: "Renews Jun 22", amount: "₹649" },
@@ -26,40 +19,6 @@ const HeroSection = () => {
   const phoneCenterY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -60]);
   const phoneLeftY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -30]);
   const phoneRightY = useTransform(scrollYProgress, [0, 1], reduce ? [0, 0] : [0, -45]);
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const parsed = waitlistSchema.safeParse({ name, email });
-    if (!parsed.success) {
-      toast.error(parsed.error.issues[0].message);
-      return;
-    }
-    setLoading(true);
-    try {
-      const res = await fetch("https://formspree.io/f/xzddzddb", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(parsed.data),
-      });
-      if (res.ok) {
-        setSubmitted(true);
-        toast.success(WAITLIST_SUCCESS_MESSAGE);
-        setName("");
-        setEmail("");
-      } else {
-        toast.error("Something went wrong. Please try again.");
-      }
-    } catch {
-      toast.error("Network error. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <section
@@ -83,18 +42,17 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="text-[10px] md:text-xs font-mono uppercase tracking-[0.35em] text-white/60 mb-8"
         >
-          + made in india · privacy first
+          + made in india · privacy first · app coming soon
         </motion.p>
 
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="font-display text-white tracking-tight leading-[0.95] font-semibold
-                     text-[14vw] sm:text-[11vw] md:text-[8.2vw] lg:text-[7rem]"
+          className="font-display text-white tracking-tight leading-[1.02] font-semibold
+                     text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-5xl mx-auto"
         >
-          know what's <br className="hidden sm:block" />
-          <span className="text-primary">renewing.</span>
+          The Intelligent <span className="text-primary">Subscription Manager</span> &amp; Bill Tracker
         </motion.h1>
 
         <motion.p
@@ -103,59 +61,25 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="mt-8 text-base md:text-lg text-white/75 max-w-2xl mx-auto leading-relaxed"
         >
-          india's smart subscription manager &amp; bill tracker. stop losing money to forgotten
-          auto-renewals — see every charge before it hits your account.
+          Saveiy helps you track app subscriptions, manage recurring expenses, and monitor fixed
+          expense targets. Stop subscription creep and cancel unwanted subscriptions before they
+          charge you.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.25 }}
-          className="mt-10 max-w-xl mx-auto"
+          className="mt-10 flex flex-col items-center gap-3"
         >
-          {submitted ? (
-            <div className="p-5 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3 justify-center">
-              <CheckCircle2 size={20} className="text-primary" />
-              <p className="text-sm text-white/80">
-                You're on the list. We'll let you know when Saveiy launches.
-              </p>
-            </div>
-          ) : (
-            <form
-              onSubmit={submit}
-              noValidate
-              className="flex flex-col sm:flex-row gap-2 p-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md"
-            >
-              <input
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="your name"
-                required
-                autoComplete="name"
-                className="flex-1 px-5 py-3 bg-transparent outline-none text-sm placeholder:text-white/40 text-white"
-              />
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="email address"
-                required
-                autoComplete="email"
-                className="flex-1 px-5 py-3 bg-transparent outline-none text-sm placeholder:text-white/40 text-white border-t sm:border-t-0 sm:border-l border-white/10"
-              />
-              <button
-                type="submit"
-                disabled={loading}
-                className="inline-flex items-center justify-center gap-2 bg-primary text-white rounded-full px-6 py-3 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-ink transition-colors disabled:opacity-60"
-              >
-                {loading ? "joining…" : "join waitlist"}
-                <ArrowRight size={14} />
-              </button>
-            </form>
-          )}
-          <p className="mt-4 text-[10px] uppercase tracking-[0.25em] text-white/40">
-            free · early access · no spam
+          <Link
+            to="/waitlist"
+            className="inline-flex items-center gap-2 bg-primary text-white rounded-full px-8 py-4 text-xs font-bold uppercase tracking-[0.25em] hover:bg-white hover:text-ink transition-colors"
+          >
+            Join the waitlist <ArrowRight size={14} />
+          </Link>
+          <p className="text-[10px] uppercase tracking-[0.25em] text-white/40">
+            free · early access · app coming soon
           </p>
         </motion.div>
 
