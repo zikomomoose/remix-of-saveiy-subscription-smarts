@@ -11,7 +11,7 @@ export type BlogPost = {
 export const posts: BlogPost[] = [
   {
     slug: "upi-autopay-mandates-india-guide",
-    title: "UPI AutoPay Mandates in India: The Complete Guide to Tracking and Cancelling",
+    title: "UPI AutoPay Mandates in India: Track "UPI AutoPay Mandates in India: Track "UPI AutoPay Mandates in India: The Complete Guide to Tracking and Cancelling" Cancel Guide" Cancel Guide",
     date: "Jun 12, 2026",
     readTime: "7 min",
     excerpt: "UPI AutoPay quietly powers Netflix, Hotstar, mutual fund SIPs and gym memberships. Here's exactly how mandates work and how to audit yours.",
@@ -42,7 +42,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "how-to-cancel-ott-subscriptions-india",
-    title: "How to Cancel Every Major OTT Subscription in India (Netflix, Hotstar, Prime, Sony LIV)",
+    title: "How to Cancel Every Major OTT Subscription in India",
     date: "May 28, 2026",
     readTime: "5 min",
     excerpt: "Direct cancellation steps for India's six biggest streaming services — including the ones that hide the option three menus deep.",
@@ -86,7 +86,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "account-aggregator-framework-explained",
-    title: "India's Account Aggregator Framework, Explained Like You're Not a Banker",
+    title: "India's Account Aggregator Framework, Explained Simply",
     date: "Apr 30, 2026",
     readTime: "7 min",
     excerpt: "The RBI-regulated rails that let apps see your transaction data — only with your consent, only for the time you allow.",
@@ -99,7 +99,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "credit-card-auto-debit-rbi-rules-2026",
-    title: "RBI's Credit Card Auto-Debit Rules in 2026: What Every Cardholder Should Know",
+    title: "RBI Credit Card Auto-Debit Rules in 2026: What to Know",
     date: "Apr 18, 2026",
     readTime: "6 min",
     excerpt: "AFA, ₹15,000 thresholds, 24-hour pre-debit notifications — the rules that govern every recurring card charge in India today.",
@@ -138,7 +138,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "gst-on-digital-subscriptions-india",
-    title: "GST on Digital Subscriptions in India: Why Your Netflix Bill Is 18% Higher",
+    title: "GST on Digital Subscriptions: Why Netflix Costs 18% More",
     date: "Mar 14, 2026",
     readTime: "5 min",
     excerpt: "OIDAR, place of supply, and the 18% GST that applies to every foreign-billed digital service consumed in India.",
