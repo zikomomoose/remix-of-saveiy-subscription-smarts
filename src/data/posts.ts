@@ -11,7 +11,7 @@ export type BlogPost = {
 export const posts: BlogPost[] = [
   {
     slug: "upi-autopay-mandates-india-guide",
-    title: "UPI AutoPay Mandates in India: Track "UPI AutoPay Mandates in India: Track "UPI AutoPay Mandates in India: The Complete Guide to Tracking and Cancelling" Cancel Guide" Cancel Guide",
+    title: "UPI AutoPay Mandates in India: Track & Cancel Guide",
     date: "Jun 12, 2026",
     readTime: "7 min",
     excerpt: "UPI AutoPay quietly powers Netflix, Hotstar, mutual fund SIPs and gym memberships. Here's exactly how mandates work and how to audit yours.",
