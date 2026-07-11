@@ -67,10 +67,10 @@ const Footer = () => {
                 href="https://www.instagram.com/save_iy/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Saveiy on Instagram (@save_iy)"
+                aria-label="Saveiy on Instagram"
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.03] px-4 py-2 text-[10px] uppercase tracking-[0.2em] font-semibold text-white/85 hover:text-primary hover:border-primary/40 transition-colors"
               >
-                <Instagram size={14} /> @save_iy
+                <Instagram size={14} /> Instagram
               </a>
               <a
                 href="https://www.linkedin.com/company/saveiy/"
