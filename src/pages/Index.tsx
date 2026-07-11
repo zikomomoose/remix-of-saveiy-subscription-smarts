@@ -68,8 +68,8 @@ const Index = () => {
         <HeroSection />
         <LandingFeatures />
         <LandingComparison />
-        <LandingFAQ />
         <MidCTA />
+        <LandingFAQ />
         <EarlyAccess />
       </main>
       <Footer />
