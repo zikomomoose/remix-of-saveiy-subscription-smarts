@@ -52,9 +52,9 @@ const LandingFeatures = () => {
               whileHover={{ y: -4 }}
               className="rounded-2xl border border-white/10 bg-white/[0.03] p-8 md:p-10 hover:border-primary/40 transition-colors"
             >
-              <div className="flex items-center justify-between gap-3 mb-8 min-h-[24px]">
-                <span className="text-primary shrink-0">{f.icon}</span>
-                <span className="text-[10px] font-mono uppercase tracking-widest text-white/50 whitespace-nowrap">
+              <div className="mb-8 space-y-5">
+                <span className="text-primary block">{f.icon}</span>
+                <span className="text-[10px] font-mono uppercase tracking-widest text-white/50 whitespace-nowrap block">
                   {f.eyebrow}
                 </span>
               </div>
