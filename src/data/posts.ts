@@ -1,3 +1,5 @@
+export type BlogFAQ = { q: string; a: string };
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -6,6 +8,8 @@ export type BlogPost = {
   excerpt: string;
   tags: string[];
   body: string[]; // paragraphs / markdown-lite blocks
+  faqs?: BlogFAQ[];
+  featured?: boolean; // surface on Blog index above the fold
 };
 
 export const posts: BlogPost[] = [
