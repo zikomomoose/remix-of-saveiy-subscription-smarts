@@ -58,6 +58,17 @@ const BlogPost = () => {
             { "@type": "ListItem", position: 3, name: post.title, item: url },
           ],
         })}</script>
+        {post.faqs && post.faqs.length > 0 && (
+          <script type="application/ld+json">{JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: post.faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          })}</script>
+        )}
       </Helmet>
       <Navbar />
       <main className="pt-28 md:pt-36 pb-20">
@@ -83,6 +94,24 @@ const BlogPost = () => {
                 <Link to="/waitlist" className="inline-flex items-center rounded-full bg-primary text-white px-4 py-2 text-xs font-semibold hover:bg-foreground transition-colors">Join Waitlist</Link>
               </div>
             </aside>
+
+            {post.faqs && post.faqs.length > 0 && (
+              <section className="mt-14" aria-labelledby="post-faq-heading">
+                <h2 id="post-faq-heading" className="font-display text-2xl md:text-3xl tracking-tight mb-6">Frequently asked questions</h2>
+                <div className="space-y-4">
+                  {post.faqs.map((f, i) => (
+                    <details key={i} className="group rounded-xl border border-border bg-background p-5 md:p-6 open:border-primary/40 transition-colors">
+                      <summary className="cursor-pointer list-none flex items-start justify-between gap-4 font-display text-base md:text-lg leading-snug">
+                        <span>{f.q}</span>
+                        <span aria-hidden className="mt-1 text-primary transition-transform group-open:rotate-45">+</span>
+                      </summary>
+                      <p className="mt-3 text-sm md:text-base text-muted-foreground leading-relaxed">{f.a}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            )}
+
 
             {related.length > 0 && (
               <section className="mt-14">

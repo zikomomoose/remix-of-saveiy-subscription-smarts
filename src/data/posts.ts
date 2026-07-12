@@ -1,3 +1,5 @@
+export type BlogFAQ = { q: string; a: string };
+
 export type BlogPost = {
   slug: string;
   title: string;
@@ -6,6 +8,8 @@ export type BlogPost = {
   excerpt: string;
   tags: string[];
   body: string[]; // paragraphs / markdown-lite blocks
+  faqs?: BlogFAQ[];
+  featured?: boolean; // surface on Blog index above the fold
 };
 
 export const posts: BlogPost[] = [
@@ -28,6 +32,13 @@ export const posts: BlogPost[] = [
       "How to choose: if your pain is 'I don't know where my money went last month', pick a retrospective tracker like Walnut or MoneyView. If your pain is 'I keep getting surprised by renewal charges', pick Saveiy — that's the exact problem it was designed to solve. Many Indian users run both: one for retrospective budgeting, one for prospective subscription control.",
       "Privacy note for 2026: any app that asks for your net-banking password or UPI PIN is a red flag. RBI's Account Aggregator framework and read-only SMS/email parsing are the compliant paths — every app on this list uses one of them.",
     ],
+    featured: true,
+    faqs: [
+      { q: "Which is the best expense tracker app in India in 2026?", a: "For subscription and recurring bill tracking, Saveiy is the best expense tracker app in India in 2026 because it detects UPI AutoPay mandates, card charges, and app-store subscriptions in one calendar without asking for banking credentials. Walnut and MoneyView remain strong choices for retrospective spend categorisation." },
+      { q: "Are Indian expense tracker apps safe to use?", a: "Yes, provided they use read-only access — SMS parsing, email parsing, or RBI's Account Aggregator framework. Never install an expense tracker in India that asks for your net-banking password or UPI PIN; no legitimate 2026 app requires either." },
+      { q: "Do Indian expense tracker apps support UPI transactions?", a: "The good ones do. UPI now accounts for the majority of consumer payments in India, so any expense tracker worth installing in 2026 must parse UPI transactions from PhonePe, GPay, and Paytm, and surface UPI AutoPay mandates explicitly." },
+      { q: "Is Saveiy free to use?", a: "Saveiy is currently in pre-launch. You can join the waitlist for free early access — no card required. Pricing at launch will remain accessible for Indian households." },
+    ],
   },
   {
     slug: "subscription-manager-app-in-india",
@@ -44,6 +55,13 @@ export const posts: BlogPost[] = [
       "How to evaluate any subscription manager app in India before you install it: does it ask for your UPI PIN or net-banking password? If yes, walk away — no legitimate 2026 app needs either. Does it show a forward-looking calendar or only a backward-looking list? Forward-looking is the whole point. Does it handle UPI AutoPay mandates or just card charges? If UPI is missing, half your subscriptions are invisible.",
       "The bottom line: in 2026, a subscription manager app in India is not a nice-to-have — it's how you claw back the 12–15% of discretionary income that quietly leaks to services you no longer use. Saveiy is the fastest way to see all of it in one place.",
     ],
+    featured: true,
+    faqs: [
+      { q: "What is the best subscription manager app in India?", a: "Saveiy is the best subscription manager app in India in 2026 for tracking UPI AutoPay mandates, card-billed subscriptions, and app-store subscriptions in a single forward-looking renewal calendar — without asking for your net-banking password or UPI PIN." },
+      { q: "How does a subscription manager app track UPI AutoPay mandates?", a: "It reads the mandate notifications your bank and NPCI already send by SMS or email — the same confirmations you receive when a UPI AutoPay mandate is created, modified, or triggered. No PIN or password is required, only read-only access to those signals." },
+      { q: "Can a subscription manager app cancel subscriptions for me?", a: "Most subscription manager apps, including Saveiy, surface a one-tap cancellation guide for each service. Actual cancellation still happens on the merchant's site or in your UPI app's Manage Mandates section, but the tracker removes all the searching." },
+      { q: "Does Saveiy work for freelancers who need GST Input Tax Credit?", a: "Yes. Saveiy tags business subscriptions by category so freelancers and small businesses can hand a clean, ITC-ready list to their CA each quarter, making the 18% GST on OIDAR services claimable where eligible." },
+    ],
   },
   {
     slug: "subscription-manager-app",
@@ -59,6 +77,13 @@ export const posts: BlogPost[] = [
       "How subscription manager apps make money — and why it matters. Free tools often monetise by selling anonymised transaction data or by pushing affiliate cancel-and-switch offers. Paid tools charge a small subscription (yes, ironic) in exchange for not touching your data. Read the privacy policy before you install; if the business model is unclear, the product is the model.",
       "Saveiy is a privacy-first subscription manager app. We don't ask for your net-banking password, UPI PIN, or card number. We read the billing signals your bank and merchants already send you — nothing more — and surface every recurring charge in one calendar, with alerts before each renewal. You cancel what you don't want, keep what you do, and stop being surprised on payday.",
       "Getting started with a subscription manager app takes under five minutes: connect your inbox or grant read-only SMS access, let the app scan the last 90 days, and review the list it produces. Most users find 2–4 forgotten charges on the first pass — often enough to pay for the app for the next decade.",
+    ],
+    featured: true,
+    faqs: [
+      { q: "What does a subscription manager app do?", a: "A subscription manager app automatically detects every recurring charge across your cards, bank mandates, and app stores, surfaces them in a forward-looking calendar, and alerts you 3–7 days before each renewal so you can cancel unwanted services in time." },
+      { q: "Do I need a subscription manager app?", a: "If you have more than five active subscriptions — which in 2026 covers almost everyone with OTT, music, cloud storage, and AI tools — a subscription manager app pays for itself within a month by surfacing forgotten charges." },
+      { q: "Is a subscription manager app safe?", a: "Privacy-first subscription manager apps like Saveiy never request your net-banking password, UPI PIN, or card number. They only read the billing confirmations your bank and merchants already send you, using read-only inbox or SMS access." },
+      { q: "How is a subscription manager different from a budgeting app?", a: "Budgeting apps are retrospective — they show what you spent last month. Subscription manager apps are prospective — they show what's about to be charged so you can act before the money moves. Most users benefit from running both." },
     ],
   },
   {
