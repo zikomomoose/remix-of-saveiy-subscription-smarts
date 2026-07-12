@@ -78,6 +78,13 @@ export const posts: BlogPost[] = [
       "Saveiy is a privacy-first subscription manager app. We don't ask for your net-banking password, UPI PIN, or card number. We read the billing signals your bank and merchants already send you — nothing more — and surface every recurring charge in one calendar, with alerts before each renewal. You cancel what you don't want, keep what you do, and stop being surprised on payday.",
       "Getting started with a subscription manager app takes under five minutes: connect your inbox or grant read-only SMS access, let the app scan the last 90 days, and review the list it produces. Most users find 2–4 forgotten charges on the first pass — often enough to pay for the app for the next decade.",
     ],
+    featured: true,
+    faqs: [
+      { q: "What does a subscription manager app do?", a: "A subscription manager app automatically detects every recurring charge across your cards, bank mandates, and app stores, surfaces them in a forward-looking calendar, and alerts you 3–7 days before each renewal so you can cancel unwanted services in time." },
+      { q: "Do I need a subscription manager app?", a: "If you have more than five active subscriptions — which in 2026 covers almost everyone with OTT, music, cloud storage, and AI tools — a subscription manager app pays for itself within a month by surfacing forgotten charges." },
+      { q: "Is a subscription manager app safe?", a: "Privacy-first subscription manager apps like Saveiy never request your net-banking password, UPI PIN, or card number. They only read the billing confirmations your bank and merchants already send you, using read-only inbox or SMS access." },
+      { q: "How is a subscription manager different from a budgeting app?", a: "Budgeting apps are retrospective — they show what you spent last month. Subscription manager apps are prospective — they show what's about to be charged so you can act before the money moves. Most users benefit from running both." },
+    ],
   },
   {
     slug: "what-is-subscription-creep",
