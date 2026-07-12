@@ -111,6 +111,22 @@ const BlogPost = () => {
           </motion.div>
         </article>
       </main>
+
+      {/* Sticky conversion banner */}
+      <div className="sticky bottom-0 left-0 right-0 z-30 border-t border-border bg-background/95 backdrop-blur-xl">
+        <div className="max-w-5xl mx-auto px-5 md:px-8 py-3 md:py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs md:text-sm text-foreground/90 text-center sm:text-left">
+            Tired of tracking expenses manually? Start optimizing your bills with Saveiy today.
+          </p>
+          <Link
+            to="/"
+            className="inline-flex items-center gap-2 bg-primary text-white rounded-full px-5 py-2.5 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-foreground transition-colors whitespace-nowrap"
+          >
+            Try Saveiy Free
+          </Link>
+        </div>
+      </div>
+
       <Footer />
     </div>
   );
