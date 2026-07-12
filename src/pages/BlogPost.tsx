@@ -58,6 +58,17 @@ const BlogPost = () => {
             { "@type": "ListItem", position: 3, name: post.title, item: url },
           ],
         })}</script>
+        {post.faqs && post.faqs.length > 0 && (
+          <script type="application/ld+json">{JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: post.faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          })}</script>
+        )}
       </Helmet>
       <Navbar />
       <main className="pt-28 md:pt-36 pb-20">
