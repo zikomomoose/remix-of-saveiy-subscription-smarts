@@ -55,6 +55,13 @@ export const posts: BlogPost[] = [
       "How to evaluate any subscription manager app in India before you install it: does it ask for your UPI PIN or net-banking password? If yes, walk away — no legitimate 2026 app needs either. Does it show a forward-looking calendar or only a backward-looking list? Forward-looking is the whole point. Does it handle UPI AutoPay mandates or just card charges? If UPI is missing, half your subscriptions are invisible.",
       "The bottom line: in 2026, a subscription manager app in India is not a nice-to-have — it's how you claw back the 12–15% of discretionary income that quietly leaks to services you no longer use. Saveiy is the fastest way to see all of it in one place.",
     ],
+    featured: true,
+    faqs: [
+      { q: "What is the best subscription manager app in India?", a: "Saveiy is the best subscription manager app in India in 2026 for tracking UPI AutoPay mandates, card-billed subscriptions, and app-store subscriptions in a single forward-looking renewal calendar — without asking for your net-banking password or UPI PIN." },
+      { q: "How does a subscription manager app track UPI AutoPay mandates?", a: "It reads the mandate notifications your bank and NPCI already send by SMS or email — the same confirmations you receive when a UPI AutoPay mandate is created, modified, or triggered. No PIN or password is required, only read-only access to those signals." },
+      { q: "Can a subscription manager app cancel subscriptions for me?", a: "Most subscription manager apps, including Saveiy, surface a one-tap cancellation guide for each service. Actual cancellation still happens on the merchant's site or in your UPI app's Manage Mandates section, but the tracker removes all the searching." },
+      { q: "Does Saveiy work for freelancers who need GST Input Tax Credit?", a: "Yes. Saveiy tags business subscriptions by category so freelancers and small businesses can hand a clean, ITC-ready list to their CA each quarter, making the 18% GST on OIDAR services claimable where eligible." },
+    ],
   },
   {
     slug: "subscription-manager-app",
