@@ -678,7 +678,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "how-to-cancel-adobe-creative-cloud",
-    title: "How to Cancel Adobe Creative Cloud (India) Without the Early Termination Fee",
+    title: "How to Cancel Adobe Creative Cloud Without the Early-Termination Fee",
     date: "Oct 19, 2026",
     readTime: "5 min",
     excerpt: "Adobe's annual plan has a stiff early-termination fee. Here's how to cancel — and when you can avoid the fee entirely.",
