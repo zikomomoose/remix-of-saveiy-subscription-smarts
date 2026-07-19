@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Bell, TrendingDown, Sparkles } from "lucide-react";
+import { trackButtonClick } from "@/lib/analytics";
 
 const phoneRows = [
   { name: "Netflix Premium", meta: "Renews Jun 22", amount: "₹649" },
