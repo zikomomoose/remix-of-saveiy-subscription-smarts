@@ -25,6 +25,10 @@ const BlogPost = () => {
     .slice(0, 3)
     .map((x) => x.p);
 
+  useEffect(() => {
+    trackBlogRead(post.slug, post.title);
+  }, [post.slug, post.title]);
+
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
