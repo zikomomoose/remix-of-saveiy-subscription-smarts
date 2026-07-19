@@ -49,6 +49,7 @@ const Navbar = () => {
     : "bg-primary text-white hover:bg-foreground hover:text-background";
 
   const goWaitlist = () => {
+    trackButtonClick("join_waitlist", "navbar");
     if (onHome) document.getElementById("early-access")?.scrollIntoView({ behavior: "smooth" });
     else navigate("/waitlist");
   };
