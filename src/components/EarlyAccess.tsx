@@ -33,6 +33,7 @@ const EarlyAccess = () => {
       });
       if (res.ok) {
         setSubmitted(true);
+        trackWaitlistSubmit("early_access_section");
         toast.success(WAITLIST_SUCCESS_MESSAGE);
         setName("");
         setEmail("");
