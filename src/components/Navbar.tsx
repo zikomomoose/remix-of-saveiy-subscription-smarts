@@ -4,6 +4,7 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logoDark from "@/assets/saveiy-logo.png";
 import logoLight from "@/assets/saveiy-logo-white.png";
+import { trackButtonClick } from "@/lib/analytics";
 
 const navItems = [
   { label: "Product", to: "/product" },
@@ -48,6 +49,7 @@ const Navbar = () => {
     : "bg-primary text-white hover:bg-foreground hover:text-background";
 
   const goWaitlist = () => {
+    trackButtonClick("join_waitlist", "navbar");
     if (onHome) document.getElementById("early-access")?.scrollIntoView({ behavior: "smooth" });
     else navigate("/waitlist");
   };

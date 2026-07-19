@@ -3,6 +3,7 @@ import { useState } from "react";
 import { CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 import { WAITLIST_SUCCESS_MESSAGE } from "@/lib/waitlist";
+import { trackWaitlistSubmit } from "@/lib/analytics";
 import { z } from "zod";
 
 const waitlistSchema = z.object({
@@ -32,6 +33,7 @@ const EarlyAccess = () => {
       });
       if (res.ok) {
         setSubmitted(true);
+        trackWaitlistSubmit("early_access_section");
         toast.success(WAITLIST_SUCCESS_MESSAGE);
         setName("");
         setEmail("");

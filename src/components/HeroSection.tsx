@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Bell, TrendingDown, Sparkles } from "lucide-react";
+import { trackButtonClick } from "@/lib/analytics";
 
 const phoneRows = [
   { name: "Netflix Premium", meta: "Renews Jun 22", amount: "₹649" },
@@ -73,6 +74,7 @@ const HeroSection = () => {
         >
           <Link
             to="/waitlist"
+            onClick={() => trackButtonClick("join_waitlist", "hero")}
             className="inline-flex items-center gap-2 bg-primary text-white rounded-full px-8 py-4 text-xs font-bold uppercase tracking-[0.25em] hover:bg-white hover:text-ink transition-colors"
           >
             Join the waitlist <ArrowRight size={14} />
