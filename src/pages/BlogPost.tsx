@@ -2,10 +2,12 @@ import { Helmet } from "react-helmet-async";
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { posts } from "@/data/posts";
 import { blogSlugRedirects } from "@/data/blogRedirects";
+import { trackBlogRead, trackButtonClick } from "@/lib/analytics";
 
 const BlogPost = () => {
   const { slug } = useParams();
