@@ -4,6 +4,7 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logoDark from "@/assets/saveiy-logo.png";
 import logoLight from "@/assets/saveiy-logo-white.png";
+import { trackButtonClick } from "@/lib/analytics";
 
 const navItems = [
   { label: "Product", to: "/product" },
