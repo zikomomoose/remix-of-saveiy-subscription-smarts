@@ -11,7 +11,7 @@ const About = () => (
       <title>About Saveiy | India's Smart Subscription Manager</title>
       <meta
         name="description"
-        content="Saveiy is built by Corewave Innovations to help Indians track subscriptions, stop hidden auto-renewals, and switch to smarter alternatives. Incubated at SCIE Pune, recognised under iStart Rajasthan."
+        content="Saveiy helps Indians track subscriptions, stop hidden auto-renewals, and switch to smarter alternatives. Incubated at SCIE Pune; iStart Rajasthan."
       />
       <link rel="canonical" href="https://saveiy.com/about" />
       <meta property="og:title" content="About Saveiy | India's Smart Subscription Manager" />

@@ -16,7 +16,7 @@ const HowItWorks = () => (
   <div className="min-h-screen bg-background">
     <Helmet>
       <title>How It Works — Saveiy</title>
-      <meta name="description" content="See how Saveiy detects every recurring charge across UPI, cards and email, predicts renewals, and helps you cancel or switch to cheaper Indian alternatives in two taps." />
+      <meta name="description" content="See how Saveiy detects recurring charges across UPI, cards and email, predicts renewals, and helps you cancel or switch in two taps." />
       <link rel="canonical" href="https://saveiy.com/how-it-works" />
       <meta property="og:title" content="How Saveiy works" />
       <meta property="og:url" content="https://saveiy.com/how-it-works" />

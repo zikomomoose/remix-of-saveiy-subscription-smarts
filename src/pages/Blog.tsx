@@ -12,7 +12,7 @@ const rest = posts.filter((p) => !p.featured);
 const Blog = () => (
   <div className="min-h-screen bg-background">
     <Helmet>
-      <title>Best Expense Tracker & Subscription Manager App in India — Saveiy Blog</title>
+      <title>Saveiy Blog — Subscription Manager Guides (India)</title>
       <meta
         name="description"
         content="Guides on the best expense tracker apps in India 2026, subscription manager apps for UPI AutoPay, and how to stop subscription creep on recurring bills."
