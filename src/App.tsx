@@ -45,6 +45,7 @@ const App = () => (
           <Route path="/waitlist" element={<Waitlist />} />
           <Route path="/delete" element={<DeleteAccount />} />
           <Route path="/alternatives/:slug" element={<AlternativesPage />} />
+          <Route path="/:slug" element={<SlugRedirect />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
