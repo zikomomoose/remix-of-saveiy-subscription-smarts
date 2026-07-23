@@ -1,0 +1,29 @@
+# Saveiy
+
+> Saveiy is India's smart subscription manager and bill tracker. Know what's renewing, spot hidden fees, and cancel forgotten subscriptions across UPI AutoPay, cards, OTT and SaaS.
+
+Saveiy detects every recurring charge from UPI mandates, card auto-debits and billing emails, sends renewal alerts before you're billed, and surfaces cheaper Indian alternatives. Built by Corewave Innovations, incubated at SCIE Pune and recognised under iStart Rajasthan.
+
+## Pages
+
+- [Home](/): Saveiy overview, features, and waitlist.
+- [Product](/product): Feature deep-dive — renewal calendar, mandate tracking, hidden-fee detector.
+- [How it works](/how-it-works): Read-only, consent-driven flow across UPI, cards and email.
+- [About](/about): Company, mission, credentials.
+- [Waitlist](/waitlist): Join the early-access list.
+- [Blog](/blog): Guides on subscription management, UPI AutoPay, OTT, and cancellations in India.
+
+## Featured guides
+
+- [Best Expense Tracker Apps in India 2026](/blog/best-expense-tracker-apps-in-india-2026): Ranked comparison of India's expense trackers.
+- [Subscription Manager App in India](/blog/subscription-manager-app-in-india): Buyer's guide for UPI AutoPay tracking.
+- [Subscription Manager App](/blog/subscription-manager-app): What a subscription manager app does and why it matters.
+- [What is UPI AutoPay?](/blog/what-is-upi-autopay): Plain-English guide to UPI recurring mandates.
+- [How to Cancel a UPI AutoPay Mandate](/blog/how-to-cancel-upi-autopay): Step-by-step for PhonePe, GPay, Paytm.
+- [Netflix Plans in India 2026](/blog/netflix-plans-india-2026): Prices, features, and which plan to pick.
+- [Saveiy vs Rocket Money](/blog/saveiy-vs-rocket-money): India-focused tracker comparison.
+
+## Optional
+
+- [Privacy](/privacy): Privacy policy.
+- [Terms](/terms): Terms of service.

@@ -15,10 +15,10 @@ export type BlogPost = {
 export const posts: BlogPost[] = [
   {
     slug: "best-expense-tracker-apps-in-india-2026",
-    title: "Best Expense Tracker Apps in India 2026: The Complete Ranked Guide",
+    title: "Best Expense Tracker Apps in India 2026",
     date: "Jul 12, 2026",
     readTime: "11 min",
-    excerpt: "A ranked, hands-on comparison of the best expense tracker apps in India for 2026 — covering UPI support, subscription detection, privacy, pricing, and who each app is actually built for.",
+    excerpt: "A ranked, hands-on comparison of the best expense tracker apps in India for 2026 — covering UPI support, subscription detection, privacy, pricing, and who…",
     tags: ["Expense Tracker", "India", "Guides", "Comparison"],
     body: [
       "If you searched for the best expense tracker apps in India in 2026, you already know the category is crowded and half the reviews online are three years out of date. The Indian money-app landscape has shifted decisively toward UPI-first tracking, RBI-compliant Account Aggregator flows, and privacy-first designs that don't ask for your net-banking password. This guide ranks the apps that actually work in 2026 — for salaried professionals, freelancers, and households — and explains where each one fits.",
@@ -45,7 +45,7 @@ export const posts: BlogPost[] = [
     title: "Subscription Manager App in India: The 2026 Buyer's Guide",
     date: "Jul 12, 2026",
     readTime: "10 min",
-    excerpt: "What a subscription manager app in India should actually do in 2026 — UPI AutoPay visibility, renewal alerts, ITC tagging, and how Saveiy compares to global tools like Rocket Money and Bobby.",
+    excerpt: "What a subscription manager app in India should actually do in 2026 — UPI AutoPay visibility, renewal alerts, ITC tagging, and how Saveiy compares to global…",
     tags: ["Subscription Manager", "India", "UPI", "Guides"],
     body: [
       "A subscription manager app in India has a fundamentally different job than its US or European counterparts. Indian recurring payments run through three parallel rails — credit/debit cards, UPI AutoPay mandates (e-Mandate under NPCI), and app-store billing — and a manager that only reads one of those rails will miss the majority of your charges. In 2026, the bar is visibility across all three.",
@@ -65,7 +65,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "subscription-manager-app",
-    title: "Subscription Manager App: What It Is and Why You Need One in 2026",
+    title: "Subscription Manager App",
     date: "Jul 12, 2026",
     readTime: "9 min",
     excerpt: "A plain-English explainer on what a subscription manager app does, the features that actually matter in 2026, and how to pick one that respects your privacy.",
@@ -91,7 +91,7 @@ export const posts: BlogPost[] = [
     title: "What is Subscription Creep and How Do You Stop It?",
     date: "Jul 10, 2026",
     readTime: "8 min",
-    excerpt: "Subscription creep is the slow, silent expansion of recurring charges across your accounts. Here's how it happens — and a repeatable playbook to stop it for good.",
+    excerpt: "Subscription creep is the slow, silent expansion of recurring charges across your accounts.",
     tags: ["Subscription Creep", "Money", "Guides"],
     body: [
       "Subscription creep is the gradual accumulation of recurring charges — OTT, SaaS, fitness, cloud storage, news, AI tools — that individually feel small but collectively drain a meaningful slice of your monthly income. Most households don't notice until they audit a full year of statements and realise 12–15% of discretionary spend is going to services they barely use.",
@@ -105,7 +105,7 @@ export const posts: BlogPost[] = [
     title: "How to Find and Audit Forgotten Recurring Charges Safely",
     date: "Jul 8, 2026",
     readTime: "9 min",
-    excerpt: "A safe, step-by-step audit method to surface every forgotten recurring charge across your cards, UPI mandates, and app stores — without handing over bank credentials.",
+    excerpt: "A safe, step-by-step audit method to surface every forgotten recurring charge across your cards, UPI mandates, and app stores — without handing over bank…",
     tags: ["Audit", "How-to", "Privacy"],
     body: [
       "The average adult has 3–5 recurring charges they've completely forgotten about. They survive because the amounts are small enough to slip past a casual glance and the merchant names on statements rarely match the product you signed up for.",
@@ -121,7 +121,7 @@ export const posts: BlogPost[] = [
     title: "The Complete Guide to Managing Fixed Monthly Expenses",
     date: "Jul 5, 2026",
     readTime: "10 min",
-    excerpt: "Fixed monthly expenses — rent, EMIs, utilities, insurance, subscriptions — are the backbone of your budget. Here's how to map, monitor, and optimise every one of them.",
+    excerpt: "Fixed monthly expenses — rent, EMIs, utilities, insurance, subscriptions — are the backbone of your budget.",
     tags: ["Fixed Expenses", "Money", "Guides"],
     body: [
       "Fixed monthly expenses are the recurring, largely non-negotiable outflows that hit your account on a predictable schedule: rent or EMI, utility bills, insurance premiums, school fees, loan repayments, and subscriptions. They typically account for 55–70% of a middle-income Indian household's monthly outflow, which makes them the single biggest lever in personal finance.",
@@ -134,7 +134,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "monthly-bill-tracking-calendar",
-    title: "Monthly Bill Tracking Calendar: Why a Timeline Beats a Spreadsheet",
+    title: "Monthly Bill Tracking Calendar",
     date: "Jul 2, 2026",
     readTime: "6 min",
     excerpt: "A bill tracking calendar shows you when money leaves — not just where it goes. Here's how a timeline view prevents overdrafts and late fees.",
@@ -165,7 +165,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "free-trial-countdown-reminder",
-    title: "Why You Need a Free Trial Countdown Reminder (and How Ours Works)",
+    title: "Why You Need a Free Trial Countdown Reminder",
     date: "Jun 24, 2026",
     readTime: "5 min",
     excerpt: "Free trials convert because the end date is designed to be forgettable. A countdown reminder 48 hours out gives you the decision window back.",
@@ -178,7 +178,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "saas-subscription-dashboard",
-    title: "Building a SaaS Subscription Dashboard for Individuals and Small Teams",
+    title: "Building a SaaS Subscription Dashboard for Individuals and",
     date: "Jun 20, 2026",
     readTime: "7 min",
     excerpt: "Enterprises have vendor management platforms. Individuals and small teams need the same visibility — without the enterprise price tag.",
@@ -192,7 +192,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "utility-bill-due-date-alerts",
-    title: "Utility Bill Due Date Alerts: The Simplest Win in Personal Finance",
+    title: "Utility Bill Due Date Alerts",
     date: "Jun 16, 2026",
     readTime: "5 min",
     excerpt: "Late fees on utility bills are one of the most avoidable expenses in personal finance. A due-date alert system fixes it in a weekend.",
@@ -205,10 +205,10 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "rocket-money-alternatives-free",
-    title: "Rocket Money Alternatives (and What to Look For if You Want a Free One)",
+    title: "Rocket Money Alternatives",
     date: "Jun 13, 2026",
     readTime: "7 min",
-    excerpt: "Rocket Money is US-only and freemium at best. Here's what actually matters when choosing an alternative — especially if you're in India or want a genuinely free option.",
+    excerpt: "Rocket Money is US-only and freemium at best.",
     tags: ["Alternatives", "Product"],
     body: [
       "Rocket Money (formerly Truebill) popularised subscription tracking in the US, but it has three limitations for global users: it's US-only, its free tier is heavily restricted, and its core value prop (negotiating bills) doesn't map to markets outside North America.",
@@ -294,7 +294,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "dpdp-act-2023-what-it-means-for-you",
-    title: "India's DPDP Act 2023: What It Actually Means for Your Money Apps",
+    title: "India's DPDP Act 2023",
     date: "May 18, 2026",
     readTime: "8 min",
     excerpt: "The Digital Personal Data Protection Act changes the rules for every fintech app you use. Here's the plain-English version.",
@@ -309,7 +309,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "subscription-creep-the-hidden-tax",
-    title: "Subscription Creep: The Hidden Tax on the Indian Middle Class",
+    title: "Subscription Creep: The Hidden Tax on the Indian Middle",
     date: "May 9, 2026",
     readTime: "6 min",
     excerpt: "₹15,000 a year, on average. Here's how subscriptions sneak past your monthly budget — and how to claw the money back.",
@@ -348,7 +348,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "free-trial-traps-india-2026",
-    title: "The 7 Free-Trial Traps Every Indian Falls For (And How to Avoid Them)",
+    title: "The 7 Free-Trial Traps Every Indian Falls For",
     date: "Apr 9, 2026",
     readTime: "5 min",
     excerpt: "From auto-converted Hotstar trials to OTT bundles inside Jio recharges — the patterns that quietly turn a 'free' trial into ₹2,400 a year.",
@@ -361,7 +361,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "ott-bundles-vs-individual-india",
-    title: "OTT Bundles vs Individual Subscriptions in India: The Honest Math",
+    title: "OTT Bundles vs Individual Subscriptions in India",
     date: "Mar 27, 2026",
     readTime: "6 min",
     excerpt: "Jio, Airtel and Vi all bundle Netflix, Hotstar, Prime. Sometimes it's a steal. Sometimes you're paying twice. Here's how to tell.",
@@ -400,7 +400,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "how-to-track-all-your-subscriptions-in-one-place",
-    title: "How to Track All Your Subscriptions in One Place (2026 Guide)",
+    title: "How to Track All Your Subscriptions in One Place",
     date: "Nov 4, 2026",
     readTime: "8 min",
     excerpt: "A step-by-step guide to pulling every recurring charge — UPI AutoPay, cards, and app stores — into one dashboard so nothing renews behind your back.",
@@ -499,7 +499,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "netflix-plans-india-2026",
-    title: "Netflix Plans in India 2026: Prices, Features & Which One to Pick",
+    title: "Netflix Plans in India 2026",
     date: "Oct 28, 2026",
     readTime: "6 min",
     excerpt: "Every current Netflix plan in India — Mobile, Basic, Standard, Premium — with 2026 pricing, device limits, and who each plan is right for.",
@@ -678,7 +678,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "how-to-cancel-adobe-creative-cloud",
-    title: "How to Cancel Adobe Creative Cloud Without the Early-Termination Fee",
+    title: "How to Cancel Adobe Creative Cloud Without the",
     date: "Oct 19, 2026",
     readTime: "5 min",
     excerpt: "Adobe's annual plan has a stiff early-termination fee. Here's how to cancel — and when you can avoid the fee entirely.",
@@ -751,7 +751,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "how-to-cancel-upi-autopay",
-    title: "How to Cancel a UPI AutoPay Mandate (PhonePe, GPay, Paytm, 2026)",
+    title: "How to Cancel a UPI AutoPay Mandate",
     date: "Oct 14, 2026",
     readTime: "5 min",
     excerpt: "Step-by-step cancellation instructions for every major UPI app — plus what to do if the mandate keeps retrying.",
@@ -784,7 +784,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "saveiy-vs-rocket-money",
-    title: "Saveiy vs Rocket Money: Which Subscription Tracker Wins in India?",
+    title: "Saveiy vs Rocket Money",
     date: "Oct 12, 2026",
     readTime: "7 min",
     excerpt: "Rocket Money is the US category leader. Saveiy is built India-first. Here's the honest comparison for Indian users.",
@@ -815,7 +815,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "subscription-economy-statistics-2026",
-    title: "Subscription Economy Statistics 2026: The Numbers That Matter",
+    title: "Subscription Economy Statistics 2026",
     date: "Oct 10, 2026",
     readTime: "7 min",
     excerpt: "The most-cited subscription-economy statistics for 2026 — average household spend, category growth, forgotten-charge losses, and India-specific data.",
@@ -831,7 +831,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "ott-statistics-india-2026",
-    title: "OTT Statistics India 2026: Subscribers, Spend, and Market Share",
+    title: "OTT Statistics India 2026",
     date: "Oct 9, 2026",
     readTime: "7 min",
     excerpt: "The latest India OTT data — total subscribers, market shares, ARPUs, and how much the average household spends on streaming.",

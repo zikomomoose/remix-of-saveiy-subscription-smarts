@@ -40,7 +40,7 @@ const Index = () => {
         <title>Saveiy | Smart Subscription Manager & Bill Tracking App</title>
         <meta
           name="description"
-          content="Saveiy is a smart subscription manager and bill tracking app. Track app subscriptions, manage recurring expenses, detect hidden fees, and stop subscription creep before it charges you."
+          content="Saveiy is a smart subscription manager and bill tracker. Spot hidden fees, get renewal alerts, and stop subscription creep before it charges you."
         />
         <meta
           name="keywords"

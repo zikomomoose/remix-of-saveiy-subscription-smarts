@@ -32,7 +32,7 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background">
       <Helmet>
-        <title>{post.title} — Saveiy Blog</title>
+        <title>{post.title}</title>
         <meta name="description" content={post.excerpt} />
         <meta name="keywords" content={post.tags.join(", ")} />
         <link rel="canonical" href={url} />
