@@ -62,8 +62,10 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="mt-8 text-base md:text-lg text-white/75 max-w-2xl mx-auto leading-relaxed text-center"
         >
-          The intelligent subscription manager and bill tracker that helps you track app
-          subscriptions, manage recurring expenses, and stop subscription creep before it charges you.
+          Saveiy is a recurring payment intelligence platform that helps you discover, track and
+          manage subscriptions, UPI mandates and recurring expenses — and stop subscription creep
+          before it charges you.
+
         </motion.p>
 
         <motion.div
