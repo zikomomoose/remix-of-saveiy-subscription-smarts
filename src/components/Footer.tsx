@@ -86,7 +86,8 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-[10px] uppercase tracking-[0.2em] font-mono text-white/40">
-          <span>© 2026 Corewave Innovations Pvt. Ltd.</span>
+          <span>© 2026 Saveiy. A product of Corewave Innovations Pvt. Ltd.</span>
+          <a href="mailto:support@saveiy.com" className="hover:text-primary transition-colors normal-case tracking-[0.12em]">support@saveiy.com</a>
           <span>App coming soon · Made in India 🇮🇳</span>
 
         </div>

@@ -14,15 +14,27 @@ const Index = () => {
     "@type": "SoftwareApplication",
     name: "Saveiy",
     description:
-      "Saveiy is a Subscription Manager and Bill Tracking application that helps users track app subscriptions, monitor recurring expenses, get renewal reminders, detect hidden fees, and cancel forgotten subscriptions.",
-    applicationCategory: "FinanceApplication",
-    operatingSystem: "Android, iOS, Web",
+      "Saveiy is a recurring payment intelligence platform that helps users discover, track and manage subscriptions, UPI mandates and recurring expenses.",
     url: "https://saveiy.com/",
-    inLanguage: "en-IN",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
     offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
-    publisher: { "@type": "Organization", name: "Corewave Innovations Pvt. Ltd." },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", ratingCount: "126" },
+    publisher: {
+      "@type": "Organization",
+      name: "Corewave Innovations Pvt. Ltd.",
+      url: "https://saveiy.com/",
+    },
   };
+
+  const organization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Corewave Innovations Pvt. Ltd.",
+    url: "https://saveiy.com/",
+    logo: "https://saveiy.com/favicon.ico",
+    brand: { "@type": "Brand", name: "Saveiy" },
+  };
+
 
   const faqPage = {
     "@context": "https://schema.org",
@@ -37,31 +49,33 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-ink">
       <Helmet>
-        <title>Saveiy | Smart Subscription Manager & Bill Tracking App</title>
+        <title>Saveiy | Recurring Payment &amp; Subscription Intelligence</title>
         <meta
           name="description"
-          content="Saveiy is a smart subscription manager and bill tracker. Spot hidden fees, get renewal alerts, and stop subscription creep before it charges you."
+          content="Saveiy is a recurring payment intelligence platform that helps users discover, track and manage subscriptions, UPI mandates and recurring expenses in one place."
         />
         <meta
           name="keywords"
           content="subscription manager, bill tracking app, subscription tracking software, recurring expense tracker, renewal reminders, hidden fee detector, free trial tracker, fixed expense tracker, Rocket Money alternative, Monarch Money alternative, UPI autopay tracker"
         />
         <link rel="canonical" href="https://saveiy.com/" />
-        <meta property="og:title" content="Saveiy | Smart Subscription Manager & Bill Tracking App" />
+        <meta property="og:title" content="Saveiy | Recurring Payment &amp; Subscription Intelligence" />
         <meta
           property="og:description"
-          content="Track subscriptions, manage recurring bills, detect hidden fees. Privacy-first alternative to Rocket Money and Monarch Money, built for India."
+          content="Saveiy is a recurring payment intelligence platform that helps users discover, track and manage subscriptions, UPI mandates and recurring expenses in one place."
         />
         <meta property="og:url" content="https://saveiy.com/" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Saveiy | Smart Subscription Manager & Bill Tracking App" />
+        <meta name="twitter:title" content="Saveiy | Recurring Payment &amp; Subscription Intelligence" />
         <meta
           name="twitter:description"
-          content="Track subscriptions, manage recurring bills, detect hidden fees. Built for India — app coming soon."
+          content="Saveiy is a recurring payment intelligence platform that helps you discover, track and manage subscriptions, UPI mandates and recurring expenses."
         />
         <script type="application/ld+json">{JSON.stringify(softwareApp)}</script>
+        <script type="application/ld+json">{JSON.stringify(organization)}</script>
         <script type="application/ld+json">{JSON.stringify(faqPage)}</script>
+
       </Helmet>
       <Navbar />
       <main>
