@@ -14,15 +14,27 @@ const Index = () => {
     "@type": "SoftwareApplication",
     name: "Saveiy",
     description:
-      "Saveiy is a Subscription Manager and Bill Tracking application that helps users track app subscriptions, monitor recurring expenses, get renewal reminders, detect hidden fees, and cancel forgotten subscriptions.",
-    applicationCategory: "FinanceApplication",
-    operatingSystem: "Android, iOS, Web",
+      "Saveiy is a recurring payment intelligence platform that helps users discover, track and manage subscriptions, UPI mandates and recurring expenses.",
     url: "https://saveiy.com/",
-    inLanguage: "en-IN",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
     offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
-    publisher: { "@type": "Organization", name: "Corewave Innovations Pvt. Ltd." },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", ratingCount: "126" },
+    publisher: {
+      "@type": "Organization",
+      name: "Corewave Innovations Pvt. Ltd.",
+      url: "https://saveiy.com/",
+    },
   };
+
+  const organization = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Corewave Innovations Pvt. Ltd.",
+    url: "https://saveiy.com/",
+    logo: "https://saveiy.com/favicon.ico",
+    brand: { "@type": "Brand", name: "Saveiy" },
+  };
+
 
   const faqPage = {
     "@context": "https://schema.org",
