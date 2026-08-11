@@ -72,8 +72,8 @@ const About = () => (
             Saveiy is built by Corewave Innovations Pvt. Ltd., a registered Indian company.
             Our founding team has shipped consumer fintech and AI products used by hundreds of
             thousands of users, and we're advised by operators from India's leading payments
-            and personal-finance companies. We're currently in stealth and onboarding the
-            waitlist in batches.
+            and personal-finance companies. Saveiy is currently onboarding users through our
+            waitlist in batches as we prepare for broader public availability.
           </p>
         </section>
 
