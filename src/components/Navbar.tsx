@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import logoDark from "@/assets/saveiy-logo.png";
 import logoLight from "@/assets/saveiy-logo-white.png";
 import { trackButtonClick } from "@/lib/analytics";
+import { PLAY_STORE_URL } from "@/lib/app-links";
 
 const navItems = [
   { label: "Product", to: "/product" },
   { label: "How it works", to: "/how-it-works" },
   { label: "About", to: "/about" },
+  { label: "Team", to: "/about#team" },
   { label: "Blog", to: "/blog" },
   { label: "Privacy", to: "/privacy" },
   { label: "Terms", to: "/terms" },
@@ -19,7 +21,6 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
   const onHome = location.pathname === "/";
 
   useEffect(() => {
@@ -44,15 +45,7 @@ const Navbar = () => {
     : "bg-background/90 backdrop-blur-xl border-b border-border";
 
   const fg = dark ? "text-white" : "text-foreground";
-  const ctaCls = dark
-    ? "bg-primary text-white hover:bg-white hover:text-ink"
-    : "bg-primary text-white hover:bg-foreground hover:text-background";
-
-  const goWaitlist = () => {
-    trackButtonClick("join_waitlist", "navbar");
-    if (onHome) document.getElementById("early-access")?.scrollIntoView({ behavior: "smooth" });
-    else navigate("/waitlist");
-  };
+  const ctaCls = "bg-primary text-primary-foreground hover:bg-primary/90 hover:-translate-y-0.5";
 
   return (
     <>
@@ -71,12 +64,15 @@ const Navbar = () => {
             <img src={dark ? logoLight : logoDark} alt="Saveiy" className="h-9 md:h-11 w-auto" />
           </Link>
 
-          <button
-            onClick={goWaitlist}
-            className={`px-4 md:px-5 py-2 md:py-2.5 text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold rounded-full transition-colors ${ctaCls}`}
+          <a
+            href={PLAY_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackButtonClick("download_android", "navbar")}
+            className={`px-4 md:px-5 py-2 md:py-2.5 text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold rounded-full transition-all duration-300 ${ctaCls}`}
           >
-            Join Waitlist
-          </button>
+            Get the app
+          </a>
         </div>
       </nav>
 
@@ -125,12 +121,16 @@ const Navbar = () => {
                   ))}
                 </ul>
 
-                <button
-                  onClick={() => { setOpen(false); goWaitlist(); }}
-                  className="mt-10 inline-flex items-center gap-2 bg-primary text-white rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-white hover:text-ink transition-colors"
+                <a
+                  href={PLAY_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => { setOpen(false); trackButtonClick("download_android", "menu"); }}
+                  className="mt-10 inline-flex items-center gap-2 bg-primary text-primary-foreground rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-primary/90 transition-colors"
                 >
-                  Join the waitlist
-                </button>
+                  Download on Google Play
+                </a>
+                <p className="mt-3 text-[10px] uppercase tracking-[0.25em] text-white/40">iOS coming soon</p>
               </div>
 
               <motion.div
@@ -142,13 +142,13 @@ const Navbar = () => {
                 <div className="absolute inset-0 p-10 flex flex-col justify-between">
                   <div>
                     <span className="inline-block bg-black/60 backdrop-blur px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] font-bold rounded">
-                      New
+                      Live
                     </span>
                     <h3 className="mt-6 font-display text-4xl lg:text-5xl tracking-tight leading-[1.05] max-w-md">
-                      Built for India's subscription decade.
+                      Now live on Google Play.
                     </h3>
                     <p className="mt-4 text-sm text-white/70 max-w-md leading-relaxed">
-                      One tracker for UPI mandates, card auto-renewals, OTT and SaaS — with smart Indian alternatives.
+                      One tracker for UPI mandates, card auto-renewals, OTT and SaaS — with smart Indian alternatives. iOS coming soon.
                     </p>
                   </div>
                   <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/40">

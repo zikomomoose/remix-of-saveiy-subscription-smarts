@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Award, Building2, Instagram, Linkedin, Lock, ShieldCheck } from "lucide-react";
 import logo from "@/assets/saveiy-logo-white.png";
+import { PLAY_STORE_URL } from "@/lib/app-links";
 
 
 const Footer = () => {
@@ -47,20 +48,23 @@ const Footer = () => {
             <div className="space-y-3">
               <p className="text-white/40">Company</p>
               <Link to="/about" className="block text-white/85 hover:text-primary transition-colors">About</Link>
+              <Link to="/about#team" className="block text-white/85 hover:text-primary transition-colors">Team</Link>
               <Link to="/privacy" className="block text-white/85 hover:text-primary transition-colors">Privacy</Link>
               <Link to="/terms" className="block text-white/85 hover:text-primary transition-colors">Terms</Link>
             </div>
           </div>
 
           <div className="md:text-right">
-            <Link
-              to="/waitlist"
-              className="inline-block bg-primary text-white rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-white hover:text-ink transition-colors"
+            <a
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-primary text-primary-foreground rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-300 hover:bg-primary/90 hover:-translate-y-0.5"
             >
-              Join Waitlist
-            </Link>
+              Get it on Google Play
+            </a>
             <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-white/40">
-              App coming soon · Free to join
+              Live on Android · iOS coming soon
             </p>
             <div className="mt-5 flex gap-3 md:justify-end">
               <a
@@ -88,7 +92,7 @@ const Footer = () => {
         <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between gap-3 text-[10px] uppercase tracking-[0.2em] font-mono text-white/40">
           <span>© 2026 Saveiy. A product of Corewave Innovations Pvt. Ltd.</span>
           <a href="mailto:support@saveiy.com" className="hover:text-primary transition-colors normal-case tracking-[0.12em]">support@saveiy.com</a>
-          <span>App coming soon · Made in India 🇮🇳</span>
+          <span>Live on Android · Made in India 🇮🇳</span>
 
         </div>
       </div>
