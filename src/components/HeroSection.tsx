@@ -1,8 +1,8 @@
 import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
-import { ArrowRight, Bell, TrendingDown, Sparkles } from "lucide-react";
-import { trackButtonClick } from "@/lib/analytics";
+import { Bell, TrendingDown, Sparkles } from "lucide-react";
+import DownloadCTA from "@/components/DownloadCTA";
+import Tilt3D from "@/components/Tilt3D";
 
 const phoneRows = [
   { name: "Netflix Premium", meta: "Renews Jun 22", amount: "₹649" },
@@ -43,7 +43,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="text-[10px] md:text-xs font-mono uppercase tracking-[0.35em] text-white/60 mb-8"
         >
-          + made in india · privacy first · app coming soon
+          + made in india · privacy first · live on android
         </motion.p>
 
         <motion.h1
@@ -74,15 +74,9 @@ const HeroSection = () => {
           transition={{ duration: 0.7, delay: 0.25 }}
           className="mt-10 flex flex-col items-center gap-3"
         >
-          <Link
-            to="/waitlist"
-            onClick={() => trackButtonClick("join_waitlist", "hero")}
-            className="inline-flex items-center gap-2 bg-primary text-white rounded-full px-8 py-4 text-xs font-bold uppercase tracking-[0.25em] hover:bg-white hover:text-ink transition-colors"
-          >
-            Join the waitlist <ArrowRight size={14} />
-          </Link>
+          <DownloadCTA location="hero" />
           <p className="text-[10px] uppercase tracking-[0.25em] text-white/40">
-            free · early access · app coming soon
+            free to start · android live · ios coming soon
           </p>
         </motion.div>
 
@@ -94,7 +88,7 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="hidden sm:block absolute bottom-0 left-[8%] md:left-[14%] w-[180px] md:w-[230px] origin-bottom"
           >
-            <PhoneFrame variant="cream" />
+            <Tilt3D intensity={12}><PhoneFrame variant="cream" /></Tilt3D>
           </motion.div>
 
           <motion.div
@@ -104,7 +98,7 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             className="hidden sm:block absolute bottom-0 right-[8%] md:right-[14%] w-[180px] md:w-[230px] origin-bottom"
           >
-            <PhoneFrame variant="teal" />
+            <Tilt3D intensity={12}><PhoneFrame variant="teal" /></Tilt3D>
           </motion.div>
 
           <motion.div
@@ -114,7 +108,7 @@ const HeroSection = () => {
             transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="relative w-[230px] sm:w-[260px] md:w-[300px] z-10"
           >
-            <PhoneFrame variant="main" rows={phoneRows} />
+            <Tilt3D intensity={14} lift={24}><PhoneFrame variant="main" rows={phoneRows} /></Tilt3D>
           </motion.div>
         </div>
       </div>

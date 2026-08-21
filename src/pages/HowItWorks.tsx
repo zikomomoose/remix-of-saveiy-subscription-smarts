@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import DownloadCTA from "@/components/DownloadCTA";
 
 const steps = [
   { n: "01", title: "Connect securely", body: "Sign in with Google and (optionally) link your accounts via India's regulated Account Aggregator framework. Read-only, consent-driven — we never store passwords or card numbers." },
@@ -55,9 +56,7 @@ const HowItWorks = () => (
       <section className="bg-ink text-white mt-20 py-24 md:py-28">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-display text-4xl md:text-6xl tracking-tight">See it in action.</h2>
-          <Link to="/waitlist" className="mt-10 inline-flex items-center gap-2 bg-primary text-white rounded-full px-8 py-4 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-white hover:text-ink transition-colors">
-            Request early access <ArrowRight size={14} />
-          </Link>
+          <DownloadCTA location="how_it_works_page" align="start" className="mt-10" />
         </div>
       </section>
     </main>
