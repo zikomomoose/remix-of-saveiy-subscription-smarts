@@ -1,11 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import DownloadCTA from "@/components/DownloadCTA";
 
 const MidCTA = () => {
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section className="relative bg-teal-deep text-white py-28 md:py-36 overflow-hidden">
       <div
@@ -24,7 +20,7 @@ const MidCTA = () => {
           transition={{ duration: 0.5 }}
           className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/60 mb-6"
         >
-          + ready when you are
+          + live on google play
         </motion.p>
         <motion.h3
           initial={{ opacity: 0, y: 20 }}
@@ -36,17 +32,15 @@ const MidCTA = () => {
           stop the leaks <br />
           in your <em className="italic text-primary">bank account.</em>
         </motion.h3>
-        <motion.button
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          onClick={() => scrollTo("early-access")}
-          className="group mt-12 inline-flex items-center gap-3 bg-primary text-white rounded-full px-9 py-4 font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-ink transition-colors"
+          className="mt-12"
         >
-          Secure early access
-          <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
-        </motion.button>
+          <DownloadCTA location="mid_cta" />
+        </motion.div>
       </div>
     </section>
   );
