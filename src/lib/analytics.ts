@@ -18,9 +18,6 @@ export const trackEvent = (name: string, params: GtagParams = {}) => {
   }
 };
 
-export const trackWaitlistSubmit = (location: string) =>
-  trackEvent("waitlist_submit", { location });
-
 export const trackButtonClick = (label: string, location: string) =>
   trackEvent("button_click", { label, location });
 
