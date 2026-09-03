@@ -131,12 +131,7 @@ const About = () => (
         </section>
 
         <div className="mt-14 pt-8 border-t border-border">
-          <Link
-            to="/waitlist"
-            className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-foreground transition-colors"
-          >
-            Join the Saveiy Waitlist
-          </Link>
+          <DownloadCTA location="about_footer" tone="light" align="start" />
         </div>
       </motion.div>
     </main>
