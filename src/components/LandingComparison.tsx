@@ -2,12 +2,12 @@ import { motion } from "framer-motion";
 import { Check, X } from "lucide-react";
 
 const rows = [
-  { feature: "Privacy-first, read-only access", saveiy: true, rocket: false, monarch: false },
-  { feature: "UPI AutoPay mandate detection", saveiy: true, rocket: false, monarch: false },
-  { feature: "Multi-currency subscription tracking", saveiy: true, rocket: false, monarch: true },
-  { feature: "Renewal reminders & bill due date alerts", saveiy: true, rocket: true, monarch: true },
-  { feature: "Cheaper Indian alternatives suggested", saveiy: true, rocket: false, monarch: false },
-  { feature: "No card credentials stored", saveiy: true, rocket: false, monarch: false },
+  { feature: "Automatic subscription discovery", saveiy: true, manual: false },
+  { feature: "UPI AutoPay mandate detection", saveiy: true, manual: false },
+  { feature: "Renewal reminders & bill due date alerts", saveiy: true, manual: false },
+  { feature: "Multi-currency recurring payment tracking", saveiy: true, manual: false },
+  { feature: "Cheaper Indian alternatives suggested", saveiy: true, manual: false },
+  { feature: "Stays up to date without manual entry", saveiy: true, manual: false },
 ];
 
 const Cell = ({ ok }: { ok: boolean }) =>
@@ -32,12 +32,12 @@ const LandingComparison = () => {
             + the comparison
           </p>
           <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-tight">
-            Why Saveiy is the Best Alternative to <em className="italic">Traditional Trackers</em>.
+            Why Saveiy is the Better Than <em className="italic">Manual Trackers</em>.
           </h2>
           <p className="mt-6 text-base md:text-lg opacity-75 leading-relaxed">
-            A privacy-first alternative to Rocket Money and Monarch Money that allows you to track
-            subscriptions seamlessly — built for Indian payment rails (UPI, cards, net-banking) and
-            compliant with the DPDP Act 2023.
+            Most people still track renewals in spreadsheets, notes apps or calendar reminders.
+            Saveiy is a subscription manager app for India that keeps itself updated across UPI
+            AutoPay, cards and net-banking — and stays compliant with the DPDP Act 2023.
           </p>
         </motion.div>
 
@@ -53,8 +53,7 @@ const LandingComparison = () => {
               <tr>
                 <th className="py-4 px-5 md:px-8 font-semibold">Feature</th>
                 <th className="py-4 px-5 md:px-8 font-semibold text-center">Saveiy</th>
-                <th className="py-4 px-5 md:px-8 font-semibold text-center opacity-70">Rocket Money</th>
-                <th className="py-4 px-5 md:px-8 font-semibold text-center opacity-70">Monarch Money</th>
+                <th className="py-4 px-5 md:px-8 font-semibold text-center opacity-70">Manual trackers &amp; spreadsheets</th>
               </tr>
             </thead>
             <tbody>
@@ -62,8 +61,7 @@ const LandingComparison = () => {
                 <tr key={r.feature} className={i % 2 ? "bg-black/[0.02]" : ""}>
                   <td className="py-4 px-5 md:px-8">{r.feature}</td>
                   <td className="py-4 px-5 md:px-8 text-center bg-primary/5"><Cell ok={r.saveiy} /></td>
-                  <td className="py-4 px-5 md:px-8 text-center"><Cell ok={r.rocket} /></td>
-                  <td className="py-4 px-5 md:px-8 text-center"><Cell ok={r.monarch} /></td>
+                  <td className="py-4 px-5 md:px-8 text-center"><Cell ok={r.manual} /></td>
                 </tr>
               ))}
             </tbody>
