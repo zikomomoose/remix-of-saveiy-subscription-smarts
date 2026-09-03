@@ -137,6 +137,7 @@ const About = () => (
         </div>
       </motion.div>
     </main>
+    <TeamSection />
     <Footer />
   </div>
 );
