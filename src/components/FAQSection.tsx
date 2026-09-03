@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     q: "Is Saveiy available in India?",
-    a: "Yes. Saveiy is built in India, for India. It supports rupee-denominated tracking, UPI-aware subscription detection, and recommends local Indian alternatives to popular global services. We are currently in early access — join the waitlist.",
+    a: "Yes. Saveiy is built in India, for India. It supports rupee-denominated tracking, UPI-aware subscription detection, and recommends local Indian alternatives to popular global services. Saveiy is live on Android; iOS is coming soon.",
   },
 ];
 

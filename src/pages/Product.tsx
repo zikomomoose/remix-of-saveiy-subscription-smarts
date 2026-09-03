@@ -1,6 +1,5 @@
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import { Bell, Search, LineChart, Wallet, ShieldCheck, Zap, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";

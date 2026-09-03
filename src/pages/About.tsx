@@ -3,6 +3,8 @@ import { ArrowLeft, Building2, Award, ShieldCheck, Lock, Users, Target } from "l
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
+import DownloadCTA from "@/components/DownloadCTA";
+import TeamSection from "@/components/TeamSection";
 import Footer from "@/components/Footer";
 
 const About = () => (
@@ -72,8 +74,8 @@ const About = () => (
             Saveiy is built by Corewave Innovations Pvt. Ltd., a registered Indian company.
             Our founding team has shipped consumer fintech and AI products used by hundreds of
             thousands of users, and we're advised by operators from India's leading payments
-            and personal-finance companies. Saveiy is currently onboarding users through our
-            waitlist in batches as we prepare for broader public availability.
+            and personal-finance companies. Saveiy is live on Android today, with iOS
+            coming soon.
           </p>
         </section>
 
@@ -131,15 +133,11 @@ const About = () => (
         </section>
 
         <div className="mt-14 pt-8 border-t border-border">
-          <Link
-            to="/waitlist"
-            className="inline-flex items-center gap-3 bg-primary text-white px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-foreground transition-colors"
-          >
-            Join the Saveiy Waitlist
-          </Link>
+          <DownloadCTA location="about_footer" tone="light" align="start" />
         </div>
       </motion.div>
     </main>
+    <TeamSection />
     <Footer />
   </div>
 );

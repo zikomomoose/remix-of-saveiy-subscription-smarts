@@ -37,7 +37,7 @@ export const posts: BlogPost[] = [
       { q: "Which is the best expense tracker app in India in 2026?", a: "For subscription and recurring bill tracking, Saveiy is the best expense tracker app in India in 2026 because it detects UPI AutoPay mandates, card charges, and app-store subscriptions in one calendar without asking for banking credentials. Walnut and MoneyView remain strong choices for retrospective spend categorisation." },
       { q: "Are Indian expense tracker apps safe to use?", a: "Yes, provided they use read-only access — SMS parsing, email parsing, or RBI's Account Aggregator framework. Never install an expense tracker in India that asks for your net-banking password or UPI PIN; no legitimate 2026 app requires either." },
       { q: "Do Indian expense tracker apps support UPI transactions?", a: "The good ones do. UPI now accounts for the majority of consumer payments in India, so any expense tracker worth installing in 2026 must parse UPI transactions from PhonePe, GPay, and Paytm, and surface UPI AutoPay mandates explicitly." },
-      { q: "Is Saveiy free to use?", a: "Saveiy is currently in pre-launch. You can join the waitlist for free early access — no card required. Pricing at launch will remain accessible for Indian households." },
+      { q: "Is Saveiy free to use?", a: "Saveiy is live on Android and free to start — no card required. Pricing at launch will remain accessible for Indian households." },
     ],
   },
   {

@@ -5,7 +5,8 @@ import LandingFeatures from "@/components/LandingFeatures";
 import LandingComparison from "@/components/LandingComparison";
 import LandingFAQ, { landingFaqs } from "@/components/LandingFAQ";
 import MidCTA from "@/components/MidCTA";
-import EarlyAccess from "@/components/EarlyAccess";
+import TeamSection from "@/components/TeamSection";
+import GetTheApp from "@/components/GetTheApp";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -84,7 +85,8 @@ const Index = () => {
         <LandingComparison />
         <MidCTA />
         <LandingFAQ />
-        <EarlyAccess />
+        <TeamSection />
+        <GetTheApp />
       </main>
       <Footer />
     </div>
