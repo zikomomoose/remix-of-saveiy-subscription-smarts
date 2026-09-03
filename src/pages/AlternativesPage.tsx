@@ -108,9 +108,9 @@ const data: Record<string, AlternativeData> = {
 
 const formatINR = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
-const WaitlistBanner = ({ variant = "light" }: { variant?: "light" | "dark" }) => (
+const AppBanner = ({ variant = "light" }: { variant?: "light" | "dark" }) => (
   <div
-    id={variant === "dark" ? "waitlist-bottom" : "waitlist-mid"}
+    id={variant === "dark" ? "get-app-bottom" : "get-app-mid"}
     className={
       variant === "dark"
         ? "bg-foreground text-background p-8 md:p-12 my-12 md:my-16"
@@ -123,7 +123,7 @@ const WaitlistBanner = ({ variant = "light" }: { variant?: "light" | "dark" }) =
           variant === "dark" ? "text-primary" : "text-muted-foreground"
         }`}
       >
-        Saveiy Waitlist
+        Saveiy · live on android
       </p>
       <h2 className="font-display text-3xl md:text-5xl font-bold tracking-tighter leading-[0.95]">
         Track every renewal. <span className="text-primary">Switch when it's smarter.</span>
@@ -132,15 +132,15 @@ const WaitlistBanner = ({ variant = "light" }: { variant?: "light" | "dark" }) =
         Saveiy spots subscriptions like this one in your UPI &amp; bank statements and reminds
         you before they renew — so you can switch or cancel in seconds.
       </p>
-      <Link
-        to="/#early-access"
-        className="mt-8 inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 text-xs font-bold uppercase tracking-widest hover:bg-primary/90 transition-colors"
-      >
-        Join the Saveiy Waitlist <ArrowRight size={14} />
-      </Link>
+      <DownloadCTA
+        location={`alternatives_${variant}`}
+        tone={variant === "dark" ? "dark" : "light"}
+        className="mt-8"
+      />
     </div>
   </div>
 );
+
 
 const AlternativesPage = () => {
   const { slug } = useParams<{ slug: string }>();
