@@ -311,7 +311,7 @@ const AlternativesPage = () => {
           </div>
         </section>
 
-        <WaitlistBanner />
+        <AppBanner />
 
         {/* Saveiy helps switch */}
         <section className="mt-12">
@@ -344,7 +344,7 @@ const AlternativesPage = () => {
           </div>
         </section>
 
-        <WaitlistBanner variant="dark" />
+        <AppBanner variant="dark" />
 
         <div className="mt-12 flex flex-wrap gap-4 text-xs uppercase tracking-widest font-bold">
           <Link to="/alternatives/adobe-photoshop" className="hover:text-primary">
