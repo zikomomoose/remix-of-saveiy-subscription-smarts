@@ -12,14 +12,19 @@ import Footer from "@/components/Footer";
 const Index = () => {
   const softwareApp = {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
+    "@type": "MobileApplication",
     name: "Saveiy",
+    alternateName: "Saveiy — Subscription Manager & Recurring Payment Tracker",
     description:
-      "Saveiy is a recurring payment intelligence platform that helps users discover, track and manage subscriptions, UPI mandates and recurring expenses.",
+      "Saveiy is a subscription manager app for India that tracks recurring payments, UPI AutoPay mandates and bill renewals in one place.",
     url: "https://saveiy.com/",
     applicationCategory: "FinanceApplication",
-    operatingSystem: "Web",
+    operatingSystem: "Android",
+    installUrl: PLAY_STORE_URL,
+    downloadUrl: PLAY_STORE_URL,
     offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+    inLanguage: "en-IN",
+    countriesSupported: "IN",
     publisher: {
       "@type": "Organization",
       name: "Corewave Innovations Pvt. Ltd.",
@@ -34,7 +39,10 @@ const Index = () => {
     url: "https://saveiy.com/",
     logo: "https://saveiy.com/favicon.ico",
     brand: { "@type": "Brand", name: "Saveiy" },
+    address: { "@type": "PostalAddress", addressCountry: "IN" },
+    email: "support@saveiy.com",
   };
+
 
 
   const faqPage = {
