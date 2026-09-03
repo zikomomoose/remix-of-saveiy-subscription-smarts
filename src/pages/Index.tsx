@@ -85,7 +85,8 @@ const Index = () => {
         <LandingComparison />
         <MidCTA />
         <LandingFAQ />
-        <EarlyAccess />
+        <TeamSection />
+        <GetTheApp />
       </main>
       <Footer />
     </div>
