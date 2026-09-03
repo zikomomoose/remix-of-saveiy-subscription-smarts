@@ -8,6 +8,7 @@ import MidCTA from "@/components/MidCTA";
 import TeamSection from "@/components/TeamSection";
 import GetTheApp from "@/components/GetTheApp";
 import Footer from "@/components/Footer";
+import { PLAY_STORE_URL } from "@/lib/app-links";
 
 const Index = () => {
   const softwareApp = {
