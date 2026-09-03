@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import DownloadCTA from "@/components/DownloadCTA";
 import TeamSection from "@/components/TeamSection";
+import { PLAY_STORE_URL } from "@/lib/app-links";
 import Footer from "@/components/Footer";
 
 const About = () => (
