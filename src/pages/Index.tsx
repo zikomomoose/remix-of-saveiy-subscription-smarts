@@ -58,29 +58,30 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-ink">
       <Helmet>
-        <title>Saveiy | Recurring Payment &amp; Subscription Intelligence</title>
+        <title>Subscription Manager App India | Saveiy Recurring Payments</title>
         <meta
           name="description"
-          content="Saveiy is a recurring payment intelligence platform that helps users discover, track and manage subscriptions, UPI mandates and recurring expenses in one place."
+          content="Saveiy is a subscription manager app for India — track recurring payments, UPI AutoPay mandates and bill renewals in one place. Free on Google Play."
         />
         <meta
           name="keywords"
-          content="subscription manager, bill tracking app, subscription tracking software, recurring expense tracker, renewal reminders, hidden fee detector, free trial tracker, fixed expense tracker, Rocket Money alternative, Monarch Money alternative, UPI autopay tracker"
+          content="subscription manager app India, recurring payment app, subscription tracker India, UPI AutoPay tracker, bill tracking app, recurring expense tracker, renewal reminders, free trial tracker"
         />
         <link rel="canonical" href="https://saveiy.com/" />
-        <meta property="og:title" content="Saveiy | Recurring Payment &amp; Subscription Intelligence" />
+        <meta property="og:title" content="Subscription Manager App India | Saveiy Recurring Payments" />
         <meta
           property="og:description"
-          content="Saveiy is a recurring payment intelligence platform that helps users discover, track and manage subscriptions, UPI mandates and recurring expenses in one place."
+          content="Track subscriptions, UPI AutoPay mandates and recurring payments in one app. Saveiy is free on Google Play; iOS coming soon."
         />
         <meta property="og:url" content="https://saveiy.com/" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Saveiy | Recurring Payment &amp; Subscription Intelligence" />
+        <meta name="twitter:title" content="Subscription Manager App India | Saveiy Recurring Payments" />
         <meta
           name="twitter:description"
-          content="Saveiy is a recurring payment intelligence platform that helps you discover, track and manage subscriptions, UPI mandates and recurring expenses."
+          content="Track subscriptions, UPI AutoPay mandates and recurring payments in one app. Free on Google Play."
         />
+
         <script type="application/ld+json">{JSON.stringify(softwareApp)}</script>
         <script type="application/ld+json">{JSON.stringify(organization)}</script>
         <script type="application/ld+json">{JSON.stringify(faqPage)}</script>
