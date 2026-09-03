@@ -3,6 +3,8 @@ import { ArrowLeft, Building2, Award, ShieldCheck, Lock, Users, Target } from "l
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
+import DownloadCTA from "@/components/DownloadCTA";
+import TeamSection from "@/components/TeamSection";
 import Footer from "@/components/Footer";
 
 const About = () => (
