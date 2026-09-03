@@ -10,15 +10,25 @@ import Footer from "@/components/Footer";
 const About = () => (
   <div className="min-h-screen bg-background">
     <Helmet>
-      <title>About Saveiy | India's Smart Subscription Manager</title>
+      <title>About Saveiy | Subscription Manager App India</title>
       <meta
         name="description"
-        content="Saveiy helps Indians track subscriptions, stop hidden auto-renewals, and switch to smarter alternatives. Incubated at SCIE Pune; iStart Rajasthan."
+        content="Saveiy is a subscription manager and recurring payment app built in India for UPI AutoPay, cards and bills. Incubated at SCIE Pune; iStart Rajasthan."
       />
       <link rel="canonical" href="https://saveiy.com/about" />
-      <meta property="og:title" content="About Saveiy | India's Smart Subscription Manager" />
+      <meta property="og:title" content="About Saveiy | Subscription Manager App India" />
+      <meta
+        property="og:description"
+        content="The team behind Saveiy — a recurring payment app for India that tracks subscriptions, UPI AutoPay mandates and renewals. Free on Google Play."
+      />
       <meta property="og:url" content="https://saveiy.com/about" />
       <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="About Saveiy | Subscription Manager App India" />
+      <meta
+        name="twitter:description"
+        content="The team behind Saveiy — a recurring payment app for India, live on Google Play."
+      />
       <script type="application/ld+json">{JSON.stringify({
         "@context": "https://schema.org",
         "@type": "Organization",
@@ -26,11 +36,26 @@ const About = () => (
         legalName: "Corewave Innovations Pvt. Ltd.",
         url: "https://saveiy.com",
         logo: "https://saveiy.com/favicon.ico",
+        email: "support@saveiy.com",
         foundingDate: "2026",
-        founders: [{ "@type": "Person", name: "Saveiy Founding Team" }],
+        founders: [
+          { "@type": "Person", name: "Rahul Khurana", jobTitle: "CEO" },
+          { "@type": "Person", name: "Geetika Doomra", jobTitle: "CMO" },
+        ],
         address: { "@type": "PostalAddress", addressCountry: "IN" },
-        sameAs: ["https://saveiy.com"],
+        sameAs: ["https://saveiy.com", PLAY_STORE_URL],
+        makesOffer: {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "MobileApplication",
+            name: "Saveiy",
+            applicationCategory: "FinanceApplication",
+            operatingSystem: "Android",
+            installUrl: PLAY_STORE_URL,
+          },
+        },
       })}</script>
+
     </Helmet>
 
     <Navbar />
