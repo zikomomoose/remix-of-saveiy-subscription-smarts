@@ -1,9 +1,10 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, Check, X, TrendingDown, IndianRupee } from "lucide-react";
+import { Check, X, TrendingDown, IndianRupee } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import DownloadCTA from "@/components/DownloadCTA";
 
 type Alt = {
   name: string;
