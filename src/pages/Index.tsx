@@ -5,7 +5,6 @@ import LandingFeatures from "@/components/LandingFeatures";
 import LandingComparison from "@/components/LandingComparison";
 import LandingFAQ, { landingFaqs } from "@/components/LandingFAQ";
 import MidCTA from "@/components/MidCTA";
-import TeamSection from "@/components/TeamSection";
 import GetTheApp from "@/components/GetTheApp";
 import Footer from "@/components/Footer";
 import { PLAY_STORE_URL } from "@/lib/app-links";
@@ -95,7 +94,6 @@ const Index = () => {
         <LandingComparison />
         <MidCTA />
         <LandingFAQ />
-        <TeamSection />
         <GetTheApp />
       </main>
       <Footer />
