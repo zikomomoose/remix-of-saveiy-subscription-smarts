@@ -94,7 +94,6 @@ const Index = () => {
         <LandingComparison />
         <MidCTA />
         <LandingFAQ />
-        <TeamSection />
         <GetTheApp />
       </main>
       <Footer />
