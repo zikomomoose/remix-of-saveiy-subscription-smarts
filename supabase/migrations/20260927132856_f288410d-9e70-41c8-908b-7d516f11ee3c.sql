@@ -1,0 +1,1 @@
+REVOKE SELECT, UPDATE, DELETE ON public.ios_waitlist FROM anon, authenticated;
