@@ -25,19 +25,18 @@ import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+export const AppShell = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
-        <Routes>
+      <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/product" element={<Product />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
-          <Route path="/privacy-policy" element={<Privacy />} />
+          <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
@@ -46,10 +45,11 @@ const App = () => (
           <Route path="/alternatives/:slug" element={<AlternativesPage />} />
           <Route path="/:slug" element={<SlugRedirect />} />
           <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
+      </Routes>
     </TooltipProvider>
   </QueryClientProvider>
 );
+
+const App = () => <BrowserRouter><AppShell /></BrowserRouter>;
 
 export default App;

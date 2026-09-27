@@ -11,6 +11,7 @@ const DeleteAccount = () => (
       title="Delete Account | Saveiy"
       description="Request deletion of your Saveiy account and associated personal data. DPDP Act 2023 compliant."
       canonical="https://saveiy.com/delete"
+      noindex
     />
     <Navbar />
     <main className="max-w-3xl mx-auto px-6 pt-24 pb-16">
