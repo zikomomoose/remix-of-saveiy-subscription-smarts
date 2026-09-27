@@ -1,22 +1,19 @@
+import Seo from "@/components/Seo";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const Terms = () => (
   <div className="min-h-screen bg-background">
-    <Helmet>
-      <title>Terms of Service | Saveiy</title>
-      <meta name="description" content="The terms governing your use of Saveiy's subscription intelligence platform." />
-      <link rel="canonical" href="https://saveiy.com/terms" />
-      <meta property="og:title" content="Terms of Service | Saveiy" />
-      <meta property="og:url" content="https://saveiy.com/terms" />
-    </Helmet>
+    <Seo
+      title="Terms of Service | Saveiy"
+      description="The terms governing your use of Saveiy's subscription intelligence platform."
+      canonical="https://saveiy.com/terms"
+    />
     <Navbar />
-
-    <div className="max-w-3xl mx-auto px-6 pt-24 pb-16">
+    <main className="max-w-3xl mx-auto px-6 pt-24 pb-16">
       <Link to="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.1em] text-primary hover:text-primary/80 mb-8 transition-colors">
         <ArrowLeft size={14} /> Back
       </Link>
@@ -143,7 +140,7 @@ const Terms = () => (
           <p>You may terminate your account at any time by requesting deletion.</p>
 
           <h2>12. Data Protection & User Rights</h2>
-          <p>Your use of the Service is governed by our <Link to="/privacy-policy" className="text-primary hover:underline">Privacy Policy</Link>.</p>
+          <p>Your use of the Service is governed by our <Link to="/privacy" className="text-primary hover:underline">Privacy Policy</Link>.</p>
           <p>In accordance with applicable data protection laws, including India's Digital Personal Data Protection Act (DPDP):</p>
           <ul>
             <li>You may withdraw consent</li>
@@ -164,7 +161,7 @@ const Terms = () => (
           Website: <a href="https://www.saveiy.com" className="text-primary hover:underline">https://www.saveiy.com</a></p>
         </div>
       </motion.div>
-    </div>
+    </main>
     <Footer />
   </div>
 );

@@ -1,13 +1,19 @@
+import Seo from "@/components/Seo";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Mail, Trash2, Shield } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
 const DeleteAccount = () => (
   <div className="min-h-screen bg-background">
+    <Seo
+      title="Delete Account | Saveiy"
+      description="Request deletion of your Saveiy account and associated personal data. DPDP Act 2023 compliant."
+      canonical="https://saveiy.com/delete"
+    />
     <Navbar />
-    <div className="max-w-3xl mx-auto px-6 pt-24 pb-16">
+    <main className="max-w-3xl mx-auto px-6 pt-24 pb-16">
       <Link to="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.1em] text-primary hover:text-primary/80 mb-8 transition-colors">
         <ArrowLeft size={14} /> Back
       </Link>
@@ -48,7 +54,7 @@ const DeleteAccount = () => (
           <p>If you have questions about account deletion, contact us at <a href="mailto:support@saveiy.com" className="text-primary hover:underline">support@saveiy.com</a>.</p>
         </div>
       </motion.div>
-    </div>
+    </main>
     <Footer />
   </div>
 );
