@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet-async";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
-import { Bell, Search, LineChart, Wallet, ShieldCheck, Zap, ArrowRight } from "lucide-react";
+import { Bell, Search, LineChart, Wallet, ShieldCheck, Zap } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DownloadCTA from "@/components/DownloadCTA";
@@ -16,13 +16,11 @@ const features = [
 
 const Product = () => (
   <div className="min-h-screen bg-background">
-    <Helmet>
-      <title>Product — Saveiy Subscription Manager for India</title>
-      <meta name="description" content="Explore Saveiy's product: detect every recurring charge, predict renewals, switch to cheaper Indian alternatives. Built for UPI, cards and bank feeds." />
-      <link rel="canonical" href="https://saveiy.com/product" />
-      <meta property="og:title" content="Product — Saveiy" />
-      <meta property="og:url" content="https://saveiy.com/product" />
-    </Helmet>
+    <Seo
+      title="Product — Saveiy Subscription Manager for India"
+      description="Explore Saveiy's product: detect every recurring charge, predict renewals, switch to cheaper Indian alternatives. Built for UPI, cards and bank feeds."
+      canonical="https://saveiy.com/product"
+    />
     <Navbar />
     <main className="pt-28 md:pt-36">
       <section className="max-w-6xl mx-auto px-6 md:px-12">

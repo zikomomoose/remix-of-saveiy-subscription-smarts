@@ -1,171 +1,157 @@
+import Seo from "@/components/Seo";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Building2, Award, ShieldCheck, Lock, Users, Target } from "lucide-react";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/Navbar";
 import DownloadCTA from "@/components/DownloadCTA";
 import TeamSection from "@/components/TeamSection";
 import { PLAY_STORE_URL } from "@/lib/app-links";
 import Footer from "@/components/Footer";
 
-const About = () => (
-  <div className="min-h-screen bg-background">
-    <Helmet>
-      <title>About Saveiy | Subscription Manager App India</title>
-      <meta
-        name="description"
-        content="Saveiy is a subscription manager and recurring payment app built in India for UPI AutoPay, cards and bills. Incubated at SCIE Pune; iStart Rajasthan."
-      />
-      <link rel="canonical" href="https://saveiy.com/about" />
-      <meta property="og:title" content="About Saveiy | Subscription Manager App India" />
-      <meta
-        property="og:description"
-        content="The team behind Saveiy — a recurring payment app for India that tracks subscriptions, UPI AutoPay mandates and renewals. Free on Google Play."
-      />
-      <meta property="og:url" content="https://saveiy.com/about" />
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="About Saveiy | Subscription Manager App India" />
-      <meta
-        name="twitter:description"
-        content="The team behind Saveiy — a recurring payment app for India, live on Google Play."
-      />
-      <script type="application/ld+json">{JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
+const About = () => {
+  const organizationLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Saveiy",
+    legalName: "Corewave Innovations Pvt. Ltd.",
+    url: "https://saveiy.com",
+    logo: "https://saveiy.com/favicon.ico",
+    email: "support@saveiy.com",
+    foundingDate: "2026",
+    founders: [
+      { "@type": "Person", name: "Rahul Khurana", jobTitle: "CEO" },
+      { "@type": "Person", name: "Geetika Doomra", jobTitle: "CMO" },
+    ],
+    address: { "@type": "PostalAddress", addressCountry: "IN" },
+    sameAs: ["https://saveiy.com", PLAY_STORE_URL],
+    makesOffer: {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "MobileApplication",
         name: "Saveiy",
-        legalName: "Corewave Innovations Pvt. Ltd.",
-        url: "https://saveiy.com",
-        logo: "https://saveiy.com/favicon.ico",
-        email: "support@saveiy.com",
-        foundingDate: "2026",
-        founders: [
-          { "@type": "Person", name: "Rahul Khurana", jobTitle: "CEO" },
-          { "@type": "Person", name: "Geetika Doomra", jobTitle: "CMO" },
-        ],
-        address: { "@type": "PostalAddress", addressCountry: "IN" },
-        sameAs: ["https://saveiy.com", PLAY_STORE_URL],
-        makesOffer: {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "MobileApplication",
-            name: "Saveiy",
-            applicationCategory: "FinanceApplication",
-            operatingSystem: "Android",
-            installUrl: PLAY_STORE_URL,
-          },
-        },
-      })}</script>
+        applicationCategory: "FinanceApplication",
+        operatingSystem: "Android",
+        installUrl: PLAY_STORE_URL,
+      },
+    },
+  };
 
-    </Helmet>
+  return (
+    <div className="min-h-screen bg-background">
+      <Seo
+        title="About Saveiy | Subscription Manager App India"
+        description="Saveiy is a subscription manager and recurring payment app built in India for UPI AutoPay, cards and bills. Incubated at SCIE Pune; iStart Rajasthan."
+        canonical="https://saveiy.com/about"
+        jsonLd={organizationLd}
+      />
+      <Navbar />
+      <main className="max-w-4xl mx-auto px-6 pt-24 pb-20">
+        <Link to="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.1em] text-primary hover:text-primary/80 mb-8 transition-colors">
+          <ArrowLeft size={14} /> Back
+        </Link>
 
-    <Navbar />
-    <main className="max-w-4xl mx-auto px-6 pt-24 pb-20">
-      <Link to="/" className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.1em] text-primary hover:text-primary/80 mb-8 transition-colors">
-        <ArrowLeft size={14} /> Back
-      </Link>
+        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+          <p className="text-[10px] font-mono uppercase tracking-widest text-primary mb-4">About / Company</p>
+          <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tighter leading-[0.95] mb-8">
+            Built in India, <span className="text-primary">for India.</span>
+          </h1>
 
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-        <p className="text-[10px] font-mono uppercase tracking-widest text-primary mb-4">About / Company</p>
-        <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tighter leading-[0.95] mb-8">
-          Built in India, <span className="text-primary">for India.</span>
-        </h1>
+          {/* Mission */}
+          <section className="mt-10">
+            <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary mb-3">
+              <Target size={14} /> Our Mission
+            </div>
+            <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-4">
+              Give every Indian household full visibility into recurring spending.
+            </h2>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              The average urban Indian has 8-12 active digital subscriptions across OTT, music,
+              cloud storage, productivity tools, and fintech services — most of them set to auto-renew
+              silently through UPI mandates or credit cards. Saveiy was founded to end that quiet drain.
+              We combine bank-grade aggregation with AI categorisation so you always know what's renewing,
+              when, and whether there's a smarter alternative.
+            </p>
+          </section>
 
-        {/* Mission */}
-        <section className="mt-10">
-          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary mb-3">
-            <Target size={14} /> Our Mission
-          </div>
-          <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-4">
-            Give every Indian household full visibility into recurring spending.
-          </h2>
-          <p className="text-base text-muted-foreground leading-relaxed">
-            The average urban Indian has 8-12 active digital subscriptions across OTT, music,
-            cloud storage, productivity tools, and fintech services — most of them set to auto-renew
-            silently through UPI mandates or credit cards. Saveiy was founded to end that quiet drain.
-            We combine bank-grade aggregation with AI categorisation so you always know what's renewing,
-            when, and whether there's a smarter alternative.
-          </p>
-        </section>
+          {/* Team */}
+          <section className="mt-14">
+            <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary mb-3">
+              <Users size={14} /> The Team
+            </div>
+            <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-4">
+              A small team of fintech &amp; product builders.
+            </h2>
+            <p className="text-base text-muted-foreground leading-relaxed">
+              Saveiy is built by Corewave Innovations Pvt. Ltd., a registered Indian company.
+              Our founding team has shipped consumer fintech and AI products used by hundreds of
+              thousands of users, and we're advised by operators from India's leading payments
+              and personal-finance companies. Saveiy is live on Android today, with iOS
+              coming soon.
+            </p>
+          </section>
 
-        {/* Team */}
-        <section className="mt-14">
-          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary mb-3">
-            <Users size={14} /> The Team
-          </div>
-          <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-4">
-            A small team of fintech &amp; product builders.
-          </h2>
-          <p className="text-base text-muted-foreground leading-relaxed">
-            Saveiy is built by Corewave Innovations Pvt. Ltd., a registered Indian company.
-            Our founding team has shipped consumer fintech and AI products used by hundreds of
-            thousands of users, and we're advised by operators from India's leading payments
-            and personal-finance companies. Saveiy is live on Android today, with iOS
-            coming soon.
-          </p>
-        </section>
+          {/* Security & Privacy */}
+          <section className="mt-14">
+            <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary mb-3">
+              <ShieldCheck size={14} /> Security &amp; Privacy
+            </div>
+            <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">
+              Your financial data, treated like it's our own.
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-px bg-border border border-border">
+              {[
+                { i: ShieldCheck, t: "Bank-grade encryption", d: "All data encrypted in transit (TLS 1.3) and at rest (AES-256)." },
+                { i: Lock, t: "Read-only access", d: "We never initiate transactions. Your accounts stay yours." },
+                { i: Award, t: "DPDP Act 2023 compliant", d: "Built to India's Digital Personal Data Protection Act." },
+                { i: Users, t: "No data resale", d: "We never sell or rent your data. Ever. No third-party ads." },
+              ].map((it) => (
+                <div key={it.t} className="bg-background p-5">
+                  <it.i size={18} className="text-primary" />
+                  <p className="mt-3 text-sm font-bold tracking-tight">{it.t}</p>
+                  <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{it.d}</p>
+                </div>
+              ))}
+            </div>
+          </section>
 
-        {/* Security & Privacy */}
-        <section className="mt-14">
-          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary mb-3">
-            <ShieldCheck size={14} /> Security &amp; Privacy
-          </div>
-          <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight mb-6">
-            Your financial data, treated like it's our own.
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-px bg-border border border-border">
-            {[
-              { i: ShieldCheck, t: "Bank-grade encryption", d: "All data encrypted in transit (TLS 1.3) and at rest (AES-256)." },
-              { i: Lock, t: "Read-only access", d: "We never initiate transactions. Your accounts stay yours." },
-              { i: Award, t: "DPDP Act 2023 compliant", d: "Built to India's Digital Personal Data Protection Act." },
-              { i: Users, t: "No data resale", d: "We never sell or rent your data. Ever. No third-party ads." },
-            ].map((it) => (
-              <div key={it.t} className="bg-background p-5">
-                <it.i size={18} className="text-primary" />
-                <p className="mt-3 text-sm font-bold tracking-tight">{it.t}</p>
-                <p className="mt-1 text-xs text-muted-foreground leading-relaxed">{it.d}</p>
+          {/* Credibility */}
+          <section className="mt-14">
+            <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary mb-3">
+              <Building2 size={14} /> Recognition &amp; Incubation
+            </div>
+            <div className="grid sm:grid-cols-2 gap-3">
+              <div className="border border-border bg-secondary/40 px-5 py-5">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-primary mb-1">Incubation</p>
+                <p className="text-sm font-bold tracking-tight leading-snug mb-2">
+                  Symbiosis Centre for Innovation &amp; Entrepreneurship (SCIE)
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Incubated at SCIE Pune — Symbiosis International University's flagship startup
+                  incubator, supporting student and graduate founders since 2008.
+                </p>
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Credibility */}
-        <section className="mt-14">
-          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary mb-3">
-            <Building2 size={14} /> Recognition &amp; Incubation
-          </div>
-          <div className="grid sm:grid-cols-2 gap-3">
-            <div className="border border-border bg-secondary/40 px-5 py-5">
-              <p className="text-[10px] font-mono uppercase tracking-widest text-primary mb-1">Incubation</p>
-              <p className="text-sm font-bold tracking-tight leading-snug mb-2">
-                Symbiosis Centre for Innovation &amp; Entrepreneurship (SCIE)
-              </p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Incubated at SCIE Pune — Symbiosis International University's flagship startup
-                incubator, supporting student and graduate founders since 2008.
-              </p>
+              <div className="border border-border bg-secondary/40 px-5 py-5">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-primary mb-1">Government recognition</p>
+                <p className="text-sm font-bold tracking-tight leading-snug mb-2">
+                  iStart Rajasthan (Govt. of Rajasthan)
+                </p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Recognised under iStart Rajasthan — the state government's flagship startup
+                  programme supporting registered, vetted Indian startups.
+                </p>
+              </div>
             </div>
-            <div className="border border-border bg-secondary/40 px-5 py-5">
-              <p className="text-[10px] font-mono uppercase tracking-widest text-primary mb-1">Government recognition</p>
-              <p className="text-sm font-bold tracking-tight leading-snug mb-2">
-                iStart Rajasthan (Govt. of Rajasthan)
-              </p>
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                Recognised under iStart Rajasthan — the state government's flagship startup
-                programme supporting registered, vetted Indian startups.
-              </p>
-            </div>
-          </div>
-        </section>
+          </section>
 
-        <div className="mt-14 pt-8 border-t border-border">
-          <DownloadCTA location="about_footer" tone="light" align="start" />
-        </div>
-      </motion.div>
-    </main>
-    <TeamSection />
-    <Footer />
-  </div>
-);
+          <div className="mt-14 pt-8 border-t border-border">
+            <DownloadCTA location="about_footer" tone="light" align="start" />
+          </div>
+        </motion.div>
+      </main>
+      <TeamSection />
+      <Footer />
+    </div>
+  );
+};
 
 export default About;

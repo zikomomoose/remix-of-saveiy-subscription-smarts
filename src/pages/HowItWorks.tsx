@@ -1,6 +1,5 @@
-import { Helmet } from "react-helmet-async";
+import Seo from "@/components/Seo";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DownloadCTA from "@/components/DownloadCTA";
@@ -14,13 +13,11 @@ const steps = [
 
 const HowItWorks = () => (
   <div className="min-h-screen bg-background">
-    <Helmet>
-      <title>How It Works — Saveiy</title>
-      <meta name="description" content="See how Saveiy detects recurring charges across UPI, cards and email, predicts renewals, and helps you cancel or switch in two taps." />
-      <link rel="canonical" href="https://saveiy.com/how-it-works" />
-      <meta property="og:title" content="How Saveiy works" />
-      <meta property="og:url" content="https://saveiy.com/how-it-works" />
-    </Helmet>
+    <Seo
+      title="How It Works — Saveiy"
+      description="See how Saveiy detects recurring charges across UPI, cards and email, predicts renewals, and helps you cancel or switch in two taps."
+      canonical="https://saveiy.com/how-it-works"
+    />
     <Navbar />
     <main className="pt-28 md:pt-36">
       <section className="max-w-6xl mx-auto px-6 md:px-12">
