@@ -7,6 +7,7 @@ import logoLight from "@/assets/saveiy-logo-white.png";
 import { trackButtonClick } from "@/lib/analytics";
 import { PLAY_STORE_URL } from "@/lib/app-links";
 import IosWaitlistModal from "@/components/IosWaitlistModal";
+import PlayStoreButton from "@/components/PlayStoreButton";
 
 const navItems = [
   { label: "Product", to: "/product" },
@@ -134,15 +135,7 @@ const Navbar = () => {
                   ))}
                 </ul>
 
-                <a
-                  href={PLAY_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => { setOpen(false); trackButtonClick("download_android", "menu"); }}
-                  className="mt-10 inline-flex items-center gap-2 bg-primary text-primary-foreground rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-primary/90 transition-colors"
-                >
-                  Download on Google Play
-                </a>
+                <PlayStoreButton location="menu" size="sm" className="mt-10" />
                 <IosWaitlistModal
                   location="menu"
                   size="sm"
