@@ -76,7 +76,7 @@ const HeroSection = () => {
         >
           <DownloadCTA location="hero" />
           <p className="text-[10px] uppercase tracking-[0.25em] text-white/40">
-            free to start · android live · ios coming soon
+            free to start · android live · iOS waitlist open
           </p>
         </motion.div>
 
