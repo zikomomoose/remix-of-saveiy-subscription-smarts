@@ -9,4 +9,4 @@
 - [x] Add build-time prerendering for all public routes and generate dist/404.html
 - [x] Generate sitemap with authoritative lastmod dates; keep /delete crawlable in robots.txt
 - [x] Verify built HTML for /, /about, and /blog/how-to-cancel-upi-autopay
-- [ ] Publish and test whether live hosting serves route HTML or root fallback
+- [x] Publish and test whether live hosting serves route HTML or root fallback
