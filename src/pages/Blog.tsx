@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import Seo from "@/components/Seo";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Sparkles } from "lucide-react";
@@ -11,27 +11,11 @@ const rest = posts.filter((p) => !p.featured);
 
 const Blog = () => (
   <div className="min-h-screen bg-background">
-    <Helmet>
-      <title>Saveiy Blog — Subscription Manager Guides (India)</title>
-      <meta
-        name="description"
-        content="Guides on the best expense tracker apps in India 2026, subscription manager apps for UPI AutoPay, and how to stop subscription creep on recurring bills."
-      />
-      <link rel="canonical" href="https://saveiy.com/blog" />
-      <meta property="og:title" content="Best Expense Tracker & Subscription Manager App in India — Saveiy Blog" />
-      <meta
-        property="og:description"
-        content="Ranked guides on the best expense tracker apps in India 2026 and the best subscription manager apps for UPI AutoPay and recurring bills."
-      />
-      <meta property="og:url" content="https://saveiy.com/blog" />
-      <meta property="og:type" content="website" />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Best Expense Tracker & Subscription Manager App in India — Saveiy Blog" />
-      <meta
-        name="twitter:description"
-        content="Ranked guides on the best expense tracker apps in India 2026 and the best subscription manager apps for UPI AutoPay."
-      />
-    </Helmet>
+    <Seo
+      title="Saveiy Blog — Subscription Manager Guides (India)"
+      description="Guides on the best expense tracker apps in India 2026, subscription manager apps for UPI AutoPay, and how to stop subscription creep on recurring bills."
+      canonical="https://saveiy.com/blog"
+    />
     <Navbar />
     <main className="pt-28 md:pt-36">
       {/* SEO landing header */}
