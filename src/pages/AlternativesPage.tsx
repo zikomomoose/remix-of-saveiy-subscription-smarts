@@ -178,6 +178,7 @@ const AlternativesPage = () => {
           about: entry.service,
           inLanguage: "en-IN",
           datePublished: `${YEAR}-01-01`,
+          dateModified: new Date().toISOString().split("T")[0],
           author: { "@type": "Organization", name: "Saveiy" },
           publisher: {
             "@type": "Organization",

@@ -10,6 +10,13 @@ import Footer from "@/components/Footer";
 import { posts } from "@/data/posts";
 import { blogSlugRedirects } from "@/data/blogRedirects";
 import { trackBlogRead, trackButtonClick } from "@/lib/analytics";
+const formatDateForSchema = (dateStr: string) => {
+  try {
+    return new Date(dateStr).toISOString().split("T")[0];
+  } catch (e) {
+    return dateStr;
+  }
+};
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -50,7 +57,8 @@ const BlogPost = () => {
           "@type": "Article",
           headline: post.title,
           description: post.excerpt,
-          datePublished: post.date,
+          datePublished: formatDateForSchema(post.date),
+          dateModified: formatDateForSchema(post.lastUpdated || post.date),
           keywords: post.tags.join(", "),
           author: { "@type": "Organization", name: "Saveiy" },
           publisher: { "@type": "Organization", name: "Corewave Innovations Pvt. Ltd." },
@@ -85,7 +93,7 @@ const BlogPost = () => {
             <ArrowLeft size={14} /> All posts
           </Link>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-muted-foreground">{post.date} · {post.readTime}</p>
+            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-muted-foreground">{post.date} · {post.readTime}{post.lastUpdated && ` · Last updated: ${post.lastUpdated}`}</p>
             <h1 className="mt-4 font-display text-4xl md:text-6xl tracking-tight leading-[1.02]">{post.title}</h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">{post.excerpt}</p>
             <div className="mt-10 space-y-6 text-base leading-[1.75] text-foreground/85">
