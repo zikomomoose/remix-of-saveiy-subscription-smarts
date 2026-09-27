@@ -58,3 +58,12 @@ Make every public Saveiy page fully readable in built HTML with unique metadata,
 - Report the exact built `<title>` and canonical from those three files.
 - Check title/description lengths, one-H1/one-main rules, future dates, canonical normalization, noindex routes, sitemap membership, and structured-data output.
 - Run the existing SEO audit/tests and verify the preview build remains clean and visually unchanged.
+
+## Approved adjustments
+
+- Keep `/delete` crawlable in `robots.txt`; rely on its page-level `noindex` because it is the Play Store account-deletion URL.
+- Recover each blog post's creation date from project history where available. Use plausible pre-27 September 2026 dates only where history has no usable date.
+- Use the current sitewide OG image as the shared Open Graph and Twitter image fallback.
+- Generate `dist/404.html` from the noindex Not Found page.
+- Set blog Article author to Rahul Khurana, Co-founder & CEO, linking to `https://saveiy.com/about#team` with LinkedIn `sameAs`.
+- After publishing, inspect live raw HTML for representative routes and report whether hosting serves route-specific prerendered files or the root fallback, plus the required fix if it falls back.

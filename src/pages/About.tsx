@@ -147,8 +147,8 @@ const About = () => {
             <DownloadCTA location="about_footer" tone="light" align="start" />
           </div>
         </motion.div>
+        <TeamSection />
       </main>
-      <TeamSection />
       <Footer />
     </div>
   );

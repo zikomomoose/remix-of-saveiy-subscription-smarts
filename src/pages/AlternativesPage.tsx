@@ -1,10 +1,11 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import Seo from "@/components/Seo";
 import { Check, X, TrendingDown, IndianRupee } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import DownloadCTA from "@/components/DownloadCTA";
+import NotFound from "./NotFound";
 
 type Alt = {
   name: string;
@@ -107,6 +108,8 @@ const data: Record<string, AlternativeData> = {
   },
 };
 
+export const alternativeSlugs = Object.keys(data);
+
 const formatINR = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
 const AppBanner = ({ variant = "light" }: { variant?: "light" | "dark" }) => (
@@ -147,7 +150,7 @@ const AlternativesPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const entry = slug ? data[slug] : undefined;
 
-  if (!entry) return <Navigate to="/" replace />;
+  if (!entry) return <NotFound />;
 
   const title = `Best Alternatives to ${entry.service} in India (${YEAR})`;
   const description = `Cheaper ${entry.service} alternatives for Indian users. Compare pricing, pros & cons, and yearly savings — plus how Saveiy tracks renewals automatically.`;
@@ -159,18 +162,13 @@ const AlternativesPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={canonical} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:url" content={canonical} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <script type="application/ld+json">{JSON.stringify({
+      <Seo
+        title={title}
+        description={description}
+        canonical={canonical}
+        type="article"
+        jsonLd={[
+          {
           "@context": "https://schema.org",
           "@type": "Article",
           headline: title,
@@ -186,8 +184,8 @@ const AlternativesPage = () => {
             logo: { "@type": "ImageObject", url: "https://saveiy.com/favicon.ico" },
           },
           mainEntityOfPage: canonical,
-        })}</script>
-        <script type="application/ld+json">{JSON.stringify({
+          },
+          {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
@@ -195,8 +193,8 @@ const AlternativesPage = () => {
             { "@type": "ListItem", position: 2, name: "Alternatives", item: "https://saveiy.com/alternatives/netflix" },
             { "@type": "ListItem", position: 3, name: entry.service, item: canonical },
           ],
-        })}</script>
-        <script type="application/ld+json">{JSON.stringify({
+          },
+          {
           "@context": "https://schema.org",
           "@type": "ItemList",
           name: title,
@@ -205,8 +203,9 @@ const AlternativesPage = () => {
             position: i + 1,
             name: a.name,
           })),
-        })}</script>
-      </Helmet>
+          },
+        ]}
+      />
 
       <Navbar />
 
