@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import Seo from "@/components/Seo";
 import DownloadCTA from "@/components/DownloadCTA";
 import { PLAY_STORE_URL } from "@/lib/app-links";
 import { Link, useParams, Navigate } from "react-router-dom";
@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import { posts } from "@/data/posts";
 import { blogSlugRedirects } from "@/data/blogRedirects";
 import { trackBlogRead, trackButtonClick } from "@/lib/analytics";
+import NotFound from "./NotFound";
 const formatDateForSchema = (dateStr: string) => {
   try {
     return new Date(dateStr).toISOString().split("T")[0];
@@ -23,7 +24,7 @@ const BlogPost = () => {
   const redirectTo = slug ? blogSlugRedirects[slug] : undefined;
   if (redirectTo) return <Navigate to={`/blog/${redirectTo}`} replace />;
   const post = posts.find((p) => p.slug === slug);
-  if (!post) return <Navigate to="/blog" replace />;
+  if (!post) return <NotFound />;
   const url = `https://saveiy.com/blog/${post.slug}`;
 
   // Related posts: same tag overlap, exclude current, take up to 3
@@ -40,19 +41,14 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Helmet>
-        <title>{post.title}</title>
-        <meta name="description" content={post.excerpt} />
-        <meta name="keywords" content={post.tags.join(", ")} />
-        <link rel="canonical" href={url} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
-        <meta property="og:url" content={url} />
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
-        <meta name="twitter:description" content={post.excerpt} />
-        <script type="application/ld+json">{JSON.stringify({
+      <Seo
+        title={post.title}
+        description={post.excerpt}
+        canonical={url}
+        type="article"
+        keywords={post.tags.join(", ")}
+        jsonLd={[
+          {
           "@context": "https://schema.org",
           "@type": "Article",
           headline: post.title,
@@ -60,12 +56,18 @@ const BlogPost = () => {
           datePublished: formatDateForSchema(post.date),
           dateModified: formatDateForSchema(post.lastUpdated || post.date),
           keywords: post.tags.join(", "),
-          author: { "@type": "Organization", name: "Saveiy" },
-          publisher: { "@type": "Organization", name: "Corewave Innovations Pvt. Ltd." },
+          author: {
+            "@type": "Person",
+            name: "Rahul Khurana",
+            jobTitle: "Co-founder & CEO",
+            url: "https://saveiy.com/about#team",
+            sameAs: "https://www.linkedin.com/in/rahul-khurana1/",
+          },
+          publisher: { "@type": "Organization", name: "Saveiy", legalName: "Corewave Innovations Pvt. Ltd.", url: "https://saveiy.com" },
           mainEntityOfPage: { "@type": "WebPage", "@id": url },
           url,
-        })}</script>
-        <script type="application/ld+json">{JSON.stringify({
+          },
+          {
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
           itemListElement: [
@@ -73,9 +75,8 @@ const BlogPost = () => {
             { "@type": "ListItem", position: 2, name: "Blog", item: "https://saveiy.com/blog" },
             { "@type": "ListItem", position: 3, name: post.title, item: url },
           ],
-        })}</script>
-        {post.faqs && post.faqs.length > 0 && (
-          <script type="application/ld+json">{JSON.stringify({
+          },
+          ...(post.faqs && post.faqs.length > 0 ? [{
             "@context": "https://schema.org",
             "@type": "FAQPage",
             mainEntity: post.faqs.map((f) => ({
@@ -83,9 +84,9 @@ const BlogPost = () => {
               name: f.q,
               acceptedAnswer: { "@type": "Answer", text: f.a },
             })),
-          })}</script>
-        )}
-      </Helmet>
+          }] : []),
+        ]}
+      />
       <Navbar />
       <main className="pt-28 md:pt-36 pb-20">
         <article className="max-w-3xl mx-auto px-6">
@@ -93,7 +94,7 @@ const BlogPost = () => {
             <ArrowLeft size={14} /> All posts
           </Link>
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-muted-foreground">{post.date} · {post.readTime}{post.lastUpdated && ` · Last updated: ${post.lastUpdated}`}</p>
+            <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-muted-foreground">Published {post.date} · {post.readTime} · Last updated: {post.lastUpdated || post.date}</p>
             <h1 className="mt-4 font-display text-4xl md:text-6xl tracking-tight leading-[1.02]">{post.title}</h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">{post.excerpt}</p>
             <div className="mt-10 space-y-6 text-base leading-[1.75] text-foreground/85">
