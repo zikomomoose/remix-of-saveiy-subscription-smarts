@@ -40,7 +40,7 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <Seo
         title="About Saveiy | Subscription Manager App India"
-        description="Saveiy is a subscription manager and recurring payment app built in India for UPI AutoPay, cards and bills. Incubated at SCIE Pune; iStart Rajasthan."
+        description="Saveiy is an India-built subscription manager for UPI AutoPay, cards and recurring bills. Startup India certified and recognised under iStart Rajasthan."
         canonical="https://saveiy.com/about"
         jsonLd={organizationLd}
       />
@@ -85,8 +85,8 @@ const About = () => {
               Saveiy is built by Corewave Innovations Pvt. Ltd., a registered Indian company.
               Our founding team has shipped consumer fintech and AI products used by hundreds of
               thousands of users, and we're advised by operators from India's leading payments
-              and personal-finance companies. Saveiy is live on Android today, with iOS
-              coming soon.
+              and personal-finance companies. Saveiy is live on Android today, and iPhone
+              users can join the iOS waitlist.
             </p>
           </section>
 
@@ -117,17 +117,17 @@ const About = () => {
           {/* Credibility */}
           <section className="mt-14">
             <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-primary mb-3">
-              <Building2 size={14} /> Recognition &amp; Incubation
+              <Building2 size={14} /> Government Recognition
             </div>
             <div className="grid sm:grid-cols-2 gap-3">
               <div className="border border-border bg-secondary/40 px-5 py-5">
-                <p className="text-[10px] font-mono uppercase tracking-widest text-primary mb-1">Incubation</p>
+                <p className="text-[10px] font-mono uppercase tracking-widest text-primary mb-1">National recognition</p>
                 <p className="text-sm font-bold tracking-tight leading-snug mb-2">
-                  Symbiosis Centre for Innovation &amp; Entrepreneurship (SCIE)
+                  Startup India certified
                 </p>
                 <p className="text-xs text-muted-foreground leading-relaxed">
-                  Incubated at SCIE Pune — Symbiosis International University's flagship startup
-                  incubator, supporting student and graduate founders since 2008.
+                  Certified under Startup India, the Government of India initiative supporting
+                  eligible, innovation-led Indian startups.
                 </p>
               </div>
               <div className="border border-border bg-secondary/40 px-5 py-5">

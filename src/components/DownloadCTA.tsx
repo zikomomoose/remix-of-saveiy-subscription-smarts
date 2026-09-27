@@ -19,7 +19,6 @@ const DownloadCTA = ({
   className = "",
   showIos = true,
 }: Props) => {
-  const pad = size === "sm" ? "px-6 py-3 text-[10px]" : "px-8 py-4 text-xs";
   const iosCls =
     tone === "dark"
       ? "border-white/20 text-white/70 hover:bg-white/5 hover:text-white"
@@ -37,7 +36,7 @@ const DownloadCTA = ({
         <IosWaitlistModal
           location={location}
           size={size}
-          triggerClassName={`${iosCls} ${pad}`}
+          triggerClassName={iosCls}
         />
       )}
     </div>
