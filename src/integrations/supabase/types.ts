@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      ios_waitlist: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          source_page: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          source_page: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          source_page?: string
+        }
+        Relationships: []
+      }
       waitlist: {
         Row: {
           created_at: string

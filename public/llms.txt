@@ -2,7 +2,7 @@
 
 > Saveiy is India's smart subscription manager and bill tracker. Know what's renewing, spot hidden fees, and cancel forgotten subscriptions across UPI AutoPay, cards, OTT and SaaS.
 
-Saveiy detects every recurring charge from UPI mandates, card auto-debits and billing emails, sends renewal alerts before you're billed, and surfaces cheaper Indian alternatives. Built by Corewave Innovations, incubated at SCIE Pune and recognised under iStart Rajasthan.
+Saveiy detects every recurring charge from UPI mandates, card auto-debits and billing emails, sends renewal alerts before you're billed, and surfaces cheaper Indian alternatives. Built by Corewave Innovations, recognised under iStart Rajasthan and certified by Startup India.
 
 ## Pages
 

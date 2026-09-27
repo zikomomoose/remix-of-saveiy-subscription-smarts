@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Award, Building2, Instagram, Linkedin, Lock, ShieldCheck } from "lucide-react";
 import logo from "@/assets/saveiy-logo-white.png";
-import { PLAY_STORE_URL } from "@/lib/app-links";
+import PlayStoreButton from "@/components/PlayStoreButton";
+import IosWaitlistModal from "@/components/IosWaitlistModal";
 
 
 const Footer = () => {
@@ -10,7 +11,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="mb-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {[
-            { icon: <Building2 size={18} />, text: "Incubated at SCIE Pune" },
+            { icon: <Building2 size={18} />, text: "Startup India certified" },
             { icon: <Award size={18} />, text: "Recognised under iStart Rajasthan" },
             { icon: <ShieldCheck size={18} />, text: "Bank-grade 256-bit encryption" },
             { icon: <Lock size={18} />, text: "DPDP Act 2023 compliant" },
@@ -55,17 +56,10 @@ const Footer = () => {
           </div>
 
           <div className="md:text-right">
-            <a
-              href={PLAY_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-primary text-primary-foreground rounded-full px-7 py-3.5 text-[11px] uppercase tracking-[0.2em] font-bold transition-all duration-300 hover:bg-primary/90 hover:-translate-y-0.5"
-            >
-              Get it on Google Play
-            </a>
-            <p className="mt-3 text-[10px] uppercase tracking-[0.2em] text-white/40">
-              Live on Android · iOS coming soon
-            </p>
+            <PlayStoreButton location="footer" size="sm" />
+            <div className="mt-3 flex md:justify-end">
+              <IosWaitlistModal location="footer" size="sm" triggerClassName="border-white/20 text-white/70 hover:bg-white/5 hover:text-white" />
+            </div>
             <div className="mt-5 flex gap-3 md:justify-end">
               <a
                 href="https://www.instagram.com/save_iy/"

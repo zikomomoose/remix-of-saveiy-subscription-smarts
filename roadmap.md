@@ -10,3 +10,8 @@
 - [x] Generate sitemap with authoritative lastmod dates; keep /delete crawlable in robots.txt
 - [x] Verify built HTML for /, /about, and /blog/how-to-cancel-upi-autopay
 - [x] Publish and test whether live hosting serves route HTML or root fallback
+- [ ] Add desktop header navigation and mobile hamburger menu
+- [ ] Add iOS waitlist modal with validation, database storage, and prior Formspree delivery
+- [ ] Add desktop Play Store QR codes beside Google Play buttons
+- [ ] Remove SCIE incubation claims and add Startup India certification
+- [ ] Verify navigation, modal submission states, responsive QR visibility, and build

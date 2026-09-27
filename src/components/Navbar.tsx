@@ -6,13 +6,19 @@ import logoDark from "@/assets/saveiy-logo.png";
 import logoLight from "@/assets/saveiy-logo-white.png";
 import { trackButtonClick } from "@/lib/analytics";
 import { PLAY_STORE_URL } from "@/lib/app-links";
+import IosWaitlistModal from "@/components/IosWaitlistModal";
+import PlayStoreButton from "@/components/PlayStoreButton";
 
 const navItems = [
   { label: "Product", to: "/product" },
   { label: "How it works", to: "/how-it-works" },
-  { label: "About", to: "/about" },
-  { label: "Team", to: "/about#team" },
   { label: "Blog", to: "/blog" },
+  { label: "About", to: "/about" },
+];
+
+const menuItems = [
+  ...navItems,
+  { label: "Team", to: "/about#team" },
   { label: "Privacy", to: "/privacy" },
   { label: "Terms", to: "/terms" },
 ];
@@ -54,15 +60,23 @@ const Navbar = () => {
           <button
             onClick={() => setOpen(true)}
             aria-label="Open menu"
-            className={`inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-semibold ${fg} opacity-90 hover:opacity-100`}
+            className={`md:hidden inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] font-semibold ${fg} opacity-90 hover:opacity-100`}
           >
             <Menu size={20} strokeWidth={2.2} />
             <span className="hidden sm:inline">Menu</span>
           </button>
 
-          <Link to="/" className="flex items-center gap-2 absolute left-1/2 -translate-x-1/2" aria-label="Saveiy home">
+          <Link to="/" className="flex items-center gap-2 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0" aria-label="Saveiy home">
             <img src={dark ? logoLight : logoDark} alt="Saveiy" className="h-9 md:h-11 w-auto" />
           </Link>
+
+          <div className={`hidden md:flex items-center gap-7 ${fg}`}>
+            {navItems.map((item) => (
+              <Link key={item.to} to={item.to} className="text-[10px] lg:text-[11px] uppercase tracking-[0.17em] font-semibold opacity-75 hover:opacity-100 hover:text-primary transition-colors">
+                {item.label}
+              </Link>
+            ))}
+          </div>
 
           <a
             href={PLAY_STORE_URL}
@@ -100,7 +114,7 @@ const Navbar = () => {
                   + navigate
                 </p>
                 <ul className="space-y-1">
-                  {navItems.map((item, i) => (
+                  {menuItems.map((item, i) => (
                     <motion.li
                       key={item.to}
                       initial={{ opacity: 0, x: -16 }}
@@ -121,16 +135,12 @@ const Navbar = () => {
                   ))}
                 </ul>
 
-                <a
-                  href={PLAY_STORE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => { setOpen(false); trackButtonClick("download_android", "menu"); }}
-                  className="mt-10 inline-flex items-center gap-2 bg-primary text-primary-foreground rounded-full px-6 py-3 text-[11px] uppercase tracking-[0.22em] font-bold hover:bg-primary/90 transition-colors"
-                >
-                  Download on Google Play
-                </a>
-                <p className="mt-3 text-[10px] uppercase tracking-[0.25em] text-white/40">iOS coming soon</p>
+                <PlayStoreButton location="menu" size="sm" className="mt-10" />
+                <IosWaitlistModal
+                  location="menu"
+                  size="sm"
+                  triggerClassName="mt-3 border-white/20 text-white/70 hover:bg-white/5 hover:text-white"
+                />
               </div>
 
               <motion.div
@@ -148,7 +158,7 @@ const Navbar = () => {
                       Now live on Google Play.
                     </h3>
                     <p className="mt-4 text-sm text-white/70 max-w-md leading-relaxed">
-                      One tracker for UPI mandates, card auto-renewals, OTT and SaaS — with smart Indian alternatives. iOS coming soon.
+                      One tracker for UPI mandates, card auto-renewals, OTT and SaaS — with smart Indian alternatives. Join the iOS waitlist.
                     </p>
                   </div>
                   <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/40">

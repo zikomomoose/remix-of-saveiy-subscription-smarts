@@ -1,6 +1,5 @@
-import { Apple, Play } from "lucide-react";
-import { PLAY_STORE_URL } from "@/lib/app-links";
-import { trackButtonClick } from "@/lib/analytics";
+import PlayStoreButton from "@/components/PlayStoreButton";
+import IosWaitlistModal from "@/components/IosWaitlistModal";
 
 type Props = {
   location: string;
@@ -20,11 +19,10 @@ const DownloadCTA = ({
   className = "",
   showIos = true,
 }: Props) => {
-  const pad = size === "sm" ? "px-6 py-3 text-[10px]" : "px-8 py-4 text-xs";
   const iosCls =
     tone === "dark"
-      ? "border-white/20 text-white/70"
-      : "border-border text-muted-foreground";
+      ? "border-white/20 text-white/70 hover:bg-white/5 hover:text-white"
+      : "border-border text-muted-foreground hover:bg-secondary hover:text-foreground";
 
   return (
     <div
@@ -32,24 +30,14 @@ const DownloadCTA = ({
         align === "center" ? "justify-center" : "justify-start"
       } ${className}`}
     >
-      <a
-        href={PLAY_STORE_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        onClick={() => trackButtonClick("download_android", location)}
-        className={`group inline-flex items-center gap-2.5 rounded-full bg-primary text-primary-foreground font-bold uppercase tracking-[0.22em] ${pad}
-                    transition-transform duration-300 hover:-translate-y-0.5 hover:bg-primary/90 shadow-[0_12px_30px_-12px_hsl(var(--primary)/0.8)]`}
-      >
-        <Play size={size === "sm" ? 13 : 15} className="fill-current" />
-        Get it on Google Play
-      </a>
+      <PlayStoreButton location={location} size={size} />
 
       {showIos && (
-        <span
-          className={`inline-flex items-center gap-2 rounded-full border ${iosCls} ${pad} font-semibold uppercase tracking-[0.22em]`}
-        >
-          <Apple size={size === "sm" ? 13 : 15} /> iOS coming soon
-        </span>
+        <IosWaitlistModal
+          location={location}
+          size={size}
+          triggerClassName={iosCls}
+        />
       )}
     </div>
   );
