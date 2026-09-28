@@ -45,14 +45,14 @@ const DownloadCTA = ({
   if (!showQrCard) return buttons;
 
   return (
-    <div className={`flex flex-col lg:flex-row lg:items-center gap-6 ${className}`}>
+    <div className={`flex flex-col items-start gap-5 ${className}`}>
       {buttons}
       <a
         href={PLAY_STORE_URL}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Scan to download Saveiy on Android"
-        className="hidden lg:flex flex-col items-center gap-2 shrink-0 rounded-2xl border border-white/10 bg-white/[0.03] p-3"
+        className="hidden lg:inline-flex flex-col items-center gap-2 shrink-0 rounded-2xl border border-white/10 bg-white/[0.03] p-3"
       >
         <span className="rounded-lg bg-white p-1.5">
           <QRCodeSVG value={PLAY_STORE_URL} size={72} level="M" />

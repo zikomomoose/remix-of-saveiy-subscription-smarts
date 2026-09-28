@@ -27,7 +27,7 @@ const PlayStoreButton = ({
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => trackButtonClick("download_android", location)}
-        className={`group inline-flex items-center gap-2.5 rounded-full bg-primary text-primary-foreground font-bold uppercase tracking-[0.22em] ${pad} transition-transform duration-300 hover:-translate-y-0.5 hover:bg-primary/90 shadow-[0_12px_30px_-12px_hsl(var(--primary)/0.8)]`}
+        className={`group inline-flex whitespace-nowrap shrink-0 items-center gap-2.5 rounded-full bg-primary text-primary-foreground font-bold uppercase tracking-[0.22em] ${pad} transition-transform duration-300 hover:-translate-y-0.5 hover:bg-primary/90 shadow-[0_12px_30px_-12px_hsl(var(--primary)/0.8)]`}
       >
         <Play size={size === "sm" ? 13 : 15} className="fill-current" />
         {label}
