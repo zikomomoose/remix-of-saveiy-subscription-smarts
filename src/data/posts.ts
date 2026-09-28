@@ -10,6 +10,7 @@ export type BlogPost = {
   body: string[]; // paragraphs / markdown-lite blocks
   faqs?: BlogFAQ[];
   featured?: boolean;
+  noindex?: boolean;
   lastUpdated?: string; // surface on Blog index above the fold
 };
 
@@ -64,30 +65,6 @@ export const posts: BlogPost[] = [
       { q: "How does a subscription manager app track UPI AutoPay mandates?", a: "It reads the mandate notifications your bank and NPCI already send by SMS or email — the same confirmations you receive when a UPI AutoPay mandate is created, modified, or triggered. No PIN or password is required, only read-only access to those signals." },
       { q: "Can a subscription manager app cancel subscriptions for me?", a: "Most subscription manager apps, including Saveiy, surface a one-tap cancellation guide for each service. Actual cancellation still happens on the merchant's site or in your UPI app's Manage Mandates section, but the tracker removes all the searching." },
       { q: "Does Saveiy work for freelancers who need GST Input Tax Credit?", a: "Yes. Saveiy tags business subscriptions by category so freelancers and small businesses can hand a clean, ITC-ready list to their CA each quarter, making the 18% GST on OIDAR services claimable where eligible." },
-    ],
-  },
-  {
-    slug: "subscription-manager-app",
-    title: "Subscription Manager App",
-    date: "Jul 12, 2026",
-    lastUpdated: "Jul 12, 2026",
-    readTime: "9 min",
-    excerpt: "A plain-English explainer on what a subscription manager app does, the features that actually matter in 2026, and how to pick one that respects your privacy.",
-    tags: ["Subscription Manager", "Guides", "Product"],
-    body: [
-      "A subscription manager app is a single dashboard that tracks every recurring charge across your cards, bank mandates, and app stores — and warns you before each one renews. It exists because modern billing is designed to be invisible: sign-up takes one tap, cancellation takes ten, and the charge lands after the decision window has closed.",
-      "The core features of any serious subscription manager app in 2026: automatic detection of recurring charges (no manual entry), a forward-looking renewal calendar, alerts 3–7 days before each debit, normalised merchant names so you actually recognise the charge, one-tap cancellation guides for the most common services, and a privacy model that doesn't ask for banking credentials.",
-      "Who needs a subscription manager app? Anyone with more than five active subscriptions — which in 2026 is essentially everyone. OTT, music, cloud storage, AI tools, fitness, news, productivity SaaS, gaming, and delivery memberships add up faster than most people realise. The average urban Indian household has 11 active recurring charges; the average urban US household has 17.",
-      "How subscription manager apps make money — and why it matters. Free tools often monetise by selling anonymised transaction data or by pushing affiliate cancel-and-switch offers. Paid tools charge a small subscription (yes, ironic) in exchange for not touching your data. Read the privacy policy before you install; if the business model is unclear, the product is the model.",
-      "Saveiy is a privacy-first subscription manager app. We don't ask for your net-banking password, UPI PIN, or card number. We read the billing signals your bank and merchants already send you — nothing more — and surface every recurring charge in one calendar, with alerts before each renewal. You cancel what you don't want, keep what you do, and stop being surprised on payday.",
-      "Getting started with a subscription manager app takes under five minutes: connect your inbox or grant read-only SMS access, let the app scan the last 90 days, and review the list it produces. Most users find 2–4 forgotten charges on the first pass — often enough to pay for the app for the next decade.",
-    ],
-    featured: true,
-    faqs: [
-      { q: "What does a subscription manager app do?", a: "A subscription manager app automatically detects every recurring charge across your cards, bank mandates, and app stores, surfaces them in a forward-looking calendar, and alerts you 3–7 days before each renewal so you can cancel unwanted services in time." },
-      { q: "Do I need a subscription manager app?", a: "If you have more than five active subscriptions — which in 2026 covers almost everyone with OTT, music, cloud storage, and AI tools — a subscription manager app pays for itself within a month by surfacing forgotten charges." },
-      { q: "Is a subscription manager app safe?", a: "Privacy-first subscription manager apps like Saveiy never request your net-banking password, UPI PIN, or card number. They only read the billing confirmations your bank and merchants already send you, using read-only inbox or SMS access." },
-      { q: "How is a subscription manager different from a budgeting app?", a: "Budgeting apps are retrospective — they show what you spent last month. Subscription manager apps are prospective — they show what's about to be charged so you can act before the money moves. Most users benefit from running both." },
     ],
   },
   {
@@ -261,22 +238,8 @@ export const posts: BlogPost[] = [
   },
 
   {
-    slug: "upi-autopay-mandates-india-guide",
-    title: "UPI AutoPay Mandates in India: Track & Cancel Guide",
-    date: "Jun 17, 2026",
-    lastUpdated: "Jun 17, 2026",
-    readTime: "7 min",
-    excerpt: "UPI AutoPay quietly powers Netflix, Hotstar, mutual fund SIPs and gym memberships. Here's exactly how mandates work and how to audit yours.",
-    tags: ["UPI", "Guides"],
-    body: [
-      "When NPCI launched UPI AutoPay in 2020, it solved a real problem: small recurring payments that didn't justify the friction of card-based standing instructions. Six years later, the average urban Indian has 5–8 active UPI mandates across OTT, fitness apps, news subscriptions and SIPs — most of them invisible until the debit notification lands.",
-      "Every UPI mandate has four key fields: amount, frequency, end date and the merchant's UPI handle. Your bank stores them under 'AutoPay' or 'e-Mandate' inside the bank app, but discoverability is famously terrible.",
-      "To audit yours: open your UPI app (PhonePe, GPay, Paytm), go to Profile → Autopay (or Manage Mandates). Cancel anything you don't recognise. For mandates created via a merchant flow (e.g. Hotstar), cancellation from the UPI app is binding — the merchant is notified automatically.",
-      "Saveiy automates this entire audit by reading UPI mandate confirmations from your inbox, deduplicating by merchant, and warning you 7 days before each debit. We never see your UPI PIN — only the metadata your bank already shares with you.",
-    ],
-  },
-  {
     slug: "cheaper-indian-alternatives-to-popular-saas",
+    noindex: true,
     title: "10 Cheaper Indian Alternatives to Popular Global SaaS Tools",
     date: "Jun 17, 2026",
     lastUpdated: "Jun 17, 2026",
@@ -312,6 +275,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "dpdp-act-2023-what-it-means-for-you",
+    noindex: true,
     title: "India's DPDP Act 2023",
     date: "Jun 17, 2026",
     lastUpdated: "Jun 17, 2026",
@@ -328,6 +292,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "subscription-creep-the-hidden-tax",
+    noindex: true,
     title: "Subscription Creep: The Hidden Tax on the Indian Middle",
     date: "Jun 17, 2026",
     lastUpdated: "Jun 17, 2026",
@@ -342,6 +307,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "account-aggregator-framework-explained",
+    noindex: true,
     title: "India's Account Aggregator Framework, Explained Simply",
     date: "Jun 17, 2026",
     lastUpdated: "Jun 17, 2026",
@@ -356,6 +322,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "credit-card-auto-debit-rbi-rules-2026",
+    noindex: true,
     title: "RBI Credit Card Auto-Debit Rules in 2026: What to Know",
     date: "Jun 18, 2026",
     lastUpdated: "Jun 18, 2026",
@@ -370,6 +337,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "free-trial-traps-india-2026",
+    noindex: true,
     title: "The 7 Free-Trial Traps Every Indian Falls For",
     date: "Jun 18, 2026",
     lastUpdated: "Jun 18, 2026",
@@ -384,6 +352,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "ott-bundles-vs-individual-india",
+    noindex: true,
     title: "OTT Bundles vs Individual Subscriptions in India",
     date: "Jun 18, 2026",
     lastUpdated: "Jun 18, 2026",
@@ -398,6 +367,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "gst-on-digital-subscriptions-india",
+    noindex: true,
     title: "GST on Digital Subscriptions: Why Netflix Costs 18% More",
     date: "Jun 18, 2026",
     lastUpdated: "Jun 18, 2026",
@@ -412,6 +382,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "spend-tracking-vs-subscription-tracking",
+    noindex: true,
     title: "Spend Tracking vs Subscription Tracking: Why You Need Both",
     date: "Jun 18, 2026",
     lastUpdated: "Jun 18, 2026",
@@ -447,6 +418,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "hidden-subscriptions-draining-money",
+    noindex: true,
     title: "Hidden Subscriptions That Are Quietly Draining Your Money",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",
@@ -482,6 +454,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "monthly-vs-annual-subscriptions-which-saves-more",
+    noindex: true,
     title: "Monthly vs Annual Subscriptions: Which Actually Saves More?",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",
@@ -497,6 +470,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "subscription-fatigue-what-it-is",
+    noindex: true,
     title: "Subscription Fatigue: What It Is and How to Avoid It",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",
@@ -553,6 +527,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "amazon-prime-vs-prime-lite-india",
+    noindex: true,
     title: "Amazon Prime vs Prime Lite in India: Which One to Get",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",
@@ -568,6 +543,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "jiohotstar-plans-2026",
+    noindex: true,
     title: "JioHotstar Plans 2026: Prices, Features & Sports Coverage",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",
@@ -587,6 +563,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "youtube-premium-worth-it-india",
+    noindex: true,
     title: "Is YouTube Premium Worth It in India in 2026?",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",
@@ -602,6 +579,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "spotify-premium-vs-free-india",
+    noindex: true,
     title: "Spotify Premium vs Free in India: Is It Worth Upgrading?",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",
@@ -616,6 +594,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "apple-music-vs-spotify-india",
+    noindex: true,
     title: "Apple Music vs Spotify in India: Which Should You Pick?",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",
@@ -722,7 +701,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "how-to-cancel-adobe-creative-cloud",
-    title: "How to Cancel Adobe Creative Cloud Without the",
+    title: "How to Cancel Adobe Creative Cloud (India, 2026)",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",
     readTime: "5 min",
@@ -868,6 +847,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "subscription-economy-statistics-2026",
+    noindex: true,
     title: "Subscription Economy Statistics 2026",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",
@@ -885,6 +865,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "ott-statistics-india-2026",
+    noindex: true,
     title: "OTT Statistics India 2026",
     date: "Jul 19, 2026",
     lastUpdated: "Jul 19, 2026",

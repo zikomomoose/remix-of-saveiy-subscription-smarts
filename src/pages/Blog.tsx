@@ -34,7 +34,7 @@ const Blog = () => (
             best subscription manager app in India
           </Link>{" "}
           for UPI AutoPay, and a plain-English explainer on what a{" "}
-          <Link to="/blog/subscription-manager-app" className="text-primary underline underline-offset-4 hover:text-primary/80">
+          <Link to="/blog/subscription-manager-app-in-india" className="text-primary underline underline-offset-4 hover:text-primary/80">
             subscription manager app
           </Link>{" "}
           actually does. Stop subscription creep and take control of your recurring bills.
