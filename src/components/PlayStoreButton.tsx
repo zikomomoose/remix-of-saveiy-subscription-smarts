@@ -15,7 +15,7 @@ const PlayStoreButton = ({
   location,
   label = "Get it on Google Play",
   size = "md",
-  showQr = true,
+  showQr = false,
   className = "",
 }: Props) => {
   const pad = size === "sm" ? "px-5 py-3 text-[10px]" : "px-8 py-4 text-xs";
