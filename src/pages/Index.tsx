@@ -63,7 +63,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-ink">
       <Seo
-        title="Subscription Manager App India – Track UPI AutoPay | Saveiy"
+        title="Saveiy – Track Subscriptions & UPI AutoPay in India"
         description="Track subscriptions, recurring payments, UPI AutoPay mandates and bill renewals with Saveiy, India's subscription manager app. Free on Google Play."
         canonical="/"
         keywords="subscription manager app India, recurring payment app, subscription tracker India, UPI AutoPay tracker, bill tracking app"
