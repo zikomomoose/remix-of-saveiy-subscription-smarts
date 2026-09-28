@@ -45,7 +45,7 @@ const GetTheApp = () => {
             what you don't use before it renews.
           </p>
 
-          <DownloadCTA location="get_app_section" align="start" className="mt-9" />
+          <DownloadCTA location="get_app_section" align="start" className="mt-9" showQrCard />
 
           <div className="mt-10 grid sm:grid-cols-3 gap-3">
             {points.map((p) => (

@@ -12,9 +12,9 @@ const rows = [
 
 const Cell = ({ ok }: { ok: boolean }) =>
   ok ? (
-    <Check size={16} className="text-primary inline" />
+    <><Check size={16} className="text-primary inline" aria-hidden="true" /><span className="sr-only">Yes</span></>
   ) : (
-    <X size={16} className="text-white/25 inline" />
+    <><X size={16} className="text-neutral-400 inline" aria-hidden="true" /><span className="sr-only">No</span></>
   );
 
 const LandingComparison = () => {

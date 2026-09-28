@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Award, Building2, Instagram, Linkedin, Lock, ShieldCheck } from "lucide-react";
-import logo from "@/assets/saveiy-logo-white.png";
+const logo = "/saveiy-logo-white.png";
 import PlayStoreButton from "@/components/PlayStoreButton";
 import IosWaitlistModal from "@/components/IosWaitlistModal";
 
