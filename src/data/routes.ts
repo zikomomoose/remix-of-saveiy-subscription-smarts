@@ -25,7 +25,7 @@ export const publicRoutes: PublicRoute[] = [
   ...posts.map((post) => ({
     path: `/blog/${post.slug}`,
     lastmod: toIsoDate(post.lastUpdated || post.date),
-    indexable: true,
+    indexable: !post.noindex,
   })),
   ...alternativeSlugs.map((slug) => ({
     path: `/alternatives/${slug}`,

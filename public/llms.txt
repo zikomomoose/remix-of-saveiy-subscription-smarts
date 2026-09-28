@@ -17,7 +17,7 @@ Saveiy detects every recurring charge from UPI mandates, card auto-debits and bi
 
 - [Best Expense Tracker Apps in India 2026](/blog/best-expense-tracker-apps-in-india-2026): Ranked comparison of India's expense trackers.
 - [Subscription Manager App in India](/blog/subscription-manager-app-in-india): Buyer's guide for UPI AutoPay tracking.
-- [Subscription Manager App](/blog/subscription-manager-app): What a subscription manager app does and why it matters.
+- [Subscription Manager App in India](/blog/subscription-manager-app-in-india): What a subscription manager app does and why it matters.
 - [What is UPI AutoPay?](/blog/what-is-upi-autopay): Plain-English guide to UPI recurring mandates.
 - [How to Cancel a UPI AutoPay Mandate](/blog/how-to-cancel-upi-autopay): Step-by-step for PhonePe, GPay, Paytm.
 - [Netflix Plans in India 2026](/blog/netflix-plans-india-2026): Prices, features, and which plan to pick.
