@@ -42,7 +42,13 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen bg-background">
       <Seo
-        title={post.title}
+        title={
+          post.title.includes("Saveiy")
+            ? post.title
+            : post.title.length + 9 <= 60
+              ? `${post.title} | Saveiy`
+              : `${post.title.slice(0, 50).trimEnd()}… | Saveiy`
+        }
         description={post.excerpt}
         canonical={url}
         type="article"
