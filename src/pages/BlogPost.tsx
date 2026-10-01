@@ -19,6 +19,21 @@ const formatDateForSchema = (dateStr: string) => {
   }
 };
 
+// Minimal inline formatting for post bodies: [label](/internal-path) becomes a router link.
+// Only site-relative paths are linked; anything else is left as plain text.
+const renderInline = (text: string) => {
+  const parts = text.split(/(\[[^\]]+\]\(\/[^)\s]*\))/g);
+  return parts.map((part, i) => {
+    const match = part.match(/^\[([^\]]+)\]\((\/[^)\s]*)\)$/);
+    if (!match) return part;
+    return (
+      <Link key={i} to={match[2]} className="text-primary underline underline-offset-4 hover:text-primary/80">
+        {match[1]}
+      </Link>
+    );
+  });
+};
+
 const BlogPost = () => {
   const { slug } = useParams();
   const redirectTo = slug ? blogSlugRedirects[slug] : undefined;
@@ -103,9 +118,15 @@ const BlogPost = () => {
             <h1 className="mt-4 font-display text-4xl md:text-6xl tracking-tight leading-[1.02]">{post.title}</h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">{post.excerpt}</p>
             <div className="mt-10 space-y-6 text-base leading-[1.75] text-foreground/85">
-              {post.body.map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
+              {post.body.map((para, i) => {
+                if (para.startsWith("### ")) {
+                  return <h3 key={i} className="pt-2 font-display text-xl md:text-2xl tracking-tight text-foreground">{renderInline(para.slice(4))}</h3>;
+                }
+                if (para.startsWith("## ")) {
+                  return <h2 key={i} className="pt-4 font-display text-2xl md:text-3xl tracking-tight text-foreground">{renderInline(para.slice(3))}</h2>;
+                }
+                return <p key={i}>{renderInline(para)}</p>;
+              })}
             </div>
 
             {post.slug === "how-to-cancel-unwanted-subscriptions-india" && (

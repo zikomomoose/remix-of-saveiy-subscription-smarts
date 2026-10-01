@@ -1,13 +1,22 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BJJ5XSZCZ5"></script>
+    <!-- Google tag (gtag.js) — skipped for headless browsers and bots so they don't inflate GA4 -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-BJJ5XSZCZ5');
+      (function () {
+        var ua = navigator.userAgent || "";
+        var isAutomated = navigator.webdriver === true ||
+          /HeadlessChrome|Lighthouse|Puppeteer|Playwright|PhantomJS|bot|crawler|spider|crawling|preview/i.test(ua);
+        if (isAutomated) return;
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = "https://www.googletagmanager.com/gtag/js?id=G-BJJ5XSZCZ5";
+        document.head.appendChild(s);
+        gtag('js', new Date());
+        gtag('config', 'G-BJJ5XSZCZ5');
+      })();
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
