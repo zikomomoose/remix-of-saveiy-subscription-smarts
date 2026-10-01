@@ -43,14 +43,13 @@ const BlogPost = () => {
     <div className="min-h-screen bg-background">
       <Seo
         title={
-          post.title.includes("Saveiy")
+          post.title.includes("Saveiy") || post.title.length + 9 > 60
             ? post.title
-            : post.title.length + 9 <= 60
-              ? `${post.title} | Saveiy`
-              : `${post.title.slice(0, 50).trimEnd()}… | Saveiy`
+            : `${post.title} | Saveiy`
         }
         description={post.excerpt}
         canonical={url}
+        noindex={post.noindex}
         type="article"
         keywords={post.tags.join(", ")}
         jsonLd={[
@@ -108,6 +107,19 @@ const BlogPost = () => {
                 <p key={i}>{para}</p>
               ))}
             </div>
+
+            {post.slug === "how-to-cancel-unwanted-subscriptions-india" && (
+              <section className="mt-12" aria-labelledby="cancel-guides-heading">
+                <h2 id="cancel-guides-heading" className="font-display text-2xl md:text-3xl tracking-tight mb-6">Cancellation guides</h2>
+                <ul className="grid sm:grid-cols-2 gap-3">
+                  {posts.filter((p) => p.slug.startsWith("how-to-cancel-") && p.slug !== post.slug).map((p) => (
+                    <li key={p.slug}>
+                      <Link to={`/blog/${p.slug}`} className="block h-full rounded-xl border border-border bg-background p-4 hover:border-primary/40 transition-colors">{p.title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
 
             <aside className="mt-12 rounded-2xl border border-border bg-muted/30 p-6 md:p-8">
               <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-muted-foreground mb-4">+ explore saveiy</p>
