@@ -14,7 +14,7 @@ const Footer = () => {
             { icon: <Building2 size={18} />, text: "Startup India certified" },
             { icon: <Award size={18} />, text: "Recognised under iStart Rajasthan" },
             { icon: <ShieldCheck size={18} />, text: "Bank-grade 256-bit encryption" },
-            { icon: <Lock size={18} />, text: "DPDP Act 2023 compliant" },
+            { icon: <Lock size={18} />, text: "Built for DPDP Act 2023" },
           ].map((b, i) => (
             <div key={i} className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4">
               <span className="text-primary shrink-0 mt-0.5">{b.icon}</span>

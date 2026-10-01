@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 
 interface SeoProps {
@@ -9,6 +10,7 @@ interface SeoProps {
   ogImage?: string;
   noindex?: boolean;
   keywords?: string;
+  notFound?: boolean;
 }
 
 export const SITE_URL = "https://saveiy.com";
@@ -33,11 +35,28 @@ const Seo = ({
   ogImage = SITEWIDE_OG_IMAGE,
   noindex = false,
   keywords,
+  notFound = false,
 }: SeoProps) => {
   const url = canonicalForPath(canonical?.replace(SITE_URL, "") || "/");
   const safeTitle = title;
   const safeDescription = truncate(description, 155);
   
+  useEffect(() => {
+    if (!notFound) return;
+    document.querySelectorAll('link[rel="canonical"], meta[property="og:url"], meta[name="twitter:url"]').forEach((el) => el.remove());
+    document.querySelectorAll('meta[name="robots"]').forEach((el) => el.setAttribute("content", "noindex"));
+  });
+
+  if (notFound) {
+    return (
+      <Helmet>
+        <title>{safeTitle}</title>
+        <meta name="description" content={safeDescription} />
+        <meta name="robots" content="noindex" />
+      </Helmet>
+    );
+  }
+
   return (
     <Helmet>
       <title>{safeTitle}</title>
