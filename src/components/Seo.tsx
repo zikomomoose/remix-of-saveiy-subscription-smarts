@@ -35,7 +35,7 @@ const Seo = ({
   keywords,
 }: SeoProps) => {
   const url = canonicalForPath(canonical?.replace(SITE_URL, "") || "/");
-  const safeTitle = truncate(title, 60);
+  const safeTitle = title;
   const safeDescription = truncate(description, 155);
   
   return (
