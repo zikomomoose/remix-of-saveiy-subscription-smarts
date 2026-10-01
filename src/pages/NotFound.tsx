@@ -14,10 +14,10 @@ const NotFound = () => {
   return (
     <div className="min-h-screen bg-muted flex flex-col">
       <Seo
-        title="404 - Page Not Found | Saveiy"
+        title="Page not found | Saveiy"
         description="The page you are looking for does not exist. Return to Saveiy home."
-        canonical={location.pathname}
         noindex
+        notFound
       />
       <Navbar />
       <main className="flex-grow flex items-center justify-center">

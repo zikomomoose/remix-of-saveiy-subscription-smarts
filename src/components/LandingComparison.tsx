@@ -32,12 +32,12 @@ const LandingComparison = () => {
             + the comparison
           </p>
           <h2 className="font-display text-4xl md:text-6xl leading-[1.02] tracking-tight">
-            Why Saveiy is the Better Than <em className="italic">Manual Trackers</em>.
+            Why Saveiy beats <em className="italic">spreadsheets and reminders</em>
           </h2>
           <p className="mt-6 text-base md:text-lg opacity-75 leading-relaxed">
             Most people still track renewals in spreadsheets, notes apps or calendar reminders.
             Saveiy is a subscription manager app for India that keeps itself updated across UPI
-            AutoPay, cards and net-banking — and stays compliant with the DPDP Act 2023.
+            AutoPay, cards and net-banking — and is built in line with India's DPDP Act 2023.
           </p>
         </motion.div>
 

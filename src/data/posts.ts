@@ -69,6 +69,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "what-is-subscription-creep",
+    noindex: true,
     title: "What is Subscription Creep and How Do You Stop It?",
     date: "Jul 12, 2026",
     lastUpdated: "Jul 12, 2026",
@@ -91,8 +92,8 @@ export const posts: BlogPost[] = [
     excerpt: "A safe, step-by-step audit method to surface every forgotten recurring charge across your cards, UPI mandates, and app stores — without handing over bank…",
     tags: ["Audit", "How-to", "Privacy"],
     body: [
-      "The average adult has 3–5 recurring charges they've completely forgotten about. They survive because the amounts are small enough to slip past a casual glance and the merchant names on statements rarely match the product you signed up for.",
-      "The safe way to audit is to work from the sources you already control, not from a third-party app that asks for your net-banking password. Start with your primary card statement for the last 90 days. Filter for identical amounts that appear monthly — that pattern alone catches 80% of subscriptions.",
+      "Most people have at least a few recurring charges they've forgotten about. They survive because the amounts are small enough to slip past a casual glance and the merchant names on statements rarely match the product you signed up for.",
+      "The safe way to audit is to work from the sources you already control, not from a third-party app that asks for your net-banking password. Start with your primary card statement for the last 90 days. Filter for identical amounts that appear monthly — that pattern alone surfaces most subscriptions.",
       "Next, open your UPI app (PhonePe, GPay, Paytm) and navigate to Profile → AutoPay or Manage Mandates. Every active UPI mandate is listed here with amount, frequency, and merchant. Cancel anything you don't recognise.",
       "Then check your app store subscriptions. On iOS: Settings → your name → Subscriptions. On Android: Play Store → Profile → Payments & subscriptions → Subscriptions. In-app purchases and app-store-billed OTTs live here and nowhere else on your statement.",
       "Finally, search your email inbox for 'receipt', 'renewal', 'thank you for subscribing', and 'trial ending'. Sort by date. Every recurring service sends at least one of these; the pattern is unmistakable.",
@@ -101,6 +102,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "guide-to-managing-fixed-monthly-expenses",
+    noindex: true,
     title: "The Complete Guide to Managing Fixed Monthly Expenses",
     date: "Jul 12, 2026",
     lastUpdated: "Jul 12, 2026",
@@ -118,6 +120,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "monthly-bill-tracking-calendar",
+    noindex: true,
     title: "Monthly Bill Tracking Calendar",
     date: "Jul 12, 2026",
     lastUpdated: "Jul 12, 2026",
@@ -133,6 +136,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "fixed-expense-tracker-app",
+    noindex: true,
     title: "What to Look For in a Fixed Expense Tracker App",
     date: "Jul 12, 2026",
     lastUpdated: "Jul 12, 2026",
@@ -151,6 +155,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "free-trial-countdown-reminder",
+    noindex: true,
     title: "Why You Need a Free Trial Countdown Reminder",
     date: "Jul 12, 2026",
     lastUpdated: "Jul 12, 2026",
@@ -165,7 +170,8 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "saas-subscription-dashboard",
-    title: "Building a SaaS Subscription Dashboard for Individuals and",
+    noindex: true,
+    title: "Building a SaaS Subscription Dashboard for Individuals and Teams",
     date: "Jul 12, 2026",
     lastUpdated: "Jul 12, 2026",
     readTime: "7 min",
@@ -180,6 +186,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "utility-bill-due-date-alerts",
+    noindex: true,
     title: "Utility Bill Due Date Alerts",
     date: "Jul 12, 2026",
     lastUpdated: "Jul 12, 2026",
@@ -194,6 +201,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "rocket-money-alternatives-free",
+    noindex: true,
     title: "Rocket Money Alternatives",
     date: "Jul 12, 2026",
     lastUpdated: "Jul 12, 2026",
@@ -208,6 +216,7 @@ export const posts: BlogPost[] = [
   },
   {
     slug: "monarch-money-alternative-privacy",
+    noindex: true,
     title: "Monarch Money Alternatives for Privacy-Conscious Users",
     date: "Jul 12, 2026",
     lastUpdated: "Jul 12, 2026",
@@ -883,4 +892,13 @@ export const posts: BlogPost[] = [
   },
 ];
 
+const countWords = (post: BlogPost) =>
+  [post.title, ...post.body, ...(post.faqs ?? []).flatMap((f) => [f.q, f.a])]
+    .join(" ")
+    .replace(/[#*_`>\[\]()-]/g, " ")
+    .split(/\s+/)
+    .filter(Boolean).length;
 
+for (const post of posts) {
+  post.readTime = `${Math.max(1, Math.round(countWords(post) / 200))} min`;
+}

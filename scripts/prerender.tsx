@@ -6,6 +6,8 @@ import { StaticRouter } from "react-router-dom/server";
 import { AppShell } from "../src/App";
 import NotFound from "../src/pages/NotFound";
 import { publicRoutes } from "../src/data/routes";
+import { blogSlugRedirects } from "../src/data/blogRedirects";
+import { posts } from "../src/data/posts";
 
 const root = process.cwd();
 const template = readFileSync(join(root, "dist/index.html"), "utf8");
@@ -38,9 +40,16 @@ for (const route of publicRoutes) {
 
 writeFileSync(join(root, "dist/404.html"), renderPage("/404", true));
 
-const redirectDir = join(root, "dist/privacy-policy");
-mkdirSync(redirectDir, { recursive: true });
-writeFileSync(join(redirectDir, "index.html"), `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=/privacy"><link rel="canonical" href="https://saveiy.com/privacy"><title>Redirecting to Privacy Policy | Saveiy</title></head><body><p>Redirecting to <a href="/privacy">Saveiy Privacy Policy</a>.</p></body></html>`);
+const writeRedirect = (from: string, to: string, label: string) => {
+  const dir = join(root, "dist", from.slice(1));
+  mkdirSync(dir, { recursive: true });
+  writeFileSync(join(dir, "index.html"), `<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="robots" content="noindex"><meta http-equiv="refresh" content="0;url=${to}"><link rel="canonical" href="https://saveiy.com${to}"><title>Redirecting to ${label} | Saveiy</title></head><body><p>Redirecting to <a href="${to}">${label}</a>.</p></body></html>`);
+};
+writeRedirect("/privacy-policy", "/privacy", "Privacy Policy");
+for (const [from, to] of Object.entries(blogSlugRedirects)) {
+  const target = posts.find((p) => p.slug === to);
+  writeRedirect(`/blog/${from}`, `/blog/${to}`, target?.title ?? to);
+}
 
 const escapeXml = (value: string) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${publicRoutes
