@@ -43,14 +43,13 @@ const BlogPost = () => {
     <div className="min-h-screen bg-background">
       <Seo
         title={
-          post.title.includes("Saveiy")
+          post.title.includes("Saveiy") || post.title.length + 9 > 60
             ? post.title
-            : post.title.length + 9 <= 60
-              ? `${post.title} | Saveiy`
-              : `${post.title.slice(0, 50).trimEnd()}… | Saveiy`
+            : `${post.title} | Saveiy`
         }
         description={post.excerpt}
         canonical={url}
+        noindex={post.noindex}
         type="article"
         keywords={post.tags.join(", ")}
         jsonLd={[
