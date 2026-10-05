@@ -839,7 +839,7 @@ export const posts: BlogPost[] = [
       "Cross-check with your bank statement: UPI AutoPay debits usually carry the word MANDATE or AUTOPAY and the merchant name in the narration. Match each one back to a mandate in your apps.",
       "## Who is charging my UPI AutoPay? How to identify an unknown merchant",
       "1. Open the mandate and note the merchant name, amount limit, frequency and the UMN (Unique Mandate Number).",
-      "2. Expect a legal or payment-company name. Mandates often show the company's registered name or its payment partner, not the app or brand you signed up for. Search the exact name together with the word "subscription" or "autopay".",
+      "2. Expect a legal or payment-company name. Mandates often show the company's registered name or its payment partner, not the app or brand you signed up for. Search the exact name together with the word \"subscription\" or \"autopay\".",
       "3. Search your email and SMS for the merchant name and the amount. The sign-up receipt or the pre-debit notification you get about 24 hours before each charge usually names the actual service.",
       "4. Check app-store billing. Subscriptions bought inside Android apps are billed by Google Play, so the mandate may show Google's name rather than the app's. Open Play Store → profile picture → Payments & subscriptions → Subscriptions to see which app it is.",
       "5. Still don't recognise it? Revoke the mandate and report it to your UPI app or bank, quoting the UMN. Fake mandate requests usually arrive through SMS links or pop-ups; genuine ones start inside the merchant's own app or website.",
